@@ -50,11 +50,12 @@ shutdown -r now
 Конечно же на строке "make menuconfig" он зависал.
 
 ПО вашему руководству все взлетает великолепно создается box, однако при создании ВМ востанавливается ядро 3.х 
-которое по выбирается по умочанию. Только добавив в Vagrantfile строки:
+которое выбирается по умочанию. Только добавив в Vagrantfile строки:
 
 config.vm.provision "shell", inline: <<-SHELL
       sed -i 's/saved_entry=.*/saved_entry=0/g' /boot/grub2/grubenv
       reboot
 SHELL
+
 Получаем систему с ядром версии 5.х
 
