@@ -1,4 +1,4 @@
-**Сборка ядра Linux 5.х в ручную**
+**Сборка ядра Linux 5.х в ручную** <br/>
 Согласно статье
 
 <http://itisgood.ru/2018/08/02/kak-skompilirovat-jadro-linux-na-centos-7/>
