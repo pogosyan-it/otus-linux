@@ -1,0 +1,24 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-ovf",
+      "source_path": "manual_kernel_update.ova",
+      "shutdown_command": "sudo -S /sbin/halt -h -p",
+      "shutdown_timeout" : "5m",
+      "ssh_wait_timeout": "5m",
+      "ssh_host": "192.168.33.18",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_port": 22,
+      "ssh_pty": true
+
+    }
+      ],
+"post-processors": [
+    {
+      "output": "centos-kernel-5-x86_64-Minimal-ova.box",
+      "compression_level": "7",
+      "type": "vagrant"
+    }
+  ]
+}
