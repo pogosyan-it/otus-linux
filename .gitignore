@@ -1,3 +1,4 @@
 .vagrant
 *.vdi
 manual_kernel_update/
+RAID/
