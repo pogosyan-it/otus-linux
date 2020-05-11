@@ -1,5 +1,6 @@
 #/bin/bash
 # Disk amount
+yum install -y mdadm 
 check_array=$(cat /proc/mdstat | grep md0 | cut -c 1-3)
 if [[ $check_array != "md0" ]]; then
  N=$(lsscsi | grep HARDDISK | grep -v sda | wc -l)
