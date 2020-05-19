@@ -12,10 +12,20 @@
 2. Форматируем в xfs и монтируем в /mnt:
    `mkfs.xfs -f /dev/md0 && mount /dev/md0 /mnt/`
 3. Устанавливаем утилиту xfsdump и копируем системные файлы на /dev/md0: <br/>
-   `yum install -y xfsdump`
-   `xfsdump -J - /dev/sda1 | xfsrestore -J - /mnt`
-4. В host системе запустить 2 команды: <br/>
-   `vagrant plugin install vagrant-vbguest` <br/>
-   `vagrant vbguest` <br/>
+   `yum install -y xfsdump` <br/>
+   `xfsdump -J - /dev/sda1 | xfsrestore -J - /mnt` <br/>
+4. Монтируем информацию о текущей системе в наш новый корень и делаем chroot в него: <br/>
+   `for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done` <br/>
+   `chroot /mnt/` <br/>
+5. Заменяем в `/etc/fstab` UUID диска `/dev/sda1 ` <br/>
+   `blkid | grep sda1 | awk '{print $2}'` <br/>
+          на UUID `/dev/md0` <br/>
+   `blkid | grep md0 | awk '{print $2}'`  <br/>
+6.  Создаем конфиг. файл массива:
+    `mdadm --detail --scan > /etc/mdadm.conf`
+7.  Бэкапим текущий файл initramfs и созбираем новый:
+    `mv /boot/initramfs-3.10.0-957.12.2.el7.x86_64.img /boot/initramfs-3.10.0-957.12.2.el7.x86_64.img_bak`
+    `dracut /boot/initramfs-$(uname -r).img $(uname -r)`
+    
 
-После запуска вм `(vagrant up)` shara заработает.
+
