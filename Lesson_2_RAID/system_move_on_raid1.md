@@ -39,10 +39,18 @@
   └─sdg1    8:97   0   7,3G  0 part <br/>
     └─md0   9:0    0   7,3G  0 raid1 / <br/>
 11. Удаляем раздел /dev/sda1 и создаем новый раздел размером 7,3GB, равным разделу sdg1: <br/>
-  sda       8:0    0   40G  0 disk <br/>
+   sda       8:0    0   40G  0 disk <br/>
+  ├─sda1    8:1    0  7,3G  0 part <br/>
+  └─sda2    8:2    0 32,7G  0 part<br/>
+12. Добавляем /dev/sda1 в массив: <br/>
+    mdadm --manage /dev/md0 --add /dev/sda1 <br/>
+Получаем: <br/>
+sda       8:0    0   40G  0 disk <br/>
 ├─sda1    8:1    0  7,3G  0 part <br/>
-└─sda2    8:2    0 32,7G  0 part<br/>
-
+│ └─md0   9:0    0  7,3G  0 raid1 / <br/>
+└─sda2    8:2    0 32,7G  0 part <br/>
+└─sdg1    8:97   0  7,3G  0 part <br/>
+  └─md0   9:0    0  7,3G  0 raid1 / <br/>
 
 
 
