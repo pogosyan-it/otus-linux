@@ -23,9 +23,14 @@
    `blkid | grep md0 | awk '{print $2}'`  <br/>
 6.  Создаем конфиг. файл массива:
     `mdadm --detail --scan > /etc/mdadm.conf`
-7.  Бэкапим текущий файл initramfs и созбираем новый:
+7.  Бэкапим текущий файл initramfs и созбираем новый: <br/>
     `mv /boot/initramfs-3.10.0-957.12.2.el7.x86_64.img /boot/initramfs-3.10.0-957.12.2.el7.x86_64.img_bak`
     `dracut /boot/initramfs-$(uname -r).img $(uname -r)`
+8.  Чтобы активировать RAID при загрузке в файле /etc/default/grub дописываем в строке GRUB_CMDLINE_LINUX параметр  rd.auto=1:
+     `GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop    crashkernel=auto rd.auto=1"`
+9.  Переписываем конфиг GRUB и устанавливаем загрузчик на диск /dev/sdg: <br/>
+    `grub2-mkconfig -o /boot/grub2/grub.cfg`<br/>
+    `grub2-install /dev/sdg`<br/>
     
 
 
