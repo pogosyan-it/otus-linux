@@ -4,7 +4,7 @@ yum install -y mdadm
 check_array=$(cat /proc/mdstat | grep md0 | cut -c 1-3)
 if [[ $check_array != "md0" ]]; then
  N=$(lsscsi | grep HARDDISK | grep -v sda | wc -l)
- if  [[ $N -eq 5 ]]; then
+ if  [[ $N -ge 5 ]]; then
     ARRAY_HDD=()
     for i in $(lsscsi | grep HARDDISK | grep -v sda | awk '{print $7}'); do
        mdadm --zero-superblock --force $i
