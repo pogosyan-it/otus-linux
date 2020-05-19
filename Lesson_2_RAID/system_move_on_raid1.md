@@ -31,12 +31,21 @@
 9.  Переписываем конфиг GRUB и устанавливаем загрузчик на диск /dev/sdg: <br/>
     `grub2-mkconfig -o /boot/grub2/grub.cfg`<br/>
     `grub2-install /dev/sdg`<br/>
-10. Во время перезагрузки выбираем загрузку с нового диска и, после входа с систему видим: <br/>
+10. Во время перезагрузки выбираем загрузку с нового диска и, после входа с систему, видим: <br/>
     NAME    MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT <br/>
  sda        8:0    0   40G  0 disk <br/>
   └─sda1    8:1    0   40G  0 part <br/>
  sdg        8:96   0   7,3G  0 disk <br/>
   └─sdg1    8:97   0   7,3G  0 part <br/>
-    *└─md0   9:0    0   7,3G  0 raid1 / *<br/>
+    └─md0   9:0    0   7,3G  0 raid1 / <br/>
+11. Удаляем раздел /dev/sda1 и создаем новый раздел размером 7,3GB, равным разделу sdg1:
+  sda       8:0    0   40G  0 disk <br/>
+├─sda1    8:1    0  7,3G  0 part <br/>
+└─sda2    8:2    0 32,7G  0 part<br/>
+
+
+
+
+
 
 
