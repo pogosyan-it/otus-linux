@@ -52,6 +52,12 @@ sda       8:0    0   40G  0 disk <br/>
 sdg       8:96   0  7,3G  0 disk    <br/>
 └─sdg1    8:97   0  7,3G  0 part    <br/>
   └─md0   9:0    0  7,3G  0 raid1 /  <br/>
+  
+13. Устанавливаем загрузчик (после окончания ребилда) на /dev/sda и пересобираем grub
+     `grub2-install /dev/sda`<br/>
+     `grub2-mkconfig -o /boot/grub2/grub.cfg`<br/>
+После чего система нормально перезагрузится. 
+    
 
 
 
