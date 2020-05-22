@@ -36,10 +36,29 @@ zfspool/lzjb     24K  31,8G       24K  /zfspool/lzjb <br/>
 zfspool/zle      24K  31,8G       24K  /zfspool/zle <br/>
 
 3. На каждую файловую систему устанавливаем соответствующее сжатие: <br/>
-   `for i in `seq 1 9\`; do zfs set compression=gzip-$i zfspool/gzip$i` <br/>
-   `xfsdump -J - /dev/sda1 | xfsrestore -J - /mnt` <br/>
-4. Монтируем информацию о текущей системе в наш новый корень и делаем chroot в него: <br/>
-   `for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done` <br/>
+   for i in `seq 1 9`; do zfs set compression=gzip-$i zfspool/gzip$i <br/>
+   `zfs set compression=lz4 zfspool/lz4` <br/>
+   NAME           PROPERTY     VALUE     SOURCE <br/>
+   zfspool/gzip1  compression  gzip-1    local  <br/>
+   zfspool/gzip2  compression  gzip-2    local  <br/>
+   zfspool/gzip3  compression  gzip-3    local  <br/>
+   zfspool/gzip4  compression  gzip-4    local  <br/>
+   zfspool/gzip5  compression  gzip-5    local  <br/>
+   zfspool/gzip6  compression  gzip-6    local  <br/>
+   zfspool/gzip7  compression  gzip-7    local  <br/>
+   zfspool/gzip8  compression  gzip-8    local  <br/>
+   zfspool/gzip9  compression  gzip-9    local  <br/>
+   zfspool/lz4  compression    lz4       local  <br/>
+   zfspool/lzjb  compression   lzjb      local  <br/>
+   zfspool/zle  compression    zle       local  <br/>
+
+4. Скопируем архив ядра на каждую ФС и замерим время и размер папки, для этого используем простой скрипт: <br/>
+   https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_4_ZFS/zfs_compression.sh
+   Результат его работы запишем в файл:
+   https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_4_ZFS/zfs_comp.stat
+   где в среднем столбце кол-во секунд, которое потребовалось чтобы скопировать разархивированную копию ядра.
+   Легко видить, что лучше всех сжал gzip-9 и время у него для этого ушло не самое худшее.
+   
    `chroot /mnt/` <br/>
 5. Заменяем в `/etc/fstab` UUID диска `/dev/sda1 ` <br/>
    `blkid | grep sda1 | awk '{print $2}'` <br/>
