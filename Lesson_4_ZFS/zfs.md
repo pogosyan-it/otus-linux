@@ -7,15 +7,14 @@
  state: ONLINE <br/>
   scan: none requested <br/>
 config:<br/>
-
-        NAME        STATE     READ WRITE CKSUM <br/>
-        zfspool     ONLINE       0     0     0 <br/>
-          sda       ONLINE       0     0     0<br/>
-          sdb       ONLINE       0     0     0<br/>
-          sdc       ONLINE       0     0     0<br/>
-          sdd       ONLINE       0     0     0<br/>
-          sde       ONLINE       0     0     0<br/>
-          sda2       ONLINE       0     0     0<br/>
+  NAME        STATE     READ WRITE CKSUM
+        zfspool     ONLINE       0     0     0 
+          sda       ONLINE       0     0     0
+          sdb       ONLINE       0     0     0
+          sdc       ONLINE       0     0     0
+          sdd       ONLINE       0     0     0
+          sde       ONLINE       0     0     0
+          sda2       ONLINE       0     0     0
 
 2. Форматируем в xfs и монтируем в /mnt:
    `mkfs.xfs -f /dev/md0 && mount /dev/md0 /mnt/`
