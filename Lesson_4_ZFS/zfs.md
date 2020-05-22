@@ -12,12 +12,12 @@ config:<br/>
           sda       ONLINE       0     0     0 <br/>
           sdb       ONLINE       0     0     0 <br/>
           sdc       ONLINE       0     0     0 <br/>
-          sdd       ONLINE       0     0     0 br/>
+          sdd       ONLINE       0     0     0 <br/>
           sde       ONLINE       0     0     0 <br/>
           sda2       ONLINE       0     0     0 <br/>
 
-2. Форматируем в xfs и монтируем в /mnt:
-   `mkfs.xfs -f /dev/md0 && mount /dev/md0 /mnt/`
+2. Создаем файловые системы gzip_N,lz4,zle, lzjb: <br/>
+   `zfs create zfspool/gzip_N где N от 1 до 9`
 3. Устанавливаем утилиту xfsdump и копируем системные файлы на /dev/md0: <br/>
    `yum install -y xfsdump` <br/>
    `xfsdump -J - /dev/sda1 | xfsrestore -J - /mnt` <br/>
