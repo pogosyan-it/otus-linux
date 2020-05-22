@@ -1,14 +1,22 @@
-# **Перенос системы на RAID 1**
+# **ZFS - определение алгоритма наилучшего сжатия**
 
-Имется система на /dev/sda1 которую необходимо перенести на RAID 1. В системе имеется один свободный диск /dev/sdg размером 7.3Gb: <br/> 
-`NAME    MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT` <br/>
-`sda       8:0    0   40G  0 disk `             <br/>
-`└─sda1    8:1    0   40G  0 part     /`         <br/>
-`sdg       8:96   0  7,3G  0 disk`              <br/>
-Система занимает на диске /dev/sda1 меньше 7,3Gb иначе перенести ее было бы невозможно.
-Так как диск всего 1 то мы можем создать RAID 1 с отсутствующим диском, после переноса системы от диска /dev/sda1 откусим 7,3GB  и восстановим массив.
-1. Создаем раздел sdg1 на диске /dev/sdg с помощью fdisk и на этом разделе RAID 1:<br/>
-   `dadm --create /dev/md0 --level=1 --metadata=0.9 --raid-devices=2 missing /dev/sdg1`
+
+1. Создаем zfs pool:<br/>
+   `zpool create zfspool /dev/sdb /dev/sdc /dev/sdd /dev/sde /dev/sdf /dev/sdb /dev/sda2` <br/>
+    pool: zfspool    <br/>
+ state: ONLINE <br/>
+  scan: none requested <br/>
+config:<br/>
+
+        NAME        STATE     READ WRITE CKSUM <br/>
+        zfspool     ONLINE       0     0     0 <br/>
+          sda       ONLINE       0     0     0<br/>
+          sdb       ONLINE       0     0     0<br/>
+          sdc       ONLINE       0     0     0<br/>
+          sdd       ONLINE       0     0     0<br/>
+          sde       ONLINE       0     0     0<br/>
+          sda2       ONLINE       0     0     0<br/>
+
 2. Форматируем в xfs и монтируем в /mnt:
    `mkfs.xfs -f /dev/md0 && mount /dev/md0 /mnt/`
 3. Устанавливаем утилиту xfsdump и копируем системные файлы на /dev/md0: <br/>
