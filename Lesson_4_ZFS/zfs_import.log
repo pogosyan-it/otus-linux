@@ -1,0 +1,640 @@
+Script started on Пт 22 май 2020 15:54:07
+]0;root@otuslinux1:/home[?1034h[root@otuslinux1 home]# wget https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+--2020-05-22 15:55:45--  https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving drive.google.com (drive.google.com)... 173.194.73.194, 2a00:1450:4010:c08::c2
+Connecting to drive.google.com (drive.google.com)|173.194.73.194|:443... connected.
+HTTP request sent, awaiting response... 307 Temporary Redirect
+Location: https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open [following]
+--2020-05-22 15:55:46--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view?usp=drive_open
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’
+
+    [<=>                                                                                                                          ] 0           --.-K/s                  [ <=>                                                                                                                         ] 35 617       162KB/s                 [  <=>                                                                                                                        ] 69 993       317KB/s   in 0,2s   
+
+2020-05-22 15:55:47 (317 KB/s) - ‘open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’ saved [69993]
+
+]0;root@otuslinux1:/home[root@otuslinux1 home]# ls -l
+total 84
+drwxrwxr-x. 24 root    root     4096 май  2 06:51 [0m[01;34mlinux-5.6.9[0m
+-rw-r--r--.  1 root    root    69993 май 22 15:55 open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+drwx------.  3 vagrant vagrant    95 май 18 18:47 [01;34mvagrant[0m
+-rwxr-xr-x.  1 root    root      536 май 22 15:46 [01;32mzfs_compression.sh[0m
+-rw-r--r--.  1 root    root      116 май 22 15:54 zfs_comp.stat
+]0;root@otuslinux1:/home[root@otuslinux1 home]# ls -l[K[K[K[K[Kdu -h open\?id\=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg 
+72K	open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+]0;root@otuslinux1:/home[root@otuslinux1 home]# rmrm[K[K open\?id\=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg 
+rm: remove regular file ‘open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg’? y
+]0;root@otuslinux1:/home[root@otuslinux1 home]# rm open\?id\=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[3@du -h[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cls -l[Kwget https://drive.google.com/open?id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[Cls -l[K[K[K[K[K[Kwh[K[Kwget --content-disposition https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/view[K[K[K[Khttps://drive.google.com/file/d/1KRBNW33QWqbvbVHa 3hLJivOAt60yukkg/view[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kexport?format=xlsx&id=$id"[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K/
+--2020-05-22 16:01:50--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/
+Resolving drive.google.com (drive.google.com)... 64.233.164.194, 2a00:1450:4010:c0b::c2
+Connecting to drive.google.com (drive.google.com)|64.233.164.194|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/edit [following]
+--2020-05-22 16:01:50--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/edit
+Reusing existing connection to drive.google.com:443.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘edit’
+
+    [<=>                                                                                                                          ] 0           --.-K/s                  [ <=>                                                                                                                         ] 69 854      --.-K/s   in 0,06s   
+
+2020-05-22 16:01:51 (1,09 MB/s) - ‘edit’ saved [69854]
+
+]0;root@otuslinux1:/home[root@otuslinux1 home]# ls -l
+total 84
+-rw-r--r--.  1 root    root    69854 май 22 16:01 edit
+drwxrwxr-x. 24 root    root     4096 май  2 06:51 [0m[01;34mlinux-5.6.9[0m
+drwx------.  3 vagrant vagrant    95 май 18 18:47 [01;34mvagrant[0m
+-rwxr-xr-x.  1 root    root      536 май 22 15:46 [01;32mzfs_compression.sh[0m
+-rw-r--r--.  1 root    root      164 май 22 15:59 zfs_comp.stat
+]0;root@otuslinux1:/home[root@otuslinux1 home]# ex[K[Kedit[K[K[K[Kdu ih edit 
+^[[A^C^C
+^X^C
+
+]0;root@otuslinux1:/home[root@otuslinux1 home]# 
+]0;root@otuslinux1:/home[root@otuslinux1 home]# du -h edit 
+72K	edit
+]0;root@otuslinux1:/home[root@otuslinux1 home]# rm edit 
+rm: remove regular file ‘edit’? y
+]0;root@otuslinux1:/home[root@otuslinux1 home]# id =[K[K=export?format=xlsx&id=$id"[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+]0;root@otuslinux1:/home[root@otuslinux1 home]# id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Crm edit [K[3@du -h[C[C[C[C[C[Ci[C[C[C[C[C[C[C[6Pls -lwget --content-disposition https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/[1P/$/i/d/[Cexport?format=xlsx&id=$id"[C[1Px&id=$id"[1Px&id=$id"[1P&id=$id"tx&id=$id"ax&id=$id"rx&id=$id".x&id=$id"gx&id=$id"zx&id=$id"[1P&id=$id"[C"https://drive.google.com/file/d/$id/export?format=tar.gz&id=$id"[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+--2020-05-22 16:04:24--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/export?format=tar.gz&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving drive.google.com (drive.google.com)... 64.233.164.194, 2a00:1450:4010:c0d::c2
+Connecting to drive.google.com (drive.google.com)|64.233.164.194|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2020-05-22 16:04:25 ERROR 404: Not Found.
+
+]0;root@otuslinux1:/home[root@otuslinux1 home]# wget --content-disposition "https://drive.google.com/file/d/$id/export?format=tar.gz&id=$id"[1Pgz&id=$id"[1Pgz&id=$id"[1Pgz&id=$id"[1Pgz&id=$id"
+--2020-05-22 16:04:37--  https://drive.google.com/file/d/1KRBNW33QWqbvbVHa3hLJivOAt60yukkg/export?format=gz&id=1KRBNW33QWqbvbVHa3hLJivOAt60yukkg
+Resolving drive.google.com (drive.google.com)... 64.233.163.194, 2a00:1450:4010:c0d::c2
+Connecting to drive.google.com (drive.google.com)|64.233.163.194|:443... connected.
+HTTP request sent, awaiting response... 404 Not Found
+2020-05-22 16:04:38 ERROR 404: Not Found.
+
+]0;root@otuslinux1:/home[root@otuslinux1 home]# wget --content-disposition "https://drive.google.com/file/d/$id/export?format=gz&id=$id"[C[C[C[1P&id=$id"[1P&id=$id"[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kscp root@192.168.33.10:/tmp/zfs_task1.tar.gz .
+root@192.168.33.10's password: 
+zfs_task1.tar.gz                                                                                                                      0%    0     0.0KB/s   --:-- ETAzfs_task1.tar.gz                                                                                                                    100% 7105KB   6.5MB/s   00:01    
+]0;root@otuslinux1:/home[root@otuslinux1 home]# ls -l
+total 7120
+drwxrwxr-x. 24 root    root       4096 май  2 06:51 [0m[01;34mlinux-5.6.9[0m
+drwx------.  3 vagrant vagrant      95 май 18 18:47 [01;34mvagrant[0m
+-rwxr-xr-x.  1 root    root        536 май 22 15:46 [01;32mzfs_compression.sh[0m
+-rw-r--r--.  1 root    root        212 май 22 16:05 zfs_comp.stat
+-rw-r--r--.  1 root    root    7275140 май 22 16:10 [01;31mzfs_task1.tar.gz[0m
+]0;root@otuslinux1:/home[root@otuslinux1 home]# tar -zxvf[K[K[K[K[K[K[K[K[Kdf -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/md0        7,4G  7,0G  375M  95% /
+devtmpfs        488M     0  488M   0% /dev
+tmpfs           496M     0  496M   0% /dev/shm
+tmpfs           496M  6,8M  489M   2% /run
+tmpfs           496M     0  496M   0% /sys/fs/cgroup
+zfspool          30G  128K   30G   1% /zfspool
+zfspool/lzjb     30G  128K   30G   1% /zfspool/lzjb
+zfspool/gzip7    31G  243M   30G   1% /zfspool/gzip7
+zfspool/gzip1    31G  278M   30G   1% /zfspool/gzip1
+zfspool/gzip4    31G  253M   30G   1% /zfspool/gzip4
+zfspool/gzip9    31G  242M   30G   1% /zfspool/gzip9
+zfspool/gzip3    31G  264M   30G   1% /zfspool/gzip3
+zfspool/zle      30G  128K   30G   1% /zfspool/zle
+zfspool/lz4      31G  472M   30G   2% /zfspool/lz4
+zfspool/gzip5    31G  246M   30G   1% /zfspool/gzip5
+zfspool/gzip2    31G  270M   30G   1% /zfspool/gzip2
+zfspool/gzip8    31G  243M   30G   1% /zfspool/gzip8
+zfspool/gzip6    31G  244M   30G   1% /zfspool/gzip6
+tmpfs           100M     0  100M   0% /run/user/0
+]0;root@otuslinux1:/home[root@otuslinux1 home]# cat 
+linux-5.6.9/        vagrant/            zfs_compression.sh  zfs_comp.stat       zfs_task1.tar.gz    
+[root@otuslinux1 home]# cat zfs_comp.stat 
+gzip1 --->76 ---->285M
+gzip2 --->82 ---->277M
+gzip3 --->91 ---->272M
+gzip4 --->94 ---->257M
+gzip5 --->101 ---->253M
+gzip6 --->103 ---->251M
+gzip7 --->194 ---->250M
+gzip8 --->243 ---->249M
+gzip9 --->135 ---->249M
+]0;root@otuslinux1:/home[root@otuslinux1 home]# l[Kcp [K[K[Kzfs create zfspool/imporet[K[Kt
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zp[Kfs list
+NAME             USED  AVAIL     REFER  MOUNTPOINT
+zfspool         2,69G  29,9G     36,5K  /zfspool
+zfspool/gzip1    277M  29,9G      277M  /zfspool/gzip1
+zfspool/gzip2    269M  29,9G      269M  /zfspool/gzip2
+zfspool/gzip3    264M  29,9G      264M  /zfspool/gzip3
+zfspool/gzip4    252M  29,9G      252M  /zfspool/gzip4
+zfspool/gzip5    246M  29,9G      246M  /zfspool/gzip5
+zfspool/gzip6    243M  29,9G      243M  /zfspool/gzip6
+zfspool/gzip7    243M  29,9G      243M  /zfspool/gzip7
+zfspool/gzip8    242M  29,9G      242M  /zfspool/gzip8
+zfspool/gzip9    242M  29,9G      242M  /zfspool/gzip9
+zfspool/import    24K  29,9G       24K  /zfspool/import
+zfspool/lz4      472M  29,9G      472M  /zfspool/lz4
+zfspool/lzjb      24K  29,9G       24K  /zfspool/lzjb
+zfspool/zle       24K  29,9G       24K  /zfspool/zle
+]0;root@otuslinux1:/home[root@otuslinux1 home]# cd /zfspool/import/[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kcp zfs_task1.tar.gz /zfspool/imn[Kport/
+]0;root@otuslinux1:/home[root@otuslinux1 home]# cd /zfspool/import/
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# ls -l
+total 7175
+-rw-r--r--. 1 root root 7275140 май 22 16:14 [0m[01;31mzfs_task1.tar.gz[0m
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# chmod +x zfs_task1.tar.gz 
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# tar -zxvf zfs_task1.tar.gz 
+zpoolexport/
+zpoolexport/filea
+zpoolexport/fileb
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# ls -l
+total 7175
+-rwxr-xr-x. 1 root root 7275140 май 22 16:14 [0m[01;32mzfs_task1.tar.gz[0m
+drwxr-xr-x. 2 root root       4 май 15 04:35 [01;34mzpoolexport[0m
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# cd zpoolexport/
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# ls -l
+total 1024100
+-rw-r--r--. 1 root root 524288000 май 15 05:00 filea
+-rw-r--r--. 1 root root 524288000 май 15 05:00 fileb
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# zpool import filea file[1@-[1@d[1@ [C[C[C[C[C[C[C[C[C[Cb
+cannot import 'fileb': no such pool available
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# zpool list
+NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+zfspool  33,6G  3,67G  29,9G        -         -     3%    10%  1.00x    ONLINE  -
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# zpool listimport -d filea fileb[K[K[K[K[K
+   pool: otus
+     id: 6554193320433390805
+  state: DEGRADED
+ status: One or more devices are missing from the system.
+ action: The pool can be imported despite missing or damaged devices.  The
+	fault tolerance of the pool may be compromised if imported.
+   see: http://zfsonlinux.org/msg/ZFS-8000-2Q
+ config:
+
+	otus                                   DEGRADED
+	  mirror-0                             DEGRADED
+	    /zfspool/import/zpoolexport/filea  ONLINE
+	    /root/zpoolexport/fileb            UNAVAIL  cannot open
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# zpool import -d filea list[K
+NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+zfspool  33,6G  3,67G  29,9G        -         -     3%    10%  1.00x    ONLINE  -
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# zpool listimport -d filea [K[Kb
+   pool: otus
+     id: 6554193320433390805
+  state: DEGRADED
+ status: One or more devices are missing from the system.
+ action: The pool can be imported despite missing or damaged devices.  The
+	fault tolerance of the pool may be compromised if imported.
+   see: http://zfsonlinux.org/msg/ZFS-8000-2Q
+ config:
+
+	otus                                   DEGRADED
+	  mirror-0                             DEGRADED
+	    /root/zpoolexport/filea            UNAVAIL  cannot open
+	    /zfspool/import/zpoolexport/fileb  ONLINE
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# zpool import -d filebmfilebifilebrfilebrfilebofilebtfileb fileb[Cfilebifileblfilebefileb fileb[1Pfilebafileb fileb
+cannot import 'filea': no such pool available
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# zpool import -d mirrot filea fileb[C[1P[1@r
+cannot import 'filea': no such pool available
+]0;root@otuslinux1:/zfspool/import/zpoolexport[root@otuslinux1 zpoolexport]# cd ..
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# ls -l
+total 7175
+-rwxr-xr-x. 1 root root 7275140 май 22 16:14 [0m[01;32mzfs_task1.tar.gz[0m
+drwxr-xr-x. 2 root root       4 май 15 04:35 [01;34mzpoolexport[0m
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# ls -lcd ..zpool import -d mirror filea fileb[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kzpoolexport/
+   pool: otus
+     id: 6554193320433390805
+  state: ONLINE
+ action: The pool can be imported using its name or numeric identifier.
+ config:
+
+	otus                                   ONLINE
+	  mirror-0                             ONLINE
+	    /zfspool/import/zpoolexport/filea  ONLINE
+	    /zfspool/import/zpoolexport/fileb  ONLINE
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zfs[K][K[K[Kzpool l [Kist
+NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+zfspool  33,6G  3,67G  29,9G        -         -     3%    10%  1.00x    ONLINE  -
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# ls -l
+total 7175
+-rwxr-xr-x. 1 root root 7275140 май 22 16:14 [0m[01;32mzfs_task1.tar.gz[0m
+drwxr-xr-x. 2 root root       4 май 15 04:35 [01;34mzpoolexport[0m
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/md0        7,4G  7,0G  375M  95% /
+devtmpfs        488M     0  488M   0% /dev
+tmpfs           496M     0  496M   0% /dev/shm
+tmpfs           496M  6,8M  489M   2% /run
+tmpfs           496M     0  496M   0% /sys/fs/cgroup
+zfspool          29G  128K   29G   1% /zfspool
+zfspool/lzjb     29G  128K   29G   1% /zfspool/lzjb
+zfspool/gzip7    30G  243M   29G   1% /zfspool/gzip7
+zfspool/gzip1    30G  278M   29G   1% /zfspool/gzip1
+zfspool/gzip4    30G  253M   29G   1% /zfspool/gzip4
+zfspool/gzip9    30G  242M   29G   1% /zfspool/gzip9
+zfspool/gzip3    30G  264M   29G   1% /zfspool/gzip3
+zfspool/zle      29G  128K   29G   1% /zfspool/zle
+zfspool/lz4      30G  473M   29G   2% /zfspool/lz4
+zfspool/gzip5    30G  246M   29G   1% /zfspool/gzip5
+zfspool/gzip2    30G  270M   29G   1% /zfspool/gzip2
+zfspool/gzip8    30G  243M   29G   1% /zfspool/gzip8
+zfspool/gzip6    30G  244M   29G   1% /zfspool/gzip6
+tmpfs           100M     0  100M   0% /run/user/0
+zfspool/import   30G 1008M   29G   4% /zfspool/import
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# df -hls -lzpool listimport -d zpoolexport/otus
+no pools available to import
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zpool import -d zpoolexport/otus[K[K[K[K
+   pool: otus
+     id: 6554193320433390805
+  state: ONLINE
+ action: The pool can be imported using its name or numeric identifier.
+ config:
+
+	otus                                   ONLINE
+	  mirror-0                             ONLINE
+	    /zfspool/import/zpoolexport/filea  ONLINE
+	    /zfspool/import/zpoolexport/fileb  ONLINE
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zpool import -d zpoolexport/otus[K[C-zpoolexport/fzpoolexport/ zpoolexport/
+cannot import 'zpoolexport/': no such pool available
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zpool import -d -f zpoolexport/[C[1Pzpoolexport/[1Pzpoolexport/[1Pzpoolexport/[1Ppoolexport/[1Poolexport/[C[1Plexport/[1Plexport/[1Pexport/[1Pxport/[1Pport/[1Port/[1Prt/[1Pt/[1P/[K6554193320433390805
+no pools available to import
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zpool import -d 6554193320433390805[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+no pools available to import
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zpool import -d /dev/disk/by-id
+no pools available to import
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zpool import -d /dev/disk/by-id otus
+cannot import 'otus': no such pool available
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zpool import -d /dev/disk/by-id otus[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K z[K[K z
+zfs_task1.tar.gz  zpoolexport/      
+[root@otuslinux1 import]# zpool import -d zpoolexport/ otus
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# zpool l [K[Klist
+NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+otus      480M  2,15M   478M        -         -     0%     0%  1.00x    ONLINE  -
+zfspool  33,6G  4,69G  28,9G        -         -     4%    13%  1.00x    ONLINE  -
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/md0        7,4G  7,0G  375M  95% /
+devtmpfs        488M     0  488M   0% /dev
+tmpfs           496M     0  496M   0% /dev/shm
+tmpfs           496M  6,8M  489M   2% /run
+tmpfs           496M     0  496M   0% /sys/fs/cgroup
+zfspool          28G  128K   28G   1% /zfspool
+zfspool/lzjb     29G  420M   28G   2% /zfspool/lzjb
+zfspool/gzip7    29G  243M   28G   1% /zfspool/gzip7
+zfspool/gzip1    29G  278M   28G   1% /zfspool/gzip1
+zfspool/gzip4    29G  253M   28G   1% /zfspool/gzip4
+zfspool/gzip9    29G  242M   28G   1% /zfspool/gzip9
+zfspool/gzip3    29G  264M   28G   1% /zfspool/gzip3
+zfspool/zle      29G  664M   28G   3% /zfspool/zle
+zfspool/lz4      29G  473M   28G   2% /zfspool/lz4
+zfspool/gzip5    29G  246M   28G   1% /zfspool/gzip5
+zfspool/gzip2    29G  270M   28G   1% /zfspool/gzip2
+zfspool/gzip8    29G  243M   28G   1% /zfspool/gzip8
+zfspool/gzip6    29G  244M   28G   1% /zfspool/gzip6
+tmpfs           100M     0  100M   0% /run/user/0
+zfspool/import   29G 1008M   28G   4% /zfspool/import
+otus            350M  128K  350M   1% /otus
+otus/hometask2  352M  2,0M  350M   1% /otus/hometask2
+]0;root@otuslinux1:/zfspool/import[root@otuslinux1 import]# cd /home/o[K
+]0;root@otuslinux1:/home[root@otuslinux1 home]# ls -l
+total 7120
+drwxrwxr-x. 24 root    root       4096 май  2 06:51 [0m[01;34mlinux-5.6.9[0m
+drwx------.  3 vagrant vagrant      95 май 18 18:47 [01;34mvagrant[0m
+-rwxr-xr-x.  1 root    root        536 май 22 15:46 [01;32mzfs_compression.sh[0m
+-rw-r--r--.  1 root    root        285 май 22 16:34 zfs_comp.stat
+-rw-r--r--.  1 root    root    7275140 май 22 16:10 [01;31mzfs_task1.tar.gz[0m
+]0;root@otuslinux1:/home[root@otuslinux1 home]# cat zfs_comp.stat 
+gzip1 --->76 ---->285M
+gzip2 --->82 ---->277M
+gzip3 --->91 ---->272M
+gzip4 --->94 ---->257M
+gzip5 --->101 ---->253M
+gzip6 --->103 ---->251M
+gzip7 --->194 ---->250M
+gzip8 --->243 ---->249M
+gzip9 --->135 ---->249M
+lz4 --->1380 ---->373M
+107M
+lzjb --->237 ---->426M
+zle --->152 ---->918M
+]0;root@otuslinux1:/home[root@otuslinux1 home]# mann [K[K zpool
+[?1049h[?1h=ZPOOL(8)                                                             System Manager's Manual                                                             ZPOOL(8)[m
+[m
+[1mNAME[0m[m
+     [1mzpool[0m — configure ZFS storage pools[m
+[m
+[1mSYNOPSIS[0m[m
+     [1mzpool[0m [1m-?V[0m[m
+     [1mzpool[0m [1madd[0m [[1m-fgLnP[0m] [[1m-o[0m [4mproperty[24m=[4mvalue[24m] [4mpool[24m [4mvdev[24m...[m
+     [1mzpool[0m [1mattach[0m [[1m-f[0m] [[1m-o[0m [4mproperty[24m=[4mvalue[24m] [4mpool[24m [4mdevice[24m [4mnew_device[24m[m
+     [1mzpool[0m [1mcheckpoint[0m [[1m-d,[0m [1m--discard[0m] [4mpool[24m[m
+     [1mzpool[0m [1mclear[0m [4mpool[24m [[4mdevice[24m][m
+     [1mzpool[0m [1mcreate[0m [[1m-dfn[0m] [[1m-m[0m [4mmountpoint[24m] [[1m-o[0m [4mproperty[24m=[4mvalue[24m]... [[1m-o[0m [4mfeature@feature[24m=[4mvalue[24m] [[1m-O[0m [4mfile-system-property[24m=[4mvalue[24m]... [[1m-R[0m [4mroot[24m] [4mpool[24m [4mvdev[24m...[m
+     [1mzpool[0m [1mdestroy[0m [[1m-f[0m] [4mpool[24m[m
+     [1mzpool[0m [1mdetach[0m [4mpool[24m [4mdevice[24m[m
+     [1mzpool[0m [1mevents[0m [[1m-vHf[0m [[4mpool[24m] | [1m-c[0m][m
+     [1mzpool[0m [1mexport[0m [[1m-a[0m] [[1m-f[0m] [4mpool[24m...[m
+     [1mzpool[0m [1mget[0m [[1m-Hp[0m] [[1m-o[0m [4mfield[24m[,[4mfield[24m]...] [1mall[0m|[4mproperty[24m[,[4mproperty[24m]... [[4mpool[24m]...[m
+     [1mzpool[0m [1mhistory[0m [[1m-il[0m] [[4mpool[24m]...[m
+     [1mzpool[0m [1mimport[0m [[1m-D[0m] [[1m-d[0m [4mdir[24m|device][m
+     [1mzpool[0m [1mimport[0m [1m-a[0m [[1m-DflmN[0m] [[1m-F[0m [[1m-n[0m] [[1m-T[0m] [[1m-X[0m]] [[1m--rewind-to-checkpoint[0m] [[1m-c[0m [4mcachefile[24m|[1m-d[0m [4mdir[24m|device] [[1m-o[0m [4mmntopts[24m] [[1m-o[0m [4mproperty[24m=[4mvalue[24m]... [[1m-R[0m [4mroot[24m][m
+     [1mzpool[0m [1mimport[0m [[1m-Dflm[0m] [[1m-F[0m [[1m-n[0m] [[1m-T[0m] [[1m-X[0m]] [[1m--rewind-to-checkpoint[0m] [[1m-c[0m [4mcachefile[24m|[1m-d[0m [4mdir[24m|device] [[1m-o[0m [4mmntopts[24m] [[1m-o[0m [4mproperty[24m=[4mvalue[24m]... [[1m-R[0m [4mroot[24m] [[1m-s[0m] [4mpool[24m|[4mid[24m[m
+           [[4mnewpool[24m [[1m-t[0m]][m
+     [1mzpool[0m [1minitialize[0m [[1m-c[0m | [1m-s[0m] [4mpool[24m [[4mdevice[24m...][m
+     [1mzpool[0m [1miostat[0m [[[[1m-c[0m [4mSCRIPT[24m] [[1m-lq[0m]]|[1m-rw[0m] [[1m-T[0m [1mu[0m|[1md[0m] [[1m-ghHLnpPvy[0m] [[[4mpool[24m...]|[[4mpool[24m [4mvdev[24m...]|[[4mvdev[24m...]] [[4minterval[24m [[4mcount[24m]][m
+     [1mzpool[0m [1mlabelclear[0m [[1m-f[0m] [4mdevice[24m[m
+     [1mzpool[0m [1mlist[0m [[1m-HgLpPv[0m] [[1m-o[0m [4mproperty[24m[,[4mproperty[24m]...] [[1m-T[0m [1mu[0m|[1md[0m] [[4mpool[24m]... [[4minterval[24m [[4mcount[24m]][m
+     [1mzpool[0m [1moffline[0m [[1m-f[0m] [[1m-t[0m] [4mpool[24m [4mdevice[24m...[m
+     [1mzpool[0m [1monline[0m [[1m-e[0m] [4mpool[24m [4mdevice[24m...[m
+     [1mzpool[0m [1mreguid[0m [4mpool[24m[m
+     [1mzpool[0m [1mreopen[0m [[1m-n[0m] [4mpool[24m[m
+     [1mzpool[0m [1mremove[0m [[1m-np[0m] [4mpool[24m [4mdevice[24m...[m
+     [1mzpool[0m [1mremove[0m [1m-s[0m [4mpool[24m[m
+     [1mzpool[0m [1mreplace[0m [[1m-f[0m] [[1m-o[0m [4mproperty[24m=[4mvalue[24m] [4mpool[24m [4mdevice[24m [[4mnew_device[24m][m
+     [1mzpool[0m [1mresilver[0m [4mpool[24m...[m
+     [1mzpool[0m [1mscrub[0m [[1m-s[0m | [1m-p[0m] [4mpool[24m...[m
+     [1mzpool[0m [1mtrim[0m [[1m-d[0m] [[1m-r[0m [4mrate[24m] [[1m-c[0m | [1m-s[0m] [4mpool[24m [[4mdevice[24m...][m
+     [1mzpool[0m [1mset[0m [4mproperty[24m=[4mvalue[24m [4mpool[24m[m
+     [1mzpool[0m [1msplit[0m [[1m-gLlnP[0m] [[1m-o[0m [4mproperty[24m=[4mvalue[24m]... [[1m-R[0m [4mroot[24m] [4mpool[24m [4mnewpool[24m [[4mdevice[24m]...[m
+     [1mzpool[0m [1mstatus[0m [[1m-c[0m [4mSCRIPT[24m] [[1m-DigLpPstvx[0m] [[1m-T[0m [1mu[0m|[1md[0m] [[4mpool[24m]... [[4minterval[24m [[4mcount[24m]][m
+     [1mzpool[0m [1msync[0m [[4mpool[24m]...[m
+     [1mzpool[0m [1mupgrade[0m[m
+     [1mzpool[0m [1mupgrade[0m [1m-v[0m[m
+     [1mzpool[0m [1mupgrade[0m [[1m-V[0m [4mversion[24m] [1m-a[0m|[4mpool[24m...[m
+     [1mzpool[0m [1mversion[0m[m
+[m
+[1mDESCRIPTION[0m[m
+[7m Manual page zpool(8) line 1 (press h for help or q to quit)[27m[K[K[?1l>[?1049l]0;root@otuslinux1:/home[root@otuslinux1 home]# zpool status -v
+  pool: otus
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME                                   STATE     READ WRITE CKSUM
+	otus                                   ONLINE       0     0     0
+	  mirror-0                             ONLINE       0     0     0
+	    /zfspool/import/zpoolexport/filea  ONLINE       0     0     0
+	    /zfspool/import/zpoolexport/fileb  ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: zfspool
+ state: ONLINE
+  scan: scrub repaired 0B in 0 days 00:00:00 with 0 errors on Thu May 21 19:17:23 2020
+config:
+
+	NAME                                     STATE     READ WRITE CKSUM
+	zfspool                                  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VBff2f37eb-5b1ac9d0  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VB2063f24c-70af5e75  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VB7dc9ee5c-71600cde  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VB5275378e-f1ff5d43  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VBd8de6f3b-e8f3a6df  ONLINE       0     0     0
+	  sda2                                   ONLINE       0     0     0
+
+errors: No known data errors
+]0;root@otuslinux1:/home[root@otuslinux1 home]# df -h | grep otus
+[01;31m[Kotus[m[K            350M  128K  350M   1% /[01;31m[Kotus[m[K
+[01;31m[Kotus[m[K/hometask2  352M  2,0M  350M   1% /[01;31m[Kotus[m[K/hometask2
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zpool status
+  pool: otus
+ state: ONLINE
+  scan: none requested
+config:
+
+	NAME                                   STATE     READ WRITE CKSUM
+	otus                                   ONLINE       0     0     0
+	  mirror-0                             ONLINE       0     0     0
+	    /zfspool/import/zpoolexport/filea  ONLINE       0     0     0
+	    /zfspool/import/zpoolexport/fileb  ONLINE       0     0     0
+
+errors: No known data errors
+
+  pool: zfspool
+ state: ONLINE
+  scan: scrub repaired 0B in 0 days 00:00:00 with 0 errors on Thu May 21 19:17:23 2020
+config:
+
+	NAME                                     STATE     READ WRITE CKSUM
+	zfspool                                  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VBff2f37eb-5b1ac9d0  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VB2063f24c-70af5e75  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VB7dc9ee5c-71600cde  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VB5275378e-f1ff5d43  ONLINE       0     0     0
+	  ata-VBOX_HARDDISK_VBd8de6f3b-e8f3a6df  ONLINE       0     0     0
+	  sda2                                   ONLINE       0     0     0
+
+errors: No known data errors
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zpool list
+NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+otus      480M  2,08M   478M        -         -     0%     0%  1.00x    ONLINE  -
+zfspool  33,6G  4,97G  28,6G        -         -     4%    14%  1.00x    ONLINE  -
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zpool --help
+usage: zpool command args ...
+where 'command' is one of the following:
+
+	version
+
+	create [-fnd] [-o property=value] ... 
+	    [-O file-system-property=value] ... 
+	    [-m mountpoint] [-R root] <pool> <vdev> ...
+	destroy [-f] <pool>
+
+	add [-fgLnP] [-o property=value] <pool> <vdev> ...
+	remove [-nps] <pool> <device> ...
+
+	labelclear [-f] <vdev>
+
+	checkpoint [--discard] <pool> ...
+
+	list [-gHLpPv] [-o property[,...]] [-T d|u] [pool] ... 
+	    [interval [count]]
+	iostat [[[-c [script1,script2,...][-lq]]|[-rw]] [-T d | u] [-ghHLpPvy]
+	    [[pool ...]|[pool vdev ...]|[vdev ...]] [[-n] interval [count]]
+	status [-c [script1,script2,...]] [-igLpPstvxD]  [-T d|u] [pool] ... 
+	    [interval [count]]
+
+	online [-e] <pool> <device> ...
+	offline [-f] [-t] <pool> <device> ...
+	clear [-nF] <pool> [device]
+	reopen [-n] <pool>
+
+	attach [-f] [-o property=value] <pool> <device> <new-device>
+	detach <pool> <device>
+	replace [-f] [-o property=value] <pool> <device> [new-device]
+	split [-gLnPl] [-R altroot] [-o mntopts]
+	    [-o property=value] <pool> <newpool> [<device> ...]
+
+	initialize [-c | -s] <pool> [<device> ...]
+	resilver <pool> ...
+	scrub [-s | -p] <pool> ...
+	trim [-d] [-r <rate>] [-c | -s] <pool> [<device> ...]
+
+	import [-d dir] [-D]
+	import [-o mntopts] [-o property=value] ... 
+	    [-d dir | -c cachefile] [-D] [-l] [-f] [-m] [-N] [-R root] [-F [-n]] -a
+	import [-o mntopts] [-o property=value] ... 
+	    [-d dir | -c cachefile] [-D] [-l] [-f] [-m] [-N] [-R root] [-F [-n]]
+	    [--rewind-to-checkpoint] <pool | id> [newpool]
+	export [-af] <pool> ...
+	upgrade
+	upgrade -v
+	upgrade [-V version] <-a | pool ...>
+	reguid <pool>
+
+	history [-il] [<pool>] ...
+	events [-vHf [pool] | -c]
+
+	get [-Hp] [-o "all" | field[,...]] <"all" | property[,...]> <pool> ...
+	set <property=value> <pool> 
+	sync [pool] ...
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zpool get compression otus
+bad property list: invalid property 'compression'
+usage:
+	get [-Hp] [-o "all" | field[,...]] <"all" | property[,...]> <pool> ...
+
+the following properties are supported:
+
+	PROPERTY             EDIT   VALUES
+
+	allocated              NO   <size>
+	capacity               NO   <size>
+	checkpoint             NO   <size>
+	dedupratio             NO   <1.00x or higher if deduped>
+	expandsize             NO   <size>
+	fragmentation          NO   <percent>
+	free                   NO   <size>
+	freeing                NO   <size>
+	guid                   NO   <guid>
+	health                 NO   <state>
+	leaked                 NO   <size>
+	load_guid              NO   <load_guid>
+	size                   NO   <size>
+	altroot               YES   <path>
+	ashift                YES   <ashift, 9-16, or 0=default>
+	autoexpand            YES   on | off
+	autoreplace           YES   on | off
+	autotrim              YES   on | off
+	bootfs                YES   <filesystem>
+	cachefile             YES   <file> | none
+	comment               YES   <comment-string>
+	dedupditto            YES   <threshold (min 100)>
+	delegation            YES   on | off
+	failmode              YES   wait | continue | panic
+	listsnapshots         YES   on | off
+	multihost             YES   on | off
+	readonly              YES   on | off
+	version               YES   <version>
+	feature@...           YES   disabled | enabled | active
+
+The feature@ properties must be appended with a feature name.
+See zpool-features(5).
+]0;root@otuslinux1:/home[root@otuslinux1 home]# df[K[Kzfs list
+NAME             USED  AVAIL     REFER  MOUNTPOINT
+otus            2,04M   350M       24K  /otus
+otus/hometask2  1,88M   350M     1,88M  /otus/hometask2
+zfspool         4,97G  27,6G     36,5K  /zfspool
+zfspool/gzip1    277M  27,6G      277M  /zfspool/gzip1
+zfspool/gzip2    269M  27,6G      269M  /zfspool/gzip2
+zfspool/gzip3    264M  27,6G      264M  /zfspool/gzip3
+zfspool/gzip4    252M  27,6G      252M  /zfspool/gzip4
+zfspool/gzip5    246M  27,6G      246M  /zfspool/gzip5
+zfspool/gzip6    243M  27,6G      243M  /zfspool/gzip6
+zfspool/gzip7    243M  27,6G      243M  /zfspool/gzip7
+zfspool/gzip8    242M  27,6G      242M  /zfspool/gzip8
+zfspool/gzip9    242M  27,6G      242M  /zfspool/gzip9
+zfspool/import  1007M  27,6G     1007M  /zfspool/import
+zfspool/lz4      472M  27,6G      472M  /zfspool/lz4
+zfspool/lzjb     419M  27,6G      419M  /zfspool/lzjb
+zfspool/zle      912M  27,6G      912M  /zfspool/zle
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zfs listpool get compression otus/hometask2
+bad property list: invalid property 'compression'
+usage:
+	get [-Hp] [-o "all" | field[,...]] <"all" | property[,...]> <pool> ...
+
+the following properties are supported:
+
+	PROPERTY             EDIT   VALUES
+
+	allocated              NO   <size>
+	capacity               NO   <size>
+	checkpoint             NO   <size>
+	dedupratio             NO   <1.00x or higher if deduped>
+	expandsize             NO   <size>
+	fragmentation          NO   <percent>
+	free                   NO   <size>
+	freeing                NO   <size>
+	guid                   NO   <guid>
+	health                 NO   <state>
+	leaked                 NO   <size>
+	load_guid              NO   <load_guid>
+	size                   NO   <size>
+	altroot               YES   <path>
+	ashift                YES   <ashift, 9-16, or 0=default>
+	autoexpand            YES   on | off
+	autoreplace           YES   on | off
+	autotrim              YES   on | off
+	bootfs                YES   <filesystem>
+	cachefile             YES   <file> | none
+	comment               YES   <comment-string>
+	dedupditto            YES   <threshold (min 100)>
+	delegation            YES   on | off
+	failmode              YES   wait | continue | panic
+	listsnapshots         YES   on | off
+	multihost             YES   on | off
+	readonly              YES   on | off
+	version               YES   <version>
+	feature@...           YES   disabled | enabled | active
+
+The feature@ properties must be appended with a feature name.
+See zpool-features(5).
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zpool get compression otus/hometask2[C[1Phometask2[1Phometask2[1Phometask2[1Phometask2[1Phometask2
+bad property list: invalid property 'compression'
+usage:
+	get [-Hp] [-o "all" | field[,...]] <"all" | property[,...]> <pool> ...
+
+the following properties are supported:
+
+	PROPERTY             EDIT   VALUES
+
+	allocated              NO   <size>
+	capacity               NO   <size>
+	checkpoint             NO   <size>
+	dedupratio             NO   <1.00x or higher if deduped>
+	expandsize             NO   <size>
+	fragmentation          NO   <percent>
+	free                   NO   <size>
+	freeing                NO   <size>
+	guid                   NO   <guid>
+	health                 NO   <state>
+	leaked                 NO   <size>
+	load_guid              NO   <load_guid>
+	size                   NO   <size>
+	altroot               YES   <path>
+	ashift                YES   <ashift, 9-16, or 0=default>
+	autoexpand            YES   on | off
+	autoreplace           YES   on | off
+	autotrim              YES   on | off
+	bootfs                YES   <filesystem>
+	cachefile             YES   <file> | none
+	comment               YES   <comment-string>
+	dedupditto            YES   <threshold (min 100)>
+	delegation            YES   on | off
+	failmode              YES   wait | continue | panic
+	listsnapshots         YES   on | off
+	multihost             YES   on | off
+	readonly              YES   on | off
+	version               YES   <version>
+	feature@...           YES   disabled | enabled | active
+
+The feature@ properties must be appended with a feature name.
+See zpool-features(5).
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zpool get compression hometask2[C[C[1P[1P[1P[1P[1P[1@f[1@s[1@ 
+cannot open 'hometask2': dataset does not exist
+]0;root@otuslinux1:/home[root@otuslinux1 home]# zfs get compression hometask2ohometask2thometask2uhometask2shometask2/hometask2
+NAME            PROPERTY     VALUE     SOURCE
+otus/hometask2  compression  zle       inherited from otus
+]0;root@otuslinux1:/home[root@otuslinux1 home]# яаы[K[K[Kzfs get hecksum=sha256 pool_name/dataset_name[C[1@c[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P pool_name/dataset_name[1P pool_name/dataset_name[1P pool_name/dataset_name[1P pool_name/dataset_name[1P pool_name/dataset_name[1P pool_name/dataset_name[1P pool_name/dataset_name[C pool_name/dataset_name[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kotus/hometask2
+NAME            PROPERTY  VALUE      SOURCE
+otus/hometask2  checksum  sha256     inherited from otus
+]0;root@otuslinux1:/home[root@otuslinux1 home]# exit
+exit
+
+Script done on Пт 22 май 2020 20:37:21

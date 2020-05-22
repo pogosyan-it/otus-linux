@@ -1,0 +1,118 @@
+Script started on Чт 21 май 2020 19:22:40
+]0;root@otuslinux1:~[?1034h[root@otuslinux1 ~]# cd /reyt[K[K[K[Ketc/modprobe.d/
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# ls -l
+total 20
+-rw-r--r--. 1 root root 215 май 12 17:07 dccp-blacklist.conf
+-rw-r--r--. 1 root root 166 окт 30  2018 firewalld-sysctls.conf
+-rw-r--r--. 1 root root 746 ноя  7  2018 lockd.conf
+-rw-r--r--. 1 root root  17 июн  1  2019 nofloppy.conf
+-rw-r--r--. 1 root root 674 июл  4  2018 tuned.conf
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# grep -0[KR ''z'f's'_'a'u't'o'i'm'p'o'r'e't'[1P'[1P't'[C .
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# grep -R 'zfs_autoimport' .[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P[1P
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# grep -R 'zfs' .[K[1@_[1@a[1@u[1@t[1@o[1@i[1@m[1@o[1@i[1P[1P[1P[1P[1@i[1@m[1@p[1@o[1@r[1@t
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# grep -R 'zfs_autoimport'  [K/
+[35m[K/usr/local/share/man/man5/zfs-module-parameters.5[m[K[36m[K:[m[K\fB[01;31m[Kzfs_autoimport[m[K_disable\fR (int)
+Binary file /usr/local/lib/libzpool.so.2.0.0 matches
+Binary file /usr/local/lib/libzpool.so.2 matches
+Binary file /usr/local/lib/libzpool.so matches
+Binary file /usr/local/lib/libzpool.a matches
+Binary file /usr/lib64/libzpool.so.2 matches
+Binary file /usr/lib64/libzpool.so.2.0.0 matches
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.2/32/libasan.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.2/32/libatomic.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.2/32/libgcc_s.so: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.2/32/libgomp.so: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.2/32/libitm.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.2/32/libmudflap.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.2/32/libmudflapth.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.2/32/libquadmath.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/32/libasan.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/32/libatomic.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/32/libgcc_s.so: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/32/libgomp.so: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/32/libitm.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/32/libmudflap.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/32/libmudflapth.a: No such file or directory
+grep: /usr/lib/gcc/x86_64-redhat-linux/4.8.5/32/libquadmath.a: No such file or directory
+Binary file /usr/lib/modules/3.10.0-957.12.2.el7.x86_64/extra/zfs/zfs.ko matches
+grep: /usr/lib/modules/3.10.0-1127.8.2.el7.x86_64/build: No such file or directory
+grep: /usr/lib/modules/3.10.0-1127.8.2.el7.x86_64/source: No such file or directory
+Binary file /usr/lib/modules/3.10.0-1127.8.2.el7.x86_64/weak-updates/zfs/zfs/zfs.ko matches
+Binary file /usr/lib/modules/3.10.0-1127.el7.x86_64/extra/zfs/zfs/zfs.ko matches
+grep: /usr/lib/debug/usr/.dwz: No such file or directory
+grep: /var/spool/postfix/public/pickup: No such device or address
+grep: /var/spool/postfix/public/cleanup: No such device or address
+grep: /var/spool/postfix/public/qmgr: No such device or address
+grep: /var/spool/postfix/public/flush: No such device or address
+grep: /var/spool/postfix/public/showq: No such device or address
+grep: /var/spool/postfix/private/tlsmgr: No such device or address
+grep: /var/spool/postfix/private/rewrite: No such device or address
+grep: /var/spool/postfix/private/bounce: No such device or address
+grep: /var/spool/postfix/private/defer: No such device or address
+grep: /var/spool/postfix/private/trace: No such device or address
+grep: /var/spool/postfix/private/verify: No such device or address
+grep: /var/spool/postfix/private/proxymap: No such device or address
+grep: /var/spool/postfix/private/proxywrite: No such device or address
+grep: /var/spool/postfix/private/smtp: No such device or address
+grep: /var/spool/postfix/private/relay: No such device or address
+grep: /var/spool/postfix/private/error: No such device or address
+grep: /var/spool/postfix/private/retry: No such device or address
+grep: /var/spool/postfix/private/discard: No such device or address
+grep: /var/spool/postfix/private/local: No such device or address
+grep: /var/spool/postfix/private/virtual: No such device or address
+grep: /var/spool/postfix/private/lmtp: No such device or address
+grep: /var/spool/postfix/private/anvil: No such device or address
+grep: /var/spool/postfix/private/scache: No such device or address
+grep: /var/lib/gssproxy/default.sock: No such device or address
+grep: /var/run/NetworkManager/private-dhcp: No such device or address
+grep: /var/run/gssproxy.sock: No such device or address
+grep: /var/run/chrony/chronyd.sock: No such device or address
+grep: /var/run/rpcbind.sock: No such device or address
+grep: /var/run/dbus/system_bus_socket: No such device or address
+grep: /var/run/udev/watch/21: No such file or directory
+grep: /var/run/udev/watch/20: No such file or directory
+grep: /var/run/udev/watch/19: No such file or directory
+grep: /var/run/udev/watch/18: No such file or directory
+grep: /var/run/udev/watch/17: No such file or directory
+grep: /var/run/udev/watch/16: No such file or directory
+grep: /var/run/udev/watch/15: No such file or directory
+grep: /var/run/udev/watch/14: No such file or directory
+grep: /var/run/udev/watch/13: No such file or directory
+grep: /var/run/udev/watch/12: No such file or directory
+grep: /var/run/udev/watch/11: No such file or directory
+grep: /var/run/udev/watch/10: No such file or directory
+grep: /var/run/udev/watch/9: No such file or directory
+grep: /var/run/udev/watch/8: No such file or directory
+grep: /var/run/udev/watch/7: No such file or directory
+grep: /var/run/udev/watch/6: No such file or directory
+grep: /var/run/udev/watch/5: No such file or directory
+grep: /var/run/udev/watch/4: No such file or directory
+grep: /var/run/udev/watch/3: No such file or directory
+grep: /var/run/udev/watch/2: No such file or directory
+grep: /var/run/udev/watch/1: No such file or directory
+^C
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# systemctl enable zfs-mount.service
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# systemctl enable zfs-import-cache.service
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# systemctl enable zfs-import-scan.service
+Created symlink from /etc/systemd/system/zfs-import.target.wants/zfs-import-scan.service to /usr/lib/systemd/system/zfs-import-scan.service.
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# reboot[K[K[K[K[K[Kzpool IM[K[Kimport zfspool
+]0;root@otuslinux1:/etc/modprobe.d[root@otuslinux1 modprobe.d]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/md0        7,4G  7,1G  281M  97% /
+devtmpfs        488M     0  488M   0% /dev
+tmpfs           496M     0  496M   0% /dev/shm
+tmpfs           496M  6,8M  489M   2% /run
+tmpfs           496M     0  496M   0% /sys/fs/cgroup
+tmpfs           100M     0  100M   0% /run/user/0
+zfspool         992M  128K  992M   1% /zfspool
+zfspool/gzip1   992M  128K  992M   1% /zfspool/gzip1
+zfspool/gzip4   992M  128K  992M   1% /zfspool/gzip4
+zfspool/gzip2   992M  128K  992M   1% /zfspool/gzip2
+zfspool/gzip3   992M  128K  992M   1% /zfspool/gzip3
+zfspool/gzip8   992M  128K  992M   1% /zfspool/gzip8
+zfspool/gzip6   992M  128K  992M   1% /zfspool/gzip6
+zfspool/gzip7   992M  128K  992M   1% /zfspool/gzip7
+zfspool/gzip5   992M  128K  992M   1% /zfspool/gzip5
+zfspool/lzjb    992M  128K  992M   1% /zfspool/lzjb
+zfspool/lz4     992M  128K  992M   1% /zfspool/lz4
+zfspool/gzip9   992M  128K  992M   1% /zfspoo
