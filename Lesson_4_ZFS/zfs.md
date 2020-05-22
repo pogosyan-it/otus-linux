@@ -36,7 +36,7 @@ zfspool/lzjb     24K  31,8G       24K  /zfspool/lzjb <br/>
 zfspool/zle      24K  31,8G       24K  /zfspool/zle <br/>
 
 3. На каждую файловую систему устанавливаем соответствующее сжатие: <br/>
-   `for i in `seq 1 9`; do zfs set compression=gzip-$i zfspool/gzip$i` <br/>
+   `for i in ``seq 1 9``; do zfs set compression=gzip-$i zfspool/gzip$i` <br/>
    `xfsdump -J - /dev/sda1 | xfsrestore -J - /mnt` <br/>
 4. Монтируем информацию о текущей системе в наш новый корень и делаем chroot в него: <br/>
    `for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done` <br/>
