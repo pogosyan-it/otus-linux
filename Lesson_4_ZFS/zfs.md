@@ -18,8 +18,25 @@ config:<br/>
 
 2. Создаем файловые системы gzip_N,lz4,zle, lzjb: <br/>
    `zfs create zfspool/gzip_N где N от 1 до 9`
-3. Устанавливаем утилиту xfsdump и копируем системные файлы на /dev/md0: <br/>
-   `yum install -y xfsdump` <br/>
+   Получаем: <br/>
+   zfs list <br/>
+NAME            USED  AVAIL     REFER  MOUNTPOINT <br/>
+zfspool         750M  31,8G       35K  /zfspool <br/>
+zfspool/gzip1   278M  31,8G      278M  /zfspool/gzip1 <br/>
+zfspool/gzip2    24K  31,8G       24K  /zfspool/gzip2 <br/>
+zfspool/gzip3    24K  31,8G       24K  /zfspool/gzip3 <br/>
+zfspool/gzip4    24K  31,8G       24K  /zfspool/gzip4 <br/>
+zfspool/gzip5    24K  31,8G       24K  /zfspool/gzip5 <br/>
+zfspool/gzip6    24K  31,8G       24K  /zfspool/gzip6 <br/>
+zfspool/gzip7    24K  31,8G       24K  /zfspool/gzip7 <br/>
+zfspool/gzip8    24K  31,8G       24K  /zfspool/gzip8 <br/>
+zfspool/gzip9    24K  31,8G       24K  /zfspool/gzip9 <br/>
+zfspool/lz4     472M  31,8G      472M  /zfspool/lz4 <br/>
+zfspool/lzjb     24K  31,8G       24K  /zfspool/lzjb <br/>
+zfspool/zle      24K  31,8G       24K  /zfspool/zle <br/>
+
+3. На каждую файловую систему устанавливаем соответствующее сжатие: <br/>
+   `for i in `seq 1 9`; do zfs set compression=gzip-$i zfspool/gzip$i` <br/>
    `xfsdump -J - /dev/sda1 | xfsrestore -J - /mnt` <br/>
 4. Монтируем информацию о текущей системе в наш новый корень и делаем chroot в него: <br/>
    `for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done` <br/>
