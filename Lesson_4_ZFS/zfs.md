@@ -97,15 +97,15 @@ otus  **recordsize   128K**       local      <br/>
 otus  **compression  zle**       local       <br/>
 otus  **checksum     sha256**     local       <br/>
 
-**ZFS - Send/Receive**
+**ZFS - Send/Receive** <br/>
 `zfs receive otus/storage@task2 < otus_task2.file`
 zfs list | grep storage <br/>
 otus/storage    2,85M   347M     2,83M  /otus/storage <br/>
 
 find /otus/storage -name 'secret_message'
-/otus/storage/task1/file_mess/secret_message
-cat /otus/storage/task1/file_mess/secret_message
-Secret Message: https://github.com/sindresorhus/awesome
+/otus/storage/task1/file_mess/secret_message <br/>
+cat /otus/storage/task1/file_mess/secret_message <br/>
+Secret Message: https://github.com/sindresorhus/awesome <br/>
 Я думал будет: "Make Linux Grate Againe" :)
 
 
