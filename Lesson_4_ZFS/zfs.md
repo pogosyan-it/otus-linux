@@ -72,8 +72,12 @@ zfspool/zle      24K  31,8G       24K  /zfspool/zle <br/>
             /zfspool/import/zpoolexport/filea  ONLINE
             /zfspool/import/zpoolexport/fileb  ONLINE
     
-8.  Чтобы активировать RAID при загрузке в файле /etc/default/grub дописываем в строке GRUB_CMDLINE_LINUX параметр  rd.auto=1:
-     `GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop    crashkernel=auto rd.auto=1"`
+3.  `zpool import -d zpoolexport/ otus` <br/>
+      `zpool list` <br/>
+     NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT <br/>
+     otus      480M  2,18M   478M        -         -     0%     0%  1.00x    ONLINE  - <br/>
+     zfspool  33,6G  4,98G  28,6G        -         -     4%    14%  1.00x    ONLINE  - <br/>
+
 9.  Переписываем конфиг GRUB и устанавливаем загрузчик на диск /dev/sdg: <br/>
     `grub2-mkconfig -o /boot/grub2/grub.cfg`<br/>
     `grub2-install /dev/sdg`<br/>
