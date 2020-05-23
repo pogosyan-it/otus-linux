@@ -53,22 +53,25 @@ zfspool/zle      24K  31,8G       24K  /zfspool/zle <br/>
    zfspool/zle  compression    zle       local  <br/>
 
 4. Скопируем архив ядра на каждую ФС и замерим время и размер папки, для этого используем простой скрипт: <br/>
-   https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_4_ZFS/zfs_compression.sh
-   Результат его работы запишем в файл:
-   https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_4_ZFS/zfs_comp.stat
+   https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_4_ZFS/zfs_compression.sh <br/>
+   Результат его работы запишем в файл: <br/>
+   https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_4_ZFS/zfs_comp.stat <br/>
    где в среднем столбце кол-во секунд, которое потребовалось чтобы скопировать разархивированную копию ядра.
    Легко видить, что лучше всех сжал gzip-9 и время у него для этого ушло не самое худшее.
    
-   `chroot /mnt/` <br/>
-5. Заменяем в `/etc/fstab` UUID диска `/dev/sda1 ` <br/>
-   `blkid | grep sda1 | awk '{print $2}'` <br/>
-          на UUID `/dev/md0` <br/>
-   `blkid | grep md0 | awk '{print $2}'`  <br/>
-6.  Создаем конфиг. файл массива:
-    `mdadm --detail --scan > /etc/mdadm.conf`
-7.  Бэкапим текущий файл initramfs и созбираем новый: <br/>
-    `mv /boot/initramfs-3.10.0-957.12.2.el7.x86_64.img /boot/initramfs-3.10.0-957.12.2.el7.x86_64.img_bak`
-    `dracut /boot/initramfs-$(uname -r).img $(uname -r)`
+**ZFS - импорт диска**
+  
+1.  Скачиваем (как это сделать с помощью wget я так и не понял) и распаковываем: <br/>
+    `tar -zxvf zfs_task1.tar.gz` <br/>
+2.  Импортируем: <br/>
+    `zpool import -d zpoolexport/`<br/>
+    onfig:<br/>
+
+        otus                                   ONLINE
+          mirror-0                             ONLINE
+            /zfspool/import/zpoolexport/filea  ONLINE
+            /zfspool/import/zpoolexport/fileb  ONLINE
+    
 8.  Чтобы активировать RAID при загрузке в файле /etc/default/grub дописываем в строке GRUB_CMDLINE_LINUX параметр  rd.auto=1:
      `GRUB_CMDLINE_LINUX="no_timer_check console=tty0 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0 elevator=noop    crashkernel=auto rd.auto=1"`
 9.  Переписываем конфиг GRUB и устанавливаем загрузчик на диск /dev/sdg: <br/>
