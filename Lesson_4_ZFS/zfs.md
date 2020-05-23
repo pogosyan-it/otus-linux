@@ -91,9 +91,9 @@ config: <br/>
             /zfspool/import/zpoolexport/filea  ONLINE       0     0     0
             /zfspool/import/zpoolexport/fileb  ONLINE       0     0     0
 
-zfs get recordsize,compression,checksum otus
-NAME  PROPERTY     VALUE      SOURCE
-otus  **recordsize   128K**       local
-otus  **compression  zle**       local
-otus  **checksum     sha256**     local
+`zfs get recordsize,compression,checksum otus`
+NAME  PROPERTY     VALUE      SOURCE         <br/>
+otus  **recordsize   128K**       local      <br/>
+otus  **compression  zle**       local       <br/>
+otus  **checksum     sha256**     local       <br/>
 
