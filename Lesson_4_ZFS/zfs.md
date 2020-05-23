@@ -77,6 +77,21 @@ zfspool/zle      24K  31,8G       24K  /zfspool/zle <br/>
      NAME      SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT <br/>
      otus      480M  2,18M   478M        -         -     0%     0%  1.00x    ONLINE  - <br/>
      zfspool  33,6G  4,98G  28,6G        -         -     4%    14%  1.00x    ONLINE  - <br/>
+4.  Размер хранилища: `zpool list | grep otus | awk '{print $2}'` -- 480M
+    Ти пула: mirror-0 <br/> 
+    zpool status <br/>
+  pool: otus <br/>
+ state: ONLINE <br/>
+  scan: none requested <br/>
+config: <br/>
+
+        NAME                                   STATE     READ WRITE CKSUM
+        otus                                   ONLINE       0     0     0
+          mirror-0                             ONLINE       0     0     0
+            /zfspool/import/zpoolexport/filea  ONLINE       0     0     0
+            /zfspool/import/zpoolexport/fileb  ONLINE       0     0     0
+
+
 
 9.  Переписываем конфиг GRUB и устанавливаем загрузчик на диск /dev/sdg: <br/>
     `grub2-mkconfig -o /boot/grub2/grub.cfg`<br/>
