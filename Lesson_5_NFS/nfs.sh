@@ -31,5 +31,7 @@ else
   sudo echo "192.168.11.122  nfs-client.otus.ru      nfs-client" > /etc/hosts
   sudo echo "192.168.11.121:/mnt/storage /mnt/nfs-share nfs (rw,relatime,vers=3,rsize=32768,wsize=32768,namlen=255,hard,proto=udp,timeo=11,retrans=3,sec=sys,mountaddr=192.168.11.121,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=192.168.11.121)" >> /etc/fstab
   sudo mount -a
+  sudo mkdir -p /mnt/nfs-share/upload
+  sudo chmod 0777 -R /mnt/nfs-share/upload
   sudo chmod u-x,g-wx,o-wx /etc/fstab  
 fi
