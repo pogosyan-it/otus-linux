@@ -1,0 +1,1167 @@
+
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_5_NFS/TEST5# ls -l
+total 8
+-rwxr-xr-x 1 root root 1912 мая 27 19:28 nfs.sh
+-rw-r--r-- 1 root root 1840 мая 27 19:28 Vagrantfile
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_5_NFS/TEST5# nano nfs.sh
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_5_NFS/TEST5#
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_5_NFS/TEST5#
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_5_NFS/TEST5#
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_5_NFS/TEST5# vagrant up
+==> vagrant: A new version of Vagrant is available: 2.2.9 (installed version: 2.2.7)!
+==> vagrant: To upgrade visit: https://www.vagrantup.com/downloads.html
+
+Bringing machine 'nfs1-server' up with 'virtualbox' provider...
+Bringing machine 'nfs1-client' up with 'virtualbox' provider...
+==> nfs1-server: Importing base box 'centos/7'...
+==> nfs1-server: Matching MAC address for NAT networking...
+==> nfs1-server: Checking if box 'centos/7' version '1905.1' is up to date...
+==> nfs1-server: A newer version of the box 'centos/7' for provider 'virtualbox' is
+==> nfs1-server: available! You currently have version '1905.1'. The latest is version
+==> nfs1-server: '2004.01'. Run `vagrant box update` to update.
+==> nfs1-server: Setting the name of the VM: TEST5_nfs1-server_1590596999396_78561
+==> nfs1-server: Clearing any previously set network interfaces...
+==> nfs1-server: Preparing network interfaces based on configuration...
+    nfs1-server: Adapter 1: nat
+    nfs1-server: Adapter 2: hostonly
+==> nfs1-server: Forwarding ports...
+    nfs1-server: 22 (guest) => 2222 (host) (adapter 1)
+==> nfs1-server: Running 'pre-boot' VM customizations...
+==> nfs1-server: Booting VM...
+==> nfs1-server: Waiting for machine to boot. This may take a few minutes...
+    nfs1-server: SSH address: 127.0.0.1:2222
+    nfs1-server: SSH username: vagrant
+    nfs1-server: SSH auth method: private key
+    nfs1-server:
+    nfs1-server: Vagrant insecure key detected. Vagrant will automatically replace
+    nfs1-server: this with a newly generated keypair for better security.
+    nfs1-server:
+    nfs1-server: Inserting generated public key within guest...
+    nfs1-server: Removing insecure key from the guest if it's present...
+    nfs1-server: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> nfs1-server: Machine booted and ready!
+[nfs1-server] No Virtualbox Guest Additions installation found.
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: dedic.sh
+ * extras: mirrors.datahouse.ru
+ * updates: mirror.sale-dedic.com
+Resolving Dependencies
+--> Running transaction check
+---> Package centos-release.x86_64 0:7-6.1810.2.el7.centos will be updated
+---> Package centos-release.x86_64 0:7-8.2003.0.el7.centos will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package              Arch         Version                     Repository  Size
+================================================================================
+Updating:
+ centos-release       x86_64       7-8.2003.0.el7.centos       base        26 k
+
+Transaction Summary
+================================================================================
+Upgrade  1 Package
+
+Total download size: 26 k
+Downloading packages:
+No Presto metadata available for base
+warning: /var/cache/yum/x86_64/7/base/packages/centos-release-7-8.2003.0.el7.centos.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Public key for centos-release-7-8.2003.0.el7.centos.x86_64.rpm is not installed
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Importing GPG key 0xF4A80EB5:
+ Userid     : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+ Fingerprint: 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Package    : centos-release-7-6.1810.2.el7.centos.x86_64 (@anaconda)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : centos-release-7-8.2003.0.el7.centos.x86_64                  1/2
+  Cleanup    : centos-release-7-6.1810.2.el7.centos.x86_64                  2/2
+  Verifying  : centos-release-7-8.2003.0.el7.centos.x86_64                  1/2
+  Verifying  : centos-release-7-6.1810.2.el7.centos.x86_64                  2/2
+
+Updated:
+  centos-release.x86_64 0:7-8.2003.0.el7.centos
+
+Complete!
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: dedic.sh
+ * extras: mirrors.datahouse.ru
+ * updates: mirror.sale-dedic.com
+Resolving Dependencies
+--> Running transaction check
+---> Package kernel-devel.x86_64 0:3.10.0-957.12.2.el7 will be installed
+--> Processing Dependency: perl for package: kernel-devel-3.10.0-957.12.2.el7.x86_64
+--> Running transaction check
+---> Package perl.x86_64 4:5.16.3-295.el7 will be installed
+--> Processing Dependency: perl-libs = 4:5.16.3-295.el7 for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl-macros for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl-libs for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(threads::shared) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(threads) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(constant) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Time::Local) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Storable) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Socket) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Getopt::Long) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Temp) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Spec::Unix) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Spec::Functions) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Spec) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Path) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Exporter) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Cwd) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Carp) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: libperl.so()(64bit) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Running transaction check
+---> Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+---> Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+---> Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+---> Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+---> Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+---> Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.40-3.el7.noarch
+--> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.40-3.el7.noarch
+---> Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+---> Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+--> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+---> Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+---> Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+---> Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+---> Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+---> Package perl-constant.noarch 0:1.27-2.el7 will be installed
+---> Package perl-libs.x86_64 4:5.16.3-295.el7 will be installed
+---> Package perl-macros.x86_64 4:5.16.3-295.el7 will be installed
+---> Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+---> Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+--> Running transaction check
+---> Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+---> Package perl-Pod-Escapes.noarch 1:1.04-295.el7 will be installed
+---> Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-3.el7.noarch
+--> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-3.el7.noarch
+---> Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+--> Running transaction check
+---> Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+--> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+--> Running transaction check
+---> Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+---> Package perl-parent.noarch 1:0.225-244.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                 Arch    Version               Repository          Size
+================================================================================
+Installing:
+ kernel-devel            x86_64  3.10.0-957.12.2.el7   C7.6.1810-updates   17 M
+Installing for dependencies:
+ perl                    x86_64  4:5.16.3-295.el7      base               8.0 M
+ perl-Carp               noarch  1.26-244.el7          C7.0.1406-base      19 k
+ perl-Encode             x86_64  2.51-7.el7            C7.0.1406-base     1.5 M
+ perl-Exporter           noarch  5.68-3.el7            C7.0.1406-base      28 k
+ perl-File-Path          noarch  2.09-2.el7            C7.0.1406-base      26 k
+ perl-File-Temp          noarch  0.23.01-3.el7         C7.0.1406-base      56 k
+ perl-Filter             x86_64  1.49-3.el7            C7.0.1406-base      76 k
+ perl-Getopt-Long        noarch  2.40-3.el7            C7.5.1804-base      56 k
+ perl-HTTP-Tiny          noarch  0.033-3.el7           C7.0.1406-base      38 k
+ perl-PathTools          x86_64  3.40-5.el7            C7.0.1406-base      82 k
+ perl-Pod-Escapes        noarch  1:1.04-295.el7        base                51 k
+ perl-Pod-Perldoc        noarch  3.20-4.el7            C7.0.1406-base      87 k
+ perl-Pod-Simple         noarch  1:3.28-4.el7          C7.0.1406-base     216 k
+ perl-Pod-Usage          noarch  1.63-3.el7            C7.0.1406-base      27 k
+ perl-Scalar-List-Utils  x86_64  1.27-248.el7          C7.0.1406-base      36 k
+ perl-Socket             x86_64  2.010-5.el7           base                49 k
+ perl-Storable           x86_64  2.45-3.el7            C7.0.1406-base      77 k
+ perl-Text-ParseWords    noarch  3.29-4.el7            C7.0.1406-base      14 k
+ perl-Time-HiRes         x86_64  4:1.9725-3.el7        C7.0.1406-base      45 k
+ perl-Time-Local         noarch  1.2300-2.el7          C7.0.1406-base      24 k
+ perl-constant           noarch  1.27-2.el7            C7.0.1406-base      19 k
+ perl-libs               x86_64  4:5.16.3-295.el7      base               689 k
+ perl-macros             x86_64  4:5.16.3-295.el7      base                44 k
+ perl-parent             noarch  1:0.225-244.el7       C7.0.1406-base      12 k
+ perl-podlators          noarch  2.5.1-3.el7           C7.0.1406-base     112 k
+ perl-threads            x86_64  1.87-4.el7            C7.0.1406-base      49 k
+ perl-threads-shared     x86_64  1.43-6.el7            C7.0.1406-base      39 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+27 Dependent packages)
+
+Total download size: 28 M
+Installed size: 74 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              2.3 MB/s |  28 MB  00:12
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 1:perl-parent-0.225-244.el7.noarch                          1/28
+  Installing : perl-HTTP-Tiny-0.033-3.el7.noarch                           2/28
+  Installing : perl-podlators-2.5.1-3.el7.noarch                           3/28
+  Installing : perl-Pod-Perldoc-3.20-4.el7.noarch                          4/28
+  Installing : 1:perl-Pod-Escapes-1.04-295.el7.noarch                      5/28
+  Installing : perl-Text-ParseWords-3.29-4.el7.noarch                      6/28
+  Installing : perl-Encode-2.51-7.el7.x86_64                               7/28
+  Installing : perl-Pod-Usage-1.63-3.el7.noarch                            8/28
+  Installing : 4:perl-libs-5.16.3-295.el7.x86_64                           9/28
+  Installing : 4:perl-macros-5.16.3-295.el7.x86_64                        10/28
+  Installing : perl-Storable-2.45-3.el7.x86_64                            11/28
+  Installing : perl-Exporter-5.68-3.el7.noarch                            12/28
+  Installing : perl-constant-1.27-2.el7.noarch                            13/28
+  Installing : perl-Socket-2.010-5.el7.x86_64                             14/28
+  Installing : perl-Time-Local-1.2300-2.el7.noarch                        15/28
+  Installing : perl-Carp-1.26-244.el7.noarch                              16/28
+  Installing : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      17/28
+  Installing : perl-PathTools-3.40-5.el7.x86_64                           18/28
+  Installing : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 19/28
+  Installing : perl-File-Temp-0.23.01-3.el7.noarch                        20/28
+  Installing : perl-File-Path-2.09-2.el7.noarch                           21/28
+  Installing : perl-threads-shared-1.43-6.el7.x86_64                      22/28
+  Installing : perl-threads-1.87-4.el7.x86_64                             23/28
+  Installing : perl-Filter-1.49-3.el7.x86_64                              24/28
+  Installing : 1:perl-Pod-Simple-3.28-4.el7.noarch                        25/28
+  Installing : perl-Getopt-Long-2.40-3.el7.noarch                         26/28
+  Installing : 4:perl-5.16.3-295.el7.x86_64                               27/28
+  Installing : kernel-devel-3.10.0-957.12.2.el7.x86_64                    28/28
+  Verifying  : perl-HTTP-Tiny-0.033-3.el7.noarch                           1/28
+  Verifying  : perl-threads-shared-1.43-6.el7.x86_64                       2/28
+  Verifying  : perl-Storable-2.45-3.el7.x86_64                             3/28
+  Verifying  : 1:perl-Pod-Escapes-1.04-295.el7.noarch                      4/28
+  Verifying  : perl-Exporter-5.68-3.el7.noarch                             5/28
+  Verifying  : perl-constant-1.27-2.el7.noarch                             6/28
+  Verifying  : perl-PathTools-3.40-5.el7.x86_64                            7/28
+  Verifying  : perl-Socket-2.010-5.el7.x86_64                              8/28
+  Verifying  : 1:perl-parent-0.225-244.el7.noarch                          9/28
+  Verifying  : 4:perl-libs-5.16.3-295.el7.x86_64                          10/28
+  Verifying  : perl-File-Temp-0.23.01-3.el7.noarch                        11/28
+  Verifying  : 1:perl-Pod-Simple-3.28-4.el7.noarch                        12/28
+  Verifying  : perl-Time-Local-1.2300-2.el7.noarch                        13/28
+  Verifying  : 4:perl-macros-5.16.3-295.el7.x86_64                        14/28
+  Verifying  : 4:perl-5.16.3-295.el7.x86_64                               15/28
+  Verifying  : perl-Carp-1.26-244.el7.noarch                              16/28
+  Verifying  : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      17/28
+  Verifying  : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 18/28
+  Verifying  : perl-Pod-Usage-1.63-3.el7.noarch                           19/28
+  Verifying  : kernel-devel-3.10.0-957.12.2.el7.x86_64                    20/28
+  Verifying  : perl-Encode-2.51-7.el7.x86_64                              21/28
+  Verifying  : perl-Pod-Perldoc-3.20-4.el7.noarch                         22/28
+  Verifying  : perl-podlators-2.5.1-3.el7.noarch                          23/28
+  Verifying  : perl-File-Path-2.09-2.el7.noarch                           24/28
+  Verifying  : perl-threads-1.87-4.el7.x86_64                             25/28
+  Verifying  : perl-Filter-1.49-3.el7.x86_64                              26/28
+  Verifying  : perl-Getopt-Long-2.40-3.el7.noarch                         27/28
+  Verifying  : perl-Text-ParseWords-3.29-4.el7.noarch                     28/28
+
+Installed:
+  kernel-devel.x86_64 0:3.10.0-957.12.2.el7
+
+Dependency Installed:
+  perl.x86_64 4:5.16.3-295.el7
+  perl-Carp.noarch 0:1.26-244.el7
+  perl-Encode.x86_64 0:2.51-7.el7
+  perl-Exporter.noarch 0:5.68-3.el7
+  perl-File-Path.noarch 0:2.09-2.el7
+  perl-File-Temp.noarch 0:0.23.01-3.el7
+  perl-Filter.x86_64 0:1.49-3.el7
+  perl-Getopt-Long.noarch 0:2.40-3.el7
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7
+  perl-PathTools.x86_64 0:3.40-5.el7
+  perl-Pod-Escapes.noarch 1:1.04-295.el7
+  perl-Pod-Perldoc.noarch 0:3.20-4.el7
+  perl-Pod-Simple.noarch 1:3.28-4.el7
+  perl-Pod-Usage.noarch 0:1.63-3.el7
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7
+  perl-Socket.x86_64 0:2.010-5.el7
+  perl-Storable.x86_64 0:2.45-3.el7
+  perl-Text-ParseWords.noarch 0:3.29-4.el7
+  perl-Time-HiRes.x86_64 4:1.9725-3.el7
+  perl-Time-Local.noarch 0:1.2300-2.el7
+  perl-constant.noarch 0:1.27-2.el7
+  perl-libs.x86_64 4:5.16.3-295.el7
+  perl-macros.x86_64 4:5.16.3-295.el7
+  perl-parent.noarch 1:0.225-244.el7
+  perl-podlators.noarch 0:2.5.1-3.el7
+  perl-threads.x86_64 0:1.87-4.el7
+  perl-threads-shared.x86_64 0:1.43-6.el7
+
+Complete!
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: dedic.sh
+ * extras: mirrors.datahouse.ru
+ * updates: mirror.sale-dedic.com
+Package 4:perl-5.16.3-295.el7.x86_64 already installed and latest version
+Package bzip2-1.0.6-13.el7.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package binutils.x86_64 0:2.27-34.base.el7 will be updated
+---> Package binutils.x86_64 0:2.27-43.base.el7_8.1 will be an update
+---> Package elfutils-libelf-devel.x86_64 0:0.176-4.el7 will be installed
+--> Processing Dependency: elfutils-libelf(x86-64) = 0.176-4.el7 for package: elfutils-libelf-devel-0.176-4.el7.x86_64
+--> Processing Dependency: pkgconfig(zlib) for package: elfutils-libelf-devel-0.176-4.el7.x86_64
+---> Package gcc.x86_64 0:4.8.5-39.el7 will be installed
+--> Processing Dependency: libgomp = 4.8.5-39.el7 for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: cpp = 4.8.5-39.el7 for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: libgcc >= 4.8.5-39.el7 for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: glibc-devel >= 2.2.90-12 for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: libmpfr.so.4()(64bit) for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: libmpc.so.3()(64bit) for package: gcc-4.8.5-39.el7.x86_64
+---> Package make.x86_64 1:3.82-23.el7 will be updated
+---> Package make.x86_64 1:3.82-24.el7 will be an update
+--> Running transaction check
+---> Package cpp.x86_64 0:4.8.5-39.el7 will be installed
+---> Package elfutils-libelf.x86_64 0:0.172-2.el7 will be updated
+--> Processing Dependency: elfutils-libelf(x86-64) = 0.172-2.el7 for package: elfutils-libs-0.172-2.el7.x86_64
+---> Package elfutils-libelf.x86_64 0:0.176-4.el7 will be an update
+---> Package glibc-devel.x86_64 0:2.17-307.el7.1 will be installed
+--> Processing Dependency: glibc-headers = 2.17-307.el7.1 for package: glibc-devel-2.17-307.el7.1.x86_64
+--> Processing Dependency: glibc = 2.17-307.el7.1 for package: glibc-devel-2.17-307.el7.1.x86_64
+--> Processing Dependency: glibc-headers for package: glibc-devel-2.17-307.el7.1.x86_64
+---> Package libgcc.x86_64 0:4.8.5-36.el7_6.2 will be updated
+---> Package libgcc.x86_64 0:4.8.5-39.el7 will be an update
+---> Package libgomp.x86_64 0:4.8.5-36.el7_6.2 will be updated
+---> Package libgomp.x86_64 0:4.8.5-39.el7 will be an update
+---> Package libmpc.x86_64 0:1.0.1-3.el7 will be installed
+---> Package mpfr.x86_64 0:3.1.1-4.el7 will be installed
+---> Package zlib-devel.x86_64 0:1.2.7-18.el7 will be installed
+--> Running transaction check
+---> Package elfutils-libs.x86_64 0:0.172-2.el7 will be updated
+---> Package elfutils-libs.x86_64 0:0.176-4.el7 will be an update
+---> Package glibc.x86_64 0:2.17-260.el7_6.5 will be updated
+--> Processing Dependency: glibc = 2.17-260.el7_6.5 for package: glibc-common-2.17-260.el7_6.5.x86_64
+---> Package glibc.x86_64 0:2.17-307.el7.1 will be an update
+---> Package glibc-headers.x86_64 0:2.17-307.el7.1 will be installed
+--> Processing Dependency: kernel-headers >= 2.2.1 for package: glibc-headers-2.17-307.el7.1.x86_64
+--> Processing Dependency: kernel-headers for package: glibc-headers-2.17-307.el7.1.x86_64
+--> Running transaction check
+---> Package glibc-common.x86_64 0:2.17-260.el7_6.5 will be updated
+---> Package glibc-common.x86_64 0:2.17-307.el7.1 will be an update
+---> Package kernel-headers.x86_64 0:3.10.0-1127.8.2.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                  Arch      Version                    Repository  Size
+================================================================================
+Installing:
+ elfutils-libelf-devel    x86_64    0.176-4.el7                base        40 k
+ gcc                      x86_64    4.8.5-39.el7               base        16 M
+Updating:
+ binutils                 x86_64    2.27-43.base.el7_8.1       updates    5.9 M
+ make                     x86_64    1:3.82-24.el7              base       421 k
+Installing for dependencies:
+ cpp                      x86_64    4.8.5-39.el7               base       5.9 M
+ glibc-devel              x86_64    2.17-307.el7.1             base       1.1 M
+ glibc-headers            x86_64    2.17-307.el7.1             base       689 k
+ kernel-headers           x86_64    3.10.0-1127.8.2.el7        updates    8.9 M
+ libmpc                   x86_64    1.0.1-3.el7                base        51 k
+ mpfr                     x86_64    3.1.1-4.el7                base       203 k
+ zlib-devel               x86_64    1.2.7-18.el7               base        50 k
+Updating for dependencies:
+ elfutils-libelf          x86_64    0.176-4.el7                base       195 k
+ elfutils-libs            x86_64    0.176-4.el7                base       291 k
+ glibc                    x86_64    2.17-307.el7.1             base       3.6 M
+ glibc-common             x86_64    2.17-307.el7.1             base        11 M
+ libgcc                   x86_64    4.8.5-39.el7               base       102 k
+ libgomp                  x86_64    4.8.5-39.el7               base       158 k
+
+Transaction Summary
+================================================================================
+Install  2 Packages (+7 Dependent packages)
+Upgrade  2 Packages (+6 Dependent packages)
+
+Total download size: 55 M
+Downloading packages:
+No Presto metadata available for base
+No Presto metadata available for updates
+--------------------------------------------------------------------------------
+Total                                              7.9 MB/s |  55 MB  00:06
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : libgcc-4.8.5-39.el7.x86_64                                  1/25
+  Updating   : glibc-2.17-307.el7.1.x86_64                                 2/25
+warning: /etc/nsswitch.conf created as /etc/nsswitch.conf.rpmnew
+  Updating   : glibc-common-2.17-307.el7.1.x86_64                          3/25
+  Installing : mpfr-3.1.1-4.el7.x86_64                                     4/25
+  Installing : libmpc-1.0.1-3.el7.x86_64                                   5/25
+  Updating   : elfutils-libelf-0.176-4.el7.x86_64                          6/25
+  Installing : cpp-4.8.5-39.el7.x86_64                                     7/25
+  Updating   : binutils-2.27-43.base.el7_8.1.x86_64                        8/25
+  Updating   : libgomp-4.8.5-39.el7.x86_64                                 9/25
+  Installing : kernel-headers-3.10.0-1127.8.2.el7.x86_64                  10/25
+  Installing : glibc-headers-2.17-307.el7.1.x86_64                        11/25
+  Installing : glibc-devel-2.17-307.el7.1.x86_64                          12/25
+  Installing : zlib-devel-1.2.7-18.el7.x86_64                             13/25
+  Installing : elfutils-libelf-devel-0.176-4.el7.x86_64                   14/25
+  Installing : gcc-4.8.5-39.el7.x86_64                                    15/25
+  Updating   : elfutils-libs-0.176-4.el7.x86_64                           16/25
+  Updating   : 1:make-3.82-24.el7.x86_64                                  17/25
+  Cleanup    : elfutils-libs-0.172-2.el7.x86_64                           18/25
+  Cleanup    : elfutils-libelf-0.172-2.el7.x86_64                         19/25
+  Cleanup    : libgomp-4.8.5-36.el7_6.2.x86_64                            20/25
+  Cleanup    : 1:make-3.82-23.el7.x86_64                                  21/25
+  Cleanup    : binutils-2.27-34.base.el7.x86_64                           22/25
+  Cleanup    : glibc-common-2.17-260.el7_6.5.x86_64                       23/25
+  Cleanup    : glibc-2.17-260.el7_6.5.x86_64                              24/25
+  Cleanup    : libgcc-4.8.5-36.el7_6.2.x86_64                             25/25
+  Verifying  : gcc-4.8.5-39.el7.x86_64                                     1/25
+  Verifying  : zlib-devel-1.2.7-18.el7.x86_64                              2/25
+  Verifying  : binutils-2.27-43.base.el7_8.1.x86_64                        3/25
+  Verifying  : glibc-common-2.17-307.el7.1.x86_64                          4/25
+  Verifying  : 1:make-3.82-24.el7.x86_64                                   5/25
+  Verifying  : libgomp-4.8.5-39.el7.x86_64                                 6/25
+  Verifying  : glibc-2.17-307.el7.1.x86_64                                 7/25
+  Verifying  : kernel-headers-3.10.0-1127.8.2.el7.x86_64                   8/25
+  Verifying  : elfutils-libelf-0.176-4.el7.x86_64                          9/25
+  Verifying  : libmpc-1.0.1-3.el7.x86_64                                  10/25
+  Verifying  : elfutils-libs-0.176-4.el7.x86_64                           11/25
+  Verifying  : glibc-headers-2.17-307.el7.1.x86_64                        12/25
+  Verifying  : elfutils-libelf-devel-0.176-4.el7.x86_64                   13/25
+  Verifying  : mpfr-3.1.1-4.el7.x86_64                                    14/25
+  Verifying  : cpp-4.8.5-39.el7.x86_64                                    15/25
+  Verifying  : glibc-devel-2.17-307.el7.1.x86_64                          16/25
+  Verifying  : libgcc-4.8.5-39.el7.x86_64                                 17/25
+  Verifying  : binutils-2.27-34.base.el7.x86_64                           18/25
+  Verifying  : libgcc-4.8.5-36.el7_6.2.x86_64                             19/25
+  Verifying  : libgomp-4.8.5-36.el7_6.2.x86_64                            20/25
+  Verifying  : glibc-common-2.17-260.el7_6.5.x86_64                       21/25
+  Verifying  : glibc-2.17-260.el7_6.5.x86_64                              22/25
+  Verifying  : elfutils-libelf-0.172-2.el7.x86_64                         23/25
+  Verifying  : 1:make-3.82-23.el7.x86_64                                  24/25
+  Verifying  : elfutils-libs-0.172-2.el7.x86_64                           25/25
+
+Installed:
+  elfutils-libelf-devel.x86_64 0:0.176-4.el7      gcc.x86_64 0:4.8.5-39.el7
+
+Dependency Installed:
+  cpp.x86_64 0:4.8.5-39.el7
+  glibc-devel.x86_64 0:2.17-307.el7.1
+  glibc-headers.x86_64 0:2.17-307.el7.1
+  kernel-headers.x86_64 0:3.10.0-1127.8.2.el7
+  libmpc.x86_64 0:1.0.1-3.el7
+  mpfr.x86_64 0:3.1.1-4.el7
+  zlib-devel.x86_64 0:1.2.7-18.el7
+
+Updated:
+  binutils.x86_64 0:2.27-43.base.el7_8.1        make.x86_64 1:3.82-24.el7
+
+Dependency Updated:
+  elfutils-libelf.x86_64 0:0.176-4.el7   elfutils-libs.x86_64 0:0.176-4.el7
+  glibc.x86_64 0:2.17-307.el7.1          glibc-common.x86_64 0:2.17-307.el7.1
+  libgcc.x86_64 0:4.8.5-39.el7           libgomp.x86_64 0:4.8.5-39.el7
+
+Complete!
+Copy iso file /usr/share/virtualbox/VBoxGuestAdditions.iso into the box /tmp/VBoxGuestAdditions.iso
+Mounting Virtualbox Guest Additions ISO to: /mnt
+mount: /dev/loop0 is write-protected, mounting read-only
+Installing Virtualbox Guest Additions 6.1.6 - guest version is unknown
+Verifying archive integrity... All good.
+Uncompressing VirtualBox 6.1.6 Guest Additions for Linux........
+VirtualBox Guest Additions installer
+Copying additional installer modules ...
+Installing additional modules ...
+VirtualBox Guest Additions: Starting.
+VirtualBox Guest Additions: Building the VirtualBox Guest Additions kernel
+modules.  This may take a while.
+VirtualBox Guest Additions: To build modules for other installed kernels, run
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup <version>
+VirtualBox Guest Additions: or
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup all
+VirtualBox Guest Additions: Building the modules for kernel
+3.10.0-957.12.2.el7.x86_64.
+Redirecting to /bin/systemctl start vboxadd.service
+Redirecting to /bin/systemctl start vboxadd-service.service
+Unmounting Virtualbox Guest Additions ISO from: /mnt
+==> nfs1-server: Checking for guest additions in VM...
+==> nfs1-server: Setting hostname...
+==> nfs1-server: Configuring and enabling network interfaces...
+==> nfs1-server: Running provisioner: shell...
+    nfs1-server: Running: /tmp/vagrant-shell20200527-2625-1utb6jc.sh
+    nfs1-server: Loaded plugins: fastestmirror
+    nfs1-server: Loading mirror speeds from cached hostfile
+    nfs1-server:  * base: dedic.sh
+    nfs1-server:  * extras: mirrors.datahouse.ru
+    nfs1-server:  * updates: mirror.sale-dedic.com
+    nfs1-server: Resolving Dependencies
+    nfs1-server: --> Running transaction check
+    nfs1-server: ---> Package net-tools.x86_64 0:2.0-0.25.20131004git.el7 will be installed
+    nfs1-server: ---> Package nfs-utils.x86_64 1:1.3.0-0.61.el7 will be updated
+    nfs1-server: ---> Package nfs-utils.x86_64 1:1.3.0-0.66.el7 will be an update
+    nfs1-server: ---> Package rpcbind.x86_64 0:0.2.0-47.el7 will be updated
+    nfs1-server: ---> Package rpcbind.x86_64 0:0.2.0-49.el7 will be an update
+    nfs1-server: --> Finished Dependency Resolution
+    nfs1-server:
+    nfs1-server: Dependencies Resolved
+    nfs1-server:
+    nfs1-server: ================================================================================
+    nfs1-server:  Package         Arch         Version                          Repository  Size
+    nfs1-server: ================================================================================
+    nfs1-server: Installing:
+    nfs1-server:  net-tools       x86_64       2.0-0.25.20131004git.el7         base       306 k
+    nfs1-server: Updating:
+    nfs1-server:  nfs-utils       x86_64       1:1.3.0-0.66.el7                 base       412 k
+    nfs1-server:  rpcbind         x86_64       0.2.0-49.el7                     base        60 k
+    nfs1-server:
+    nfs1-server: Transaction Summary
+    nfs1-server: ================================================================================
+    nfs1-server: Install  1 Package
+    nfs1-server: Upgrade  2 Packages
+    nfs1-server: Total download size: 778 k
+    nfs1-server: Downloading packages:
+    nfs1-server: No Presto metadata available for base
+    nfs1-server: --------------------------------------------------------------------------------
+    nfs1-server: Total                                              2.4 MB/s | 778 kB  00:00
+    nfs1-server: Running transaction check
+    nfs1-server: Running transaction test
+    nfs1-server: Transaction test succeeded
+    nfs1-server: Running transaction
+    nfs1-server:   Updating   : rpcbind-0.2.0-49.el7.x86_64                                  1/5
+    nfs1-server:
+    nfs1-server:   Updating   : 1:nfs-utils-1.3.0-0.66.el7.x86_64                            2/5
+    nfs1-server:
+    nfs1-server:   Installing : net-tools-2.0-0.25.20131004git.el7.x86_64                    3/5
+    nfs1-server:
+    nfs1-server:   Cleanup    : 1:nfs-utils-1.3.0-0.61.el7.x86_64                            4/5
+    nfs1-server:
+    nfs1-server:   Cleanup    : rpcbind-0.2.0-47.el7.x86_64                                  5/5
+    nfs1-server:
+    nfs1-server:   Verifying  : net-tools-2.0-0.25.20131004git.el7.x86_64                    1/5
+    nfs1-server:
+    nfs1-server:   Verifying  : rpcbind-0.2.0-49.el7.x86_64                                  2/5
+    nfs1-server:
+    nfs1-server:   Verifying  : 1:nfs-utils-1.3.0-0.66.el7.x86_64                            3/5
+    nfs1-server:
+    nfs1-server:   Verifying  : rpcbind-0.2.0-47.el7.x86_64                                  4/5
+    nfs1-server:
+    nfs1-server:   Verifying  : 1:nfs-utils-1.3.0-0.61.el7.x86_64                            5/5
+    nfs1-server:
+    nfs1-server:
+    nfs1-server: Installed:
+    nfs1-server:   net-tools.x86_64 0:2.0-0.25.20131004git.el7
+    nfs1-server:
+    nfs1-server: Updated:
+    nfs1-server:   nfs-utils.x86_64 1:1.3.0-0.66.el7        rpcbind.x86_64 0:0.2.0-49.el7
+    nfs1-server: Complete!
+    nfs1-server: Created symlink from /etc/systemd/system/multi-user.target.wants/nfs-server.service to /usr/lib/systemd/system/nfs-server.service.
+    nfs1-server: Created symlink from /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service to /usr/lib/systemd/system/firewalld.service.
+    nfs1-server: Created symlink from /etc/systemd/system/multi-user.target.wants/firewalld.service to /usr/lib/systemd/system/firewalld.service.
+    nfs1-server: success
+    nfs1-server: success
+    nfs1-server: Warning: ALREADY_ENABLED: ssh
+    nfs1-server: success
+    nfs1-server: success
+    nfs1-server: success
+==> nfs1-server: Running provisioner: shell...
+    nfs1-server: Running: /tmp/vagrant-shell20200527-2625-1tful5h.sh
+    nfs1-server: Loaded plugins: fastestmirror
+    nfs1-server: Loading mirror speeds from cached hostfile
+    nfs1-server:  * base: dedic.sh
+    nfs1-server:  * extras: mirrors.datahouse.ru
+    nfs1-server:  * updates: mirror.sale-dedic.com
+    nfs1-server: Package net-tools-2.0-0.25.20131004git.el7.x86_64 already installed and latest version
+    nfs1-server: Package rpcbind-0.2.0-49.el7.x86_64 already installed and latest version
+    nfs1-server: Package 1:nfs-utils-1.3.0-0.66.el7.x86_64 already installed and latest version
+    nfs1-server: Nothing to do
+    nfs1-server: Warning: ALREADY_ENABLED: nfs3
+    nfs1-server: success
+    nfs1-server: Warning: ALREADY_ENABLED: ssh
+    nfs1-server: success
+    nfs1-server: success
+    nfs1-server: Warning: ALREADY_ENABLED: rpc-bind
+    nfs1-server: success
+    nfs1-server: Warning: ALREADY_ENABLED: mountd
+    nfs1-server: success
+==> nfs1-client: Importing base box 'centos/7'...
+==> nfs1-client: Matching MAC address for NAT networking...
+==> nfs1-client: Checking if box 'centos/7' version '1905.1' is up to date...
+==> nfs1-client: Setting the name of the VM: TEST5_nfs1-client_1590597332579_99105
+==> nfs1-client: Fixed port collision for 22 => 2222. Now on port 2200.
+==> nfs1-client: Clearing any previously set network interfaces...
+==> nfs1-client: Preparing network interfaces based on configuration...
+    nfs1-client: Adapter 1: nat
+    nfs1-client: Adapter 2: hostonly
+==> nfs1-client: Forwarding ports...
+    nfs1-client: 22 (guest) => 2200 (host) (adapter 1)
+==> nfs1-client: Running 'pre-boot' VM customizations...
+==> nfs1-client: Booting VM...
+==> nfs1-client: Waiting for machine to boot. This may take a few minutes...
+    nfs1-client: SSH address: 127.0.0.1:2200
+    nfs1-client: SSH username: vagrant
+    nfs1-client: SSH auth method: private key
+    nfs1-client:
+    nfs1-client: Vagrant insecure key detected. Vagrant will automatically replace
+    nfs1-client: this with a newly generated keypair for better security.
+    nfs1-client:
+    nfs1-client: Inserting generated public key within guest...
+    nfs1-client: Removing insecure key from the guest if it's present...
+    nfs1-client: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> nfs1-client: Machine booted and ready!
+[nfs1-client] No Virtualbox Guest Additions installation found.
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.docker.ru
+ * extras: mirror.docker.ru
+ * updates: mirror.sale-dedic.com
+Resolving Dependencies
+--> Running transaction check
+---> Package centos-release.x86_64 0:7-6.1810.2.el7.centos will be updated
+---> Package centos-release.x86_64 0:7-8.2003.0.el7.centos will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package              Arch         Version                     Repository  Size
+================================================================================
+Updating:
+ centos-release       x86_64       7-8.2003.0.el7.centos       base        26 k
+
+Transaction Summary
+================================================================================
+Upgrade  1 Package
+
+Total download size: 26 k
+Downloading packages:
+No Presto metadata available for base
+Public key for centos-release-7-8.2003.0.el7.centos.x86_64.rpm is not installed
+warning: /var/cache/yum/x86_64/7/base/packages/centos-release-7-8.2003.0.el7.centos.x86_64.rpm: Header V3 RSA/SHA256 Signature, key ID f4a80eb5: NOKEY
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Importing GPG key 0xF4A80EB5:
+ Userid     : "CentOS-7 Key (CentOS 7 Official Signing Key) <security@centos.org>"
+ Fingerprint: 6341 ab27 53d7 8a78 a7c2 7bb1 24c6 a8a7 f4a8 0eb5
+ Package    : centos-release-7-6.1810.2.el7.centos.x86_64 (@anaconda)
+ From       : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : centos-release-7-8.2003.0.el7.centos.x86_64                  1/2
+  Cleanup    : centos-release-7-6.1810.2.el7.centos.x86_64                  2/2
+  Verifying  : centos-release-7-8.2003.0.el7.centos.x86_64                  1/2
+  Verifying  : centos-release-7-6.1810.2.el7.centos.x86_64                  2/2
+
+Updated:
+  centos-release.x86_64 0:7-8.2003.0.el7.centos
+
+Complete!
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.docker.ru
+ * extras: mirror.docker.ru
+ * updates: mirror.sale-dedic.com
+Resolving Dependencies
+--> Running transaction check
+---> Package kernel-devel.x86_64 0:3.10.0-957.12.2.el7 will be installed
+--> Processing Dependency: perl for package: kernel-devel-3.10.0-957.12.2.el7.x86_64
+--> Running transaction check
+---> Package perl.x86_64 4:5.16.3-295.el7 will be installed
+--> Processing Dependency: perl-libs = 4:5.16.3-295.el7 for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Socket) >= 1.3 for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Scalar::Util) >= 1.10 for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl-macros for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl-libs for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(threads::shared) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(threads) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(constant) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Time::Local) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Time::HiRes) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Storable) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Socket) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Scalar::Util) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Pod::Simple::XHTML) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Pod::Simple::Search) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Getopt::Long) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Filter::Util::Call) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Temp) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Spec::Unix) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Spec::Functions) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Spec) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(File::Path) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Exporter) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Cwd) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: perl(Carp) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Processing Dependency: libperl.so()(64bit) for package: 4:perl-5.16.3-295.el7.x86_64
+--> Running transaction check
+---> Package perl-Carp.noarch 0:1.26-244.el7 will be installed
+---> Package perl-Exporter.noarch 0:5.68-3.el7 will be installed
+---> Package perl-File-Path.noarch 0:2.09-2.el7 will be installed
+---> Package perl-File-Temp.noarch 0:0.23.01-3.el7 will be installed
+---> Package perl-Filter.x86_64 0:1.49-3.el7 will be installed
+---> Package perl-Getopt-Long.noarch 0:2.40-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Usage) >= 1.14 for package: perl-Getopt-Long-2.40-3.el7.noarch
+--> Processing Dependency: perl(Text::ParseWords) for package: perl-Getopt-Long-2.40-3.el7.noarch
+---> Package perl-PathTools.x86_64 0:3.40-5.el7 will be installed
+---> Package perl-Pod-Simple.noarch 1:3.28-4.el7 will be installed
+--> Processing Dependency: perl(Pod::Escapes) >= 1.04 for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+--> Processing Dependency: perl(Encode) for package: 1:perl-Pod-Simple-3.28-4.el7.noarch
+---> Package perl-Scalar-List-Utils.x86_64 0:1.27-248.el7 will be installed
+---> Package perl-Socket.x86_64 0:2.010-5.el7 will be installed
+---> Package perl-Storable.x86_64 0:2.45-3.el7 will be installed
+---> Package perl-Time-HiRes.x86_64 4:1.9725-3.el7 will be installed
+---> Package perl-Time-Local.noarch 0:1.2300-2.el7 will be installed
+---> Package perl-constant.noarch 0:1.27-2.el7 will be installed
+---> Package perl-libs.x86_64 4:5.16.3-295.el7 will be installed
+---> Package perl-macros.x86_64 4:5.16.3-295.el7 will be installed
+---> Package perl-threads.x86_64 0:1.87-4.el7 will be installed
+---> Package perl-threads-shared.x86_64 0:1.43-6.el7 will be installed
+--> Running transaction check
+---> Package perl-Encode.x86_64 0:2.51-7.el7 will be installed
+---> Package perl-Pod-Escapes.noarch 1:1.04-295.el7 will be installed
+---> Package perl-Pod-Usage.noarch 0:1.63-3.el7 will be installed
+--> Processing Dependency: perl(Pod::Text) >= 3.15 for package: perl-Pod-Usage-1.63-3.el7.noarch
+--> Processing Dependency: perl-Pod-Perldoc for package: perl-Pod-Usage-1.63-3.el7.noarch
+---> Package perl-Text-ParseWords.noarch 0:3.29-4.el7 will be installed
+--> Running transaction check
+---> Package perl-Pod-Perldoc.noarch 0:3.20-4.el7 will be installed
+--> Processing Dependency: perl(parent) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+--> Processing Dependency: perl(HTTP::Tiny) for package: perl-Pod-Perldoc-3.20-4.el7.noarch
+---> Package perl-podlators.noarch 0:2.5.1-3.el7 will be installed
+--> Running transaction check
+---> Package perl-HTTP-Tiny.noarch 0:0.033-3.el7 will be installed
+---> Package perl-parent.noarch 1:0.225-244.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                 Arch    Version               Repository          Size
+================================================================================
+Installing:
+ kernel-devel            x86_64  3.10.0-957.12.2.el7   C7.6.1810-updates   17 M
+Installing for dependencies:
+ perl                    x86_64  4:5.16.3-295.el7      base               8.0 M
+ perl-Carp               noarch  1.26-244.el7          C7.0.1406-base      19 k
+ perl-Encode             x86_64  2.51-7.el7            C7.0.1406-base     1.5 M
+ perl-Exporter           noarch  5.68-3.el7            C7.0.1406-base      28 k
+ perl-File-Path          noarch  2.09-2.el7            C7.0.1406-base      26 k
+ perl-File-Temp          noarch  0.23.01-3.el7         C7.0.1406-base      56 k
+ perl-Filter             x86_64  1.49-3.el7            C7.0.1406-base      76 k
+ perl-Getopt-Long        noarch  2.40-3.el7            C7.5.1804-base      56 k
+ perl-HTTP-Tiny          noarch  0.033-3.el7           C7.0.1406-base      38 k
+ perl-PathTools          x86_64  3.40-5.el7            C7.0.1406-base      82 k
+ perl-Pod-Escapes        noarch  1:1.04-295.el7        base                51 k
+ perl-Pod-Perldoc        noarch  3.20-4.el7            C7.0.1406-base      87 k
+ perl-Pod-Simple         noarch  1:3.28-4.el7          C7.0.1406-base     216 k
+ perl-Pod-Usage          noarch  1.63-3.el7            C7.0.1406-base      27 k
+ perl-Scalar-List-Utils  x86_64  1.27-248.el7          C7.0.1406-base      36 k
+ perl-Socket             x86_64  2.010-5.el7           base                49 k
+ perl-Storable           x86_64  2.45-3.el7            C7.0.1406-base      77 k
+ perl-Text-ParseWords    noarch  3.29-4.el7            C7.0.1406-base      14 k
+ perl-Time-HiRes         x86_64  4:1.9725-3.el7        C7.0.1406-base      45 k
+ perl-Time-Local         noarch  1.2300-2.el7          C7.0.1406-base      24 k
+ perl-constant           noarch  1.27-2.el7            C7.0.1406-base      19 k
+ perl-libs               x86_64  4:5.16.3-295.el7      base               689 k
+ perl-macros             x86_64  4:5.16.3-295.el7      base                44 k
+ perl-parent             noarch  1:0.225-244.el7       C7.0.1406-base      12 k
+ perl-podlators          noarch  2.5.1-3.el7           C7.0.1406-base     112 k
+ perl-threads            x86_64  1.87-4.el7            C7.0.1406-base      49 k
+ perl-threads-shared     x86_64  1.43-6.el7            C7.0.1406-base      39 k
+
+Transaction Summary
+================================================================================
+Install  1 Package (+27 Dependent packages)
+
+Total download size: 28 M
+Installed size: 74 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              2.2 MB/s |  28 MB  00:12
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 1:perl-parent-0.225-244.el7.noarch                          1/28
+  Installing : perl-HTTP-Tiny-0.033-3.el7.noarch                           2/28
+  Installing : perl-podlators-2.5.1-3.el7.noarch                           3/28
+  Installing : perl-Pod-Perldoc-3.20-4.el7.noarch                          4/28
+  Installing : 1:perl-Pod-Escapes-1.04-295.el7.noarch                      5/28
+  Installing : perl-Text-ParseWords-3.29-4.el7.noarch                      6/28
+  Installing : perl-Encode-2.51-7.el7.x86_64                               7/28
+  Installing : perl-Pod-Usage-1.63-3.el7.noarch                            8/28
+  Installing : 4:perl-libs-5.16.3-295.el7.x86_64                           9/28
+  Installing : 4:perl-macros-5.16.3-295.el7.x86_64                        10/28
+  Installing : perl-Storable-2.45-3.el7.x86_64                            11/28
+  Installing : perl-Exporter-5.68-3.el7.noarch                            12/28
+  Installing : perl-constant-1.27-2.el7.noarch                            13/28
+  Installing : perl-Socket-2.010-5.el7.x86_64                             14/28
+  Installing : perl-Time-Local-1.2300-2.el7.noarch                        15/28
+  Installing : perl-Carp-1.26-244.el7.noarch                              16/28
+  Installing : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      17/28
+  Installing : perl-PathTools-3.40-5.el7.x86_64                           18/28
+  Installing : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 19/28
+  Installing : perl-File-Temp-0.23.01-3.el7.noarch                        20/28
+  Installing : perl-File-Path-2.09-2.el7.noarch                           21/28
+  Installing : perl-threads-shared-1.43-6.el7.x86_64                      22/28
+  Installing : perl-threads-1.87-4.el7.x86_64                             23/28
+  Installing : perl-Filter-1.49-3.el7.x86_64                              24/28
+  Installing : 1:perl-Pod-Simple-3.28-4.el7.noarch                        25/28
+  Installing : perl-Getopt-Long-2.40-3.el7.noarch                         26/28
+  Installing : 4:perl-5.16.3-295.el7.x86_64                               27/28
+  Installing : kernel-devel-3.10.0-957.12.2.el7.x86_64                    28/28
+  Verifying  : perl-HTTP-Tiny-0.033-3.el7.noarch                           1/28
+  Verifying  : perl-threads-shared-1.43-6.el7.x86_64                       2/28
+  Verifying  : perl-Storable-2.45-3.el7.x86_64                             3/28
+  Verifying  : 1:perl-Pod-Escapes-1.04-295.el7.noarch                      4/28
+  Verifying  : perl-Exporter-5.68-3.el7.noarch                             5/28
+  Verifying  : perl-constant-1.27-2.el7.noarch                             6/28
+  Verifying  : perl-PathTools-3.40-5.el7.x86_64                            7/28
+  Verifying  : perl-Socket-2.010-5.el7.x86_64                              8/28
+  Verifying  : 1:perl-parent-0.225-244.el7.noarch                          9/28
+  Verifying  : 4:perl-libs-5.16.3-295.el7.x86_64                          10/28
+  Verifying  : perl-File-Temp-0.23.01-3.el7.noarch                        11/28
+  Verifying  : 1:perl-Pod-Simple-3.28-4.el7.noarch                        12/28
+  Verifying  : perl-Time-Local-1.2300-2.el7.noarch                        13/28
+  Verifying  : 4:perl-macros-5.16.3-295.el7.x86_64                        14/28
+  Verifying  : 4:perl-5.16.3-295.el7.x86_64                               15/28
+  Verifying  : perl-Carp-1.26-244.el7.noarch                              16/28
+  Verifying  : 4:perl-Time-HiRes-1.9725-3.el7.x86_64                      17/28
+  Verifying  : perl-Scalar-List-Utils-1.27-248.el7.x86_64                 18/28
+  Verifying  : perl-Pod-Usage-1.63-3.el7.noarch                           19/28
+  Verifying  : kernel-devel-3.10.0-957.12.2.el7.x86_64                    20/28
+  Verifying  : perl-Encode-2.51-7.el7.x86_64                              21/28
+  Verifying  : perl-Pod-Perldoc-3.20-4.el7.noarch                         22/28
+  Verifying  : perl-podlators-2.5.1-3.el7.noarch                          23/28
+  Verifying  : perl-File-Path-2.09-2.el7.noarch                           24/28
+  Verifying  : perl-threads-1.87-4.el7.x86_64                             25/28
+  Verifying  : perl-Filter-1.49-3.el7.x86_64                              26/28
+  Verifying  : perl-Getopt-Long-2.40-3.el7.noarch                         27/28
+  Verifying  : perl-Text-ParseWords-3.29-4.el7.noarch                     28/28
+
+Installed:
+  kernel-devel.x86_64 0:3.10.0-957.12.2.el7
+
+Dependency Installed:
+  perl.x86_64 4:5.16.3-295.el7
+  perl-Carp.noarch 0:1.26-244.el7
+  perl-Encode.x86_64 0:2.51-7.el7
+  perl-Exporter.noarch 0:5.68-3.el7
+  perl-File-Path.noarch 0:2.09-2.el7
+  perl-File-Temp.noarch 0:0.23.01-3.el7
+  perl-Filter.x86_64 0:1.49-3.el7
+  perl-Getopt-Long.noarch 0:2.40-3.el7
+  perl-HTTP-Tiny.noarch 0:0.033-3.el7
+  perl-PathTools.x86_64 0:3.40-5.el7
+  perl-Pod-Escapes.noarch 1:1.04-295.el7
+  perl-Pod-Perldoc.noarch 0:3.20-4.el7
+  perl-Pod-Simple.noarch 1:3.28-4.el7
+  perl-Pod-Usage.noarch 0:1.63-3.el7
+  perl-Scalar-List-Utils.x86_64 0:1.27-248.el7
+  perl-Socket.x86_64 0:2.010-5.el7
+  perl-Storable.x86_64 0:2.45-3.el7
+  perl-Text-ParseWords.noarch 0:3.29-4.el7
+  perl-Time-HiRes.x86_64 4:1.9725-3.el7
+  perl-Time-Local.noarch 0:1.2300-2.el7
+  perl-constant.noarch 0:1.27-2.el7
+  perl-libs.x86_64 4:5.16.3-295.el7
+  perl-macros.x86_64 4:5.16.3-295.el7
+  perl-parent.noarch 1:0.225-244.el7
+  perl-podlators.noarch 0:2.5.1-3.el7
+  perl-threads.x86_64 0:1.87-4.el7
+  perl-threads-shared.x86_64 0:1.43-6.el7
+
+Complete!
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.docker.ru
+ * extras: mirror.docker.ru
+ * updates: mirror.sale-dedic.com
+Package 4:perl-5.16.3-295.el7.x86_64 already installed and latest version
+Package bzip2-1.0.6-13.el7.x86_64 already installed and latest version
+Resolving Dependencies
+--> Running transaction check
+---> Package binutils.x86_64 0:2.27-34.base.el7 will be updated
+---> Package binutils.x86_64 0:2.27-43.base.el7_8.1 will be an update
+---> Package elfutils-libelf-devel.x86_64 0:0.176-4.el7 will be installed
+--> Processing Dependency: elfutils-libelf(x86-64) = 0.176-4.el7 for package: elfutils-libelf-devel-0.176-4.el7.x86_64
+--> Processing Dependency: pkgconfig(zlib) for package: elfutils-libelf-devel-0.176-4.el7.x86_64
+---> Package gcc.x86_64 0:4.8.5-39.el7 will be installed
+--> Processing Dependency: libgomp = 4.8.5-39.el7 for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: cpp = 4.8.5-39.el7 for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: libgcc >= 4.8.5-39.el7 for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: glibc-devel >= 2.2.90-12 for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: libmpfr.so.4()(64bit) for package: gcc-4.8.5-39.el7.x86_64
+--> Processing Dependency: libmpc.so.3()(64bit) for package: gcc-4.8.5-39.el7.x86_64
+---> Package make.x86_64 1:3.82-23.el7 will be updated
+---> Package make.x86_64 1:3.82-24.el7 will be an update
+--> Running transaction check
+---> Package cpp.x86_64 0:4.8.5-39.el7 will be installed
+---> Package elfutils-libelf.x86_64 0:0.172-2.el7 will be updated
+--> Processing Dependency: elfutils-libelf(x86-64) = 0.172-2.el7 for package: elfutils-libs-0.172-2.el7.x86_64
+---> Package elfutils-libelf.x86_64 0:0.176-4.el7 will be an update
+---> Package glibc-devel.x86_64 0:2.17-307.el7.1 will be installed
+--> Processing Dependency: glibc-headers = 2.17-307.el7.1 for package: glibc-devel-2.17-307.el7.1.x86_64
+--> Processing Dependency: glibc = 2.17-307.el7.1 for package: glibc-devel-2.17-307.el7.1.x86_64
+--> Processing Dependency: glibc-headers for package: glibc-devel-2.17-307.el7.1.x86_64
+---> Package libgcc.x86_64 0:4.8.5-36.el7_6.2 will be updated
+---> Package libgcc.x86_64 0:4.8.5-39.el7 will be an update
+---> Package libgomp.x86_64 0:4.8.5-36.el7_6.2 will be updated
+---> Package libgomp.x86_64 0:4.8.5-39.el7 will be an update
+---> Package libmpc.x86_64 0:1.0.1-3.el7 will be installed
+---> Package mpfr.x86_64 0:3.1.1-4.el7 will be installed
+---> Package zlib-devel.x86_64 0:1.2.7-18.el7 will be installed
+--> Running transaction check
+---> Package elfutils-libs.x86_64 0:0.172-2.el7 will be updated
+---> Package elfutils-libs.x86_64 0:0.176-4.el7 will be an update
+---> Package glibc.x86_64 0:2.17-260.el7_6.5 will be updated
+--> Processing Dependency: glibc = 2.17-260.el7_6.5 for package: glibc-common-2.17-260.el7_6.5.x86_64
+---> Package glibc.x86_64 0:2.17-307.el7.1 will be an update
+---> Package glibc-headers.x86_64 0:2.17-307.el7.1 will be installed
+--> Processing Dependency: kernel-headers >= 2.2.1 for package: glibc-headers-2.17-307.el7.1.x86_64
+--> Processing Dependency: kernel-headers for package: glibc-headers-2.17-307.el7.1.x86_64
+--> Running transaction check
+---> Package glibc-common.x86_64 0:2.17-260.el7_6.5 will be updated
+---> Package glibc-common.x86_64 0:2.17-307.el7.1 will be an update
+---> Package kernel-headers.x86_64 0:3.10.0-1127.8.2.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                  Arch      Version                    Repository  Size
+================================================================================
+Installing:
+ elfutils-libelf-devel    x86_64    0.176-4.el7                base        40 k
+ gcc                      x86_64    4.8.5-39.el7               base        16 M
+Updating:
+ binutils                 x86_64    2.27-43.base.el7_8.1       updates    5.9 M
+ make                     x86_64    1:3.82-24.el7              base       421 k
+Installing for dependencies:
+ cpp                      x86_64    4.8.5-39.el7               base       5.9 M
+ glibc-devel              x86_64    2.17-307.el7.1             base       1.1 M
+ glibc-headers            x86_64    2.17-307.el7.1             base       689 k
+ kernel-headers           x86_64    3.10.0-1127.8.2.el7        updates    8.9 M
+ libmpc                   x86_64    1.0.1-3.el7                base        51 k
+ mpfr                     x86_64    3.1.1-4.el7                base       203 k
+ zlib-devel               x86_64    1.2.7-18.el7               base        50 k
+Updating for dependencies:
+ elfutils-libelf          x86_64    0.176-4.el7                base       195 k
+ elfutils-libs            x86_64    0.176-4.el7                base       291 k
+ glibc                    x86_64    2.17-307.el7.1             base       3.6 M
+ glibc-common             x86_64    2.17-307.el7.1             base        11 M
+ libgcc                   x86_64    4.8.5-39.el7               base       102 k
+ libgomp                  x86_64    4.8.5-39.el7               base       158 k
+
+Transaction Summary
+================================================================================
+Install  2 Packages (+7 Dependent packages)
+Upgrade  2 Packages (+6 Dependent packages)
+
+Total download size: 55 M
+Downloading packages:
+No Presto metadata available for base
+No Presto metadata available for updates
+--------------------------------------------------------------------------------
+Total                                              8.9 MB/s |  55 MB  00:06
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : libgcc-4.8.5-39.el7.x86_64                                  1/25
+  Updating   : glibc-2.17-307.el7.1.x86_64                                 2/25
+warning: /etc/nsswitch.conf created as /etc/nsswitch.conf.rpmnew
+  Updating   : glibc-common-2.17-307.el7.1.x86_64                          3/25
+  Installing : mpfr-3.1.1-4.el7.x86_64                                     4/25
+  Installing : libmpc-1.0.1-3.el7.x86_64                                   5/25
+  Updating   : elfutils-libelf-0.176-4.el7.x86_64                          6/25
+  Installing : cpp-4.8.5-39.el7.x86_64                                     7/25
+  Updating   : binutils-2.27-43.base.el7_8.1.x86_64                        8/25
+  Updating   : libgomp-4.8.5-39.el7.x86_64                                 9/25
+  Installing : kernel-headers-3.10.0-1127.8.2.el7.x86_64                  10/25
+  Installing : glibc-headers-2.17-307.el7.1.x86_64                        11/25
+  Installing : glibc-devel-2.17-307.el7.1.x86_64                          12/25
+  Installing : zlib-devel-1.2.7-18.el7.x86_64                             13/25
+  Installing : elfutils-libelf-devel-0.176-4.el7.x86_64                   14/25
+  Installing : gcc-4.8.5-39.el7.x86_64                                    15/25
+  Updating   : elfutils-libs-0.176-4.el7.x86_64                           16/25
+  Updating   : 1:make-3.82-24.el7.x86_64                                  17/25
+  Cleanup    : elfutils-libs-0.172-2.el7.x86_64                           18/25
+  Cleanup    : elfutils-libelf-0.172-2.el7.x86_64                         19/25
+  Cleanup    : libgomp-4.8.5-36.el7_6.2.x86_64                            20/25
+  Cleanup    : 1:make-3.82-23.el7.x86_64                                  21/25
+  Cleanup    : binutils-2.27-34.base.el7.x86_64                           22/25
+  Cleanup    : glibc-common-2.17-260.el7_6.5.x86_64                       23/25
+  Cleanup    : glibc-2.17-260.el7_6.5.x86_64                              24/25
+  Cleanup    : libgcc-4.8.5-36.el7_6.2.x86_64                             25/25
+  Verifying  : gcc-4.8.5-39.el7.x86_64                                     1/25
+  Verifying  : zlib-devel-1.2.7-18.el7.x86_64                              2/25
+  Verifying  : binutils-2.27-43.base.el7_8.1.x86_64                        3/25
+  Verifying  : glibc-common-2.17-307.el7.1.x86_64                          4/25
+  Verifying  : 1:make-3.82-24.el7.x86_64                                   5/25
+  Verifying  : libgomp-4.8.5-39.el7.x86_64                                 6/25
+  Verifying  : glibc-2.17-307.el7.1.x86_64                                 7/25
+  Verifying  : kernel-headers-3.10.0-1127.8.2.el7.x86_64                   8/25
+  Verifying  : elfutils-libelf-0.176-4.el7.x86_64                          9/25
+  Verifying  : libmpc-1.0.1-3.el7.x86_64                                  10/25
+  Verifying  : elfutils-libs-0.176-4.el7.x86_64                           11/25
+  Verifying  : glibc-headers-2.17-307.el7.1.x86_64                        12/25
+  Verifying  : elfutils-libelf-devel-0.176-4.el7.x86_64                   13/25
+  Verifying  : mpfr-3.1.1-4.el7.x86_64                                    14/25
+  Verifying  : cpp-4.8.5-39.el7.x86_64                                    15/25
+  Verifying  : glibc-devel-2.17-307.el7.1.x86_64                          16/25
+  Verifying  : libgcc-4.8.5-39.el7.x86_64                                 17/25
+  Verifying  : binutils-2.27-34.base.el7.x86_64                           18/25
+  Verifying  : libgcc-4.8.5-36.el7_6.2.x86_64                             19/25
+  Verifying  : libgomp-4.8.5-36.el7_6.2.x86_64                            20/25
+  Verifying  : glibc-common-2.17-260.el7_6.5.x86_64                       21/25
+  Verifying  : glibc-2.17-260.el7_6.5.x86_64                              22/25
+  Verifying  : elfutils-libelf-0.172-2.el7.x86_64                         23/25
+  Verifying  : 1:make-3.82-23.el7.x86_64                                  24/25
+  Verifying  : elfutils-libs-0.172-2.el7.x86_64                           25/25
+
+Installed:
+  elfutils-libelf-devel.x86_64 0:0.176-4.el7      gcc.x86_64 0:4.8.5-39.el7
+
+Dependency Installed:
+  cpp.x86_64 0:4.8.5-39.el7
+  glibc-devel.x86_64 0:2.17-307.el7.1
+  glibc-headers.x86_64 0:2.17-307.el7.1
+  kernel-headers.x86_64 0:3.10.0-1127.8.2.el7
+  libmpc.x86_64 0:1.0.1-3.el7
+  mpfr.x86_64 0:3.1.1-4.el7
+  zlib-devel.x86_64 0:1.2.7-18.el7
+
+Updated:
+  binutils.x86_64 0:2.27-43.base.el7_8.1        make.x86_64 1:3.82-24.el7
+
+Dependency Updated:
+  elfutils-libelf.x86_64 0:0.176-4.el7   elfutils-libs.x86_64 0:0.176-4.el7
+  glibc.x86_64 0:2.17-307.el7.1          glibc-common.x86_64 0:2.17-307.el7.1
+  libgcc.x86_64 0:4.8.5-39.el7           libgomp.x86_64 0:4.8.5-39.el7
+
+Complete!
+Copy iso file /usr/share/virtualbox/VBoxGuestAdditions.iso into the box /tmp/VBoxGuestAdditions.iso
+Mounting Virtualbox Guest Additions ISO to: /mnt
+mount: /dev/loop0 is write-protected, mounting read-only
+Installing Virtualbox Guest Additions 6.1.6 - guest version is unknown
+Verifying archive integrity... All good.
+Uncompressing VirtualBox 6.1.6 Guest Additions for Linux........
+VirtualBox Guest Additions installer
+Copying additional installer modules ...
+Installing additional modules ...
+VirtualBox Guest Additions: Starting.
+VirtualBox Guest Additions: Building the VirtualBox Guest Additions kernel
+modules.  This may take a while.
+VirtualBox Guest Additions: To build modules for other installed kernels, run
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup <version>
+VirtualBox Guest Additions: or
+VirtualBox Guest Additions:   /sbin/rcvboxadd quicksetup all
+VirtualBox Guest Additions: Building the modules for kernel
+3.10.0-957.12.2.el7.x86_64.
+Redirecting to /bin/systemctl start vboxadd.service
+Redirecting to /bin/systemctl start vboxadd-service.service
+Unmounting Virtualbox Guest Additions ISO from: /mnt
+==> nfs1-client: Checking for guest additions in VM...
+==> nfs1-client: Setting hostname...
+==> nfs1-client: Configuring and enabling network interfaces...
+==> nfs1-client: Running provisioner: shell...
+    nfs1-client: Running: /tmp/vagrant-shell20200527-2625-17yet4t.sh
+    nfs1-client: Loaded plugins: fastestmirror
+    nfs1-client: Loading mirror speeds from cached hostfile
+    nfs1-client:  * base: mirror.docker.ru
+    nfs1-client:  * extras: mirror.docker.ru
+    nfs1-client:  * updates: mirror.sale-dedic.com
+    nfs1-client: Resolving Dependencies
+    nfs1-client: --> Running transaction check
+    nfs1-client: ---> Package net-tools.x86_64 0:2.0-0.25.20131004git.el7 will be installed
+    nfs1-client: ---> Package nfs-utils.x86_64 1:1.3.0-0.61.el7 will be updated
+    nfs1-client: ---> Package nfs-utils.x86_64 1:1.3.0-0.66.el7 will be an update
+    nfs1-client: --> Finished Dependency Resolution
+    nfs1-client:
+    nfs1-client: Dependencies Resolved
+    nfs1-client:
+    nfs1-client: ================================================================================
+    nfs1-client:  Package         Arch         Version                          Repository  Size
+    nfs1-client: ================================================================================
+    nfs1-client: Installing:
+    nfs1-client:  net-tools       x86_64       2.0-0.25.20131004git.el7         base       306 k
+    nfs1-client: Updating:
+    nfs1-client:  nfs-utils       x86_64       1:1.3.0-0.66.el7                 base       412 k
+    nfs1-client:
+    nfs1-client: Transaction Summary
+    nfs1-client: ================================================================================
+    nfs1-client: Install  1 Package
+    nfs1-client: Upgrade  1 Package
+    nfs1-client: Total download size: 718 k
+    nfs1-client: Downloading packages:
+    nfs1-client: No Presto metadata available for base
+    nfs1-client: --------------------------------------------------------------------------------
+    nfs1-client: Total                                              2.6 MB/s | 718 kB  00:00
+    nfs1-client: Running transaction check
+    nfs1-client: Running transaction test
+    nfs1-client: Transaction test succeeded
+    nfs1-client: Running transaction
+    nfs1-client:   Updating   : 1:nfs-utils-1.3.0-0.66.el7.x86_64                            1/3
+    nfs1-client:
+    nfs1-client:   Installing : net-tools-2.0-0.25.20131004git.el7.x86_64                    2/3
+    nfs1-client:
+    nfs1-client:   Cleanup    : 1:nfs-utils-1.3.0-0.61.el7.x86_64                            3/3
+    nfs1-client:
+    nfs1-client:   Verifying  : net-tools-2.0-0.25.20131004git.el7.x86_64                    1/3
+    nfs1-client:
+    nfs1-client:   Verifying  : 1:nfs-utils-1.3.0-0.66.el7.x86_64                            2/3
+    nfs1-client:
+    nfs1-client:   Verifying  : 1:nfs-utils-1.3.0-0.61.el7.x86_64                            3/3
+    nfs1-client:
+    nfs1-client:
+    nfs1-client: Installed:
+    nfs1-client:   net-tools.x86_64 0:2.0-0.25.20131004git.el7
+    nfs1-client:
+    nfs1-client: Updated:
+    nfs1-client:   nfs-utils.x86_64 1:1.3.0-0.66.el7
+    nfs1-client: Complete!
+==> nfs1-client: Running provisioner: shell...
+    nfs1-client: Running: /tmp/vagrant-shell20200527-2625-1c4wsce.sh
+    nfs1-client: Loaded plugins: fastestmirror
+    nfs1-client: Loading mirror speeds from cached hostfile
+    nfs1-client:  * base: mirror.docker.ru
+    nfs1-client:  * extras: mirror.docker.ru
+    nfs1-client:  * updates: mirror.sale-dedic.com
+    nfs1-client: Package 1:nfs-utils-1.3.0-0.66.el7.x86_64 already installed and latest version
+    nfs1-client: Package net-tools-2.0-0.25.20131004git.el7.x86_64 already installed and latest version
+    nfs1-client: Nothing to do
+    nfs1-client: mount.nfs: /mnt/nfs-share is busy or already mounted
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_5_NFS/TEST5# vagrant ssh nfs1-client
+[vagrant@nfs1-client ~]$ df -h
+Filesystem                   Size  Used Avail Use% Mounted on
+/dev/sda1                     40G  3,8G   37G  10% /
+devtmpfs                     912M     0  912M   0% /dev
+tmpfs                        920M     0  920M   0% /dev/shm
+tmpfs                        920M  8,5M  911M   1% /run
+tmpfs                        920M     0  920M   0% /sys/fs/cgroup
+192.168.11.121:/mnt/storage   40G  3,8G   37G  10% /mnt/nfs-share
+tmpfs                        184M     0  184M   0% /run/user/1000
+[vagrant@nfs1-client ~]$ cd /mnt/nfs-share/
+[vagrant@nfs1-client nfs-share]$ cd upload/
+[vagrant@nfs1-client upload]$ ls -l
+total 0
+[vagrant@nfs1-client upload]$ cd ..
+[vagrant@nfs1-client nfs-share]$ ls -l
+total 0
+drwxrwxrwx. 2 root root 6 май 27 16:40 upload
+[vagrant@nfs1-client nfs-share]$ exit
+logout
+Connection to 127.0.0.1 closed.
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_5_NFS/TEST5# nano nfs.sh
+
