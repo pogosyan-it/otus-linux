@@ -1,3 +1,4 @@
+Type    time,s    size   
 gzip1 --->76 ---->285M
 gzip2 --->82 ---->277M
 gzip3 --->91 ---->272M
