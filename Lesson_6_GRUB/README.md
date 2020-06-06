@@ -24,7 +24,7 @@ sudo cp module-setup.sh test.sh /usr/lib/dracut/modules.d/01test/ <br/>
 sudo chmod +x /usr/lib/dracut/modules.d/01test/test.sh <br/>
 sudo chmod +x /usr/lib/dracut/modules.d/01test/module-setup.sh<br/> 
 Проверяем модуль <br/> 
-sudo lsinitrd -m /boot/initramfs-$(uname -r).img | grep test
+sudo lsinitrd -m /boot/initramfs-$(uname -r).img | grep test<br/> 
 test <br/>
 Пересобираем образ initrd <br/>
 sudo dracut -f -v <br/>
