@@ -17,9 +17,7 @@ passwd root <br/>
 2. **Переименовать VG, содержащем на одном из своих логических томов каталог /root** <br/>
 Эта задача автоматизирована с помощью скрипта:<br/>
 https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_6_GRUB/vg-rename.sh<br/>
-Скрипт сам определяет ту группу томов на которой находится каталог /root и переименовывает его в OtusNewRoot, правит fstab, /etc/default/grub, монтирует рутовый логический том в  /mnt, после чего chroot в /mnt, так как если этого не сделать то пересобрать невозмchroot /sysroot <br/>
-passwd root <br/>
-exit <br/>ожно - не находит по новому названию vg в /root/<br/>
+Скрипт сам определяет ту группу томов на которой находится каталог /root и переименовывает его в OtusNewRoot, правит fstab, /etc/default/grub, монтирует рутовый логический том в  /mnt, после чего chroot в /mnt, так как если этого не сделать то пересобрать grub  невозможно - не находит по новому названию vg пусть к  /root/<br/>
 3. **Добавить модуль в initrd** <br/>
 mkdir /usr/lib/dracut/modules.d/01test <br/>
 sudo cp module-setup.sh test.sh /usr/lib/dracut/modules.d/01test/ <br/>
