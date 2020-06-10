@@ -1,0 +1,7 @@
+https://gitlab.com/otus_linux/stands-05-bash
+https://www.opennet.ru/docs/RUS/bash_scripting_guide/
+https://help.ubuntu.ru/wiki/bash
+https://www.opennet.ru/docs/RUS/awk/
+https://linuxconfig.org/learning-linux-commands-sed
+https://www.tldp.org/LDP/Bash-Beginners-Guide/html/
+https://habr.com/ru/company/ruvds/blog/325522/
