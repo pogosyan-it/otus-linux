@@ -1,0 +1,13 @@
+[Unit]
+Description=Daemon FastCGI
+After=syslog.target
+
+[Service]
+
+EnvironmentFile=/etc/sysconfig/spawn-fcgi
+ExecStart=/usr/bin/spawn-fcgi -n $OPTIONS
+Type=simple
+
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,12 @@
+[Unit]
+Description=Execute backup every day at 04:00
+
+[Timer]
+#OnUnitActiveSec=30s
+AccuracySec=1us
+OnCalendar=*:*:0/30
+Unit=logmon.service
+
+[Install]
+WantedBy=multi-user.target
+

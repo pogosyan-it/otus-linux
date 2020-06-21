@@ -1,0 +1,9 @@
+[Unit]
+Description=Log test with timer
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /vagrant/script.sh
+
+[Install]
+WantedBy=multi-user.target
