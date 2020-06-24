@@ -6,7 +6,7 @@ Documentation=man:apachectl(8)
 
 [Service]
 Type=notify
-EnvironmentFile=/etc/sysconfig/httpd-conf%I
+EnvironmentFile=/etc/sysconfig/%i
 ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND
 ExecReload=/usr/sbin/httpd $OPTIONS -k graceful
 ExecStop=/bin/kill -WINCH ${MAINPID}
