@@ -1,6 +1,6 @@
 # SYSTEMD
 
-Для запуска стенда необходимо папку files:
+Для запуска стенда необходимо папку files:/n/r
 <https://github.com/pogosyan-it/otus-linux/tree/master/Lesson_7_Systemd/files>
 
 
