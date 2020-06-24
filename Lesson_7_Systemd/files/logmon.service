@@ -3,7 +3,7 @@ Description=Log test with timer
 
 [Service]
 Type=simple
-ExecStart=/bin/bash /vagrant/script.sh
+ExecStart=/bin/bash /vagrant/log_count.sh
 
 [Install]
 WantedBy=multi-user.target
