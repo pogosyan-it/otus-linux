@@ -1,0 +1,8 @@
+---
+- name: NGINX | Install and configure NGINX
+  hosts: all
+  become: true
+  become_method: sudo
+  roles: 
+    - { role: nginx_install, nginx_listen_port: 8080, when: ansible_hostname == 'host1' }
+    - { role: nginx_install, nginx_listen_port: 443, when: ansible_hostname == 'host2' }
