@@ -14,7 +14,7 @@
 3. Устанавливаем утилиту xfsdump и копируем системные файлы на /dev/md0: <br/>
    `yum install -y xfsdump` <br/>
    `xfsdump -J - /dev/sda1 | xfsrestore -J - /mnt` <br/>
-    если ФС не xfs, можно воспользоваться tar-ом или rsync-ом:
+    если ФС не xfs, можно воспользоваться tar-ом или rsync-ом: <br/>
     `tar -cpv --exclude /mnt --exclude /dev --exclude /sys --exclude /proc --exclude /run --exclude /boot / | tar -x -C /mnt/`
 4. Монтируем информацию о текущей системе в наш новый корень и делаем chroot в него: <br/>
    `for i in /proc/ /sys/ /dev/ /run/ /boot/; do mount --bind $i /mnt/$i; done` <br/>
