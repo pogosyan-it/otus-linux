@@ -1,4 +1,4 @@
-#!/bun/bash
+#!/bin/bash
 
 /usr/sbin/groupadd admin
 
@@ -25,3 +25,11 @@ n=$(cat /etc/pam.d/sshd | grep -n "pam_nologin.so" |  sed -e 's/:.*//g')
 string="account    required     pam_time.so"
 let "j=$n+1"
 sed -i "${j}i\\$string" /etc/pam.d/sshd
+
+
+yum install polkit docker -y
+cp /vagrant/01-systemd.rules /etc/polkit-1/rules.d/
+chown root:root /etc/polkit-1/rules.d/01-systemd.rules
+su vagrant 
+systemctl start docker.service
+systemctl status docker.service
