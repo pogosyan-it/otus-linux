@@ -1,5 +1,5 @@
-Написан docker-compose.yml  для запуска 2х контеинеров в одном из которых поднят nginx, а во втором php. В папке www лежит стартовая страница index.php, а конфиг nginx-заливается из файла default.conf. Развертывание стенда происходит командой 
-`docker-compose up -d` (при условии что директории откуда происходит запуск лежит docker-compose.yml, а так-же папка www и файл defaults.conf), после чего по ссылке `http://localhost:8080` получаем кастомную web страницу c выводом `phpinfo()`. Отдельно залиты на dockerhub образы контейнеров, доступные пол ссылкам: <br/>
+Написан docker-compose.yml  для запуска 2х контеинеров в одном из которых поднят nginx, а во втором php. В папке www лежит стартовая страница index.php, а конфиг nginx-заливается из файла default.conf. Развертывание стенда происходит командой <br/>
+`docker-compose up -d` (в директории, откуда происходит запуск, лежит docker-compose.yml, а так-же папка www и файл defaults.conf), после чего по ссылке `http://localhost:8080` получаем кастомную web страницу c выводом `phpinfo()`. Отдельно залиты на dockerhub образы контейнеров, доступные по ссылкам: <br/>
 https://hub.docker.com/r/dockerlabtst/nginx_custom     
 https://hub.docker.com/repository/docker/dockerlabtst/php
 
