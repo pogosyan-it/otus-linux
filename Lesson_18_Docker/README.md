@@ -1,5 +1,5 @@
 Написан docker-compose.yml  для запуска 2х контеинеров в одном из которых поднят nginx, а во втором php. Развертывание стенда происходит командой 
-`docker-compose up -d`, после чего по ссылке `http://localhost:8080` получаем кастомную web страницу c выводом `phpinfo()`. Отдельно залиты на dockerhub образы контейнеров, доступные пол ссылкам:
+`docker-compose up -d`, после чего по ссылке `http://localhost:8080` получаем кастомную web страницу c выводом `phpinfo()`. Отдельно залиты на dockerhub образы контейнеров, доступные пол ссылкам: <br/>
 https://hub.docker.com/r/dockerlabtst/nginx_custom     
 https://hub.docker.com/repository/docker/dockerlabtst/php
 
