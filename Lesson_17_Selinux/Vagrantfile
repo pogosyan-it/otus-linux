@@ -1,0 +1,48 @@
+# -*- mode: ruby -*-
+# vim: set ft=ruby :
+
+
+# Describe VMs
+MACHINES = {
+  # VM name "kernel update"
+  :"selinux" => {
+              # VM box
+              :box_name => "centos/7",
+              # VM CPU count
+              :cpus => 2,
+              # VM RAM size (Mb)
+              :memory => 2048,
+              # networks
+              :net => [],
+              # forwarded ports
+              :forwarded_port => [],
+              :ip_addr => '192.168.11.131'
+            }
+}
+
+Vagrant.configure("2") do |config|
+  MACHINES.each do |boxname, boxconfig|
+    # Enable shared folders
+    config.vm.synced_folder ".", "/vagrant", id: "vagrant", automount: true
+    # Apply VM config
+    config.vm.define boxname do |box|
+      # Set VM base box and hostname
+      box.vm.box = boxconfig[:box_name]
+      box.vm.host_name = boxname.to_s
+      box.vm.network "private_network", ip: boxconfig[:ip_addr]
+      # VM resources config
+      box.vm.provider "virtualbox" do |v|
+        # Set VM RAM size and CPU count
+        v.memory = boxconfig[:memory]
+        v.cpus = boxconfig[:cpus]
+       box.vm.provision "shell", inline: <<-SHELL
+              mkdir -p ~root/.ssh
+              cp ~vagrant/.ssh/auth* ~root/.ssh
+              yum install -y epel-release
+              yum install -y nginx setools-console policycoreutils-python nano
+          SHELL
+       end
+      end
+    #config.vm.provision :shell, path: "script.sh", run: 'always'
+  end
+end
