@@ -27,7 +27,7 @@
  Allow system to run with NIS
 
  Allow access by executing:
- # setsebool -P nis_enabled 1
+ `# setsebool -P nis_enabled 1`
  Утилита audit2why нам сама подсказывает один из способов запуска nginx на нестандартном порту (setsebool -P nis_enabled 1). Это не лучший способ так как таким образом открывается возможность запуска и других сервисов, а также запуск nginx на произвольном порту.
 2. В selinux за каждый сервис отвечает некий контекст:
   semanage port -l | grep http
