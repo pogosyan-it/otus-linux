@@ -16,7 +16,7 @@
     Исправленный стенд или демонстрация работоспособной системы скриншотами и описанием. 
 
  Чтобы иметь все необходимые инструменты для работы с Selinux необходимо установить следующие пакеты:
-  `yum install setools-console policycoreutils-python selinux-policy* ` 
+  `yum install setools-console policycoreutils-python setroubleshoot selinux-policy* ` 
   1. В файле /etc/nginx/nginx.conf изменим порт 80 на допустим 2080, после чего сервис nginx перестанет запускатся (при включенном selinux) 
   audit2why < /var/log/audit/audit.log
   type=AVC msg=audit(1598204042.094:1728): avc:  denied  { name_bind } for  pid=8666 comm="nginx" src=2080 scontext=system_u:system_r:httpd_t:s0 tcontext=system_u:object_r:unreserved_port_t:s0 tclass=tcp_socket
@@ -34,7 +34,22 @@
 http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010 <br/>
 http_cache_port_t              udp      3130<br/>
 **http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000**<br/>
-pegasus_http_port_t            tcp      5988<br/>
-pegasus_https_port_t           tcp      5989<br/>
 
+несложно догадаться что за запуск web сервера в селинукс отвечает контекст http_port_t. Нам остается добавить в него наш нестандартный порт:<br/>
+`semanage port -a -t http_port_t -p tcp 2080`
+systemctl status nginx <br/>
+● nginx.service - The nginx HTTP and reverse proxy server <br/>
+   Loaded: loaded (/usr/lib/systemd/system/nginx.service; disabled; vendor preset: disabled) <br/>
+   Active: active (running) since Sun 2020-08-23 18:09:33 UTC; 6s ago<br/>
    
+3. Помимо утилиты audit2why есть очень удобная утилита sealert:  <br/>
+  `sealert -a /var/log/audit/audit.log` <br/>
+  Помимо указания проблем с запуском nginx подсказывает еще один способ запуска: <br/>
+  ausearch -c 'nginx' --raw | audit2allow -M my-nginx <br/>
+******************** IMPORTANT *********************** <br/>
+To make this policy package active, execute: <br/>
+
+semodule -i my-nginx.pp <br/>
+После установки модуля `my-nginx.pp` nginx запустится на порту нашем нестандартном порту.
+
+
