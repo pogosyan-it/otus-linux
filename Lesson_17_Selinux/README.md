@@ -21,20 +21,20 @@
   audit2why < /var/log/audit/audit.log
   type=AVC msg=audit(1598204042.094:1728): avc:  denied  { name_bind } for  pid=8666 comm="nginx" src=2080 scontext=system_u:system_r:httpd_t:s0 tcontext=system_u:object_r:unreserved_port_t:s0 tclass=tcp_socket
 
- Was caused by:
- The boolean nis_enabled was set incorrectly.
- Description:
- Allow system to run with NIS
+ Was caused by:<br/>
+ The boolean nis_enabled was set incorrectly.<br/>
+ Description:<br/>
+ Allow system to run with NIS<br/>
 
- Allow access by executing:
- `# setsebool -P nis_enabled 1`
- Утилита audit2why нам сама подсказывает один из способов запуска nginx на нестандартном порту (setsebool -P nis_enabled 1). Это не лучший способ так как таким образом открывается возможность запуска и других сервисов, а также запуск nginx на произвольном порту.
-2. В selinux за каждый сервис отвечает некий контекст:
-  semanage port -l | grep http
+ Allow access by executing:<br/>
+ `# setsebool -P nis_enabled 1` <br/>
+ Утилита audit2why нам сама подсказывает один из способов запуска nginx на нестандартном порту (setsebool -P nis_enabled 1). Это не лучший способ так как таким образом открывается возможность запуска и других сервисов, а также запуск nginx на произвольном порту.<br/>
+2. В selinux за каждый сервис отвечает некий контекст:<br/>
+  semanage port -l | grep http<br/>
 http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010 <br/>
-http_cache_port_t              udp      3130
-**http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000**
-pegasus_http_port_t            tcp      5988
-pegasus_https_port_t           tcp      5989
+http_cache_port_t              udp      3130<br/>
+**http_port_t                    tcp      80, 81, 443, 488, 8008, 8009, 8443, 9000**<br/>
+pegasus_http_port_t            tcp      5988<br/>
+pegasus_https_port_t           tcp      5989<br/>
 
    
