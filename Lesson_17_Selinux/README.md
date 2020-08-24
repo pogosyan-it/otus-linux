@@ -52,7 +52,7 @@ To make this policy package active, execute: <br/>
 semodule -i my-nginx.pp <br/>
 После установки модуля `my-nginx.pp` nginx запустится на нестандартном порту.
 
-2. После того как развернут стэнд, заходим на `ns01` запускаем:
+2. После того как развернут стенд, заходим на `ns01` запускаем: <br/>
 [vagrant@client ~]$ nsupdate -k /etc/named.zonetransfer.key <br/>
 > server 192.168.50.10 <br/>
 > zone ddns.lab <br/>
