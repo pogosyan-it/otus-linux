@@ -90,13 +90,13 @@ To make this policy package active, execute: <br/>
 
 semodule -i named_t.pp <br/>
 
-Запустим команду `semodule -i named_t.pp`, после чего перейдем снова под пользователя vagrant и запустим команду `nsupdate`:
-[vagrant@ns01 ~]$ nsupdate -k /etc/named.zonetransfer.key  <br/
-> server 192.168.50.10  <br/
-> zone ddns.lab  <br/
-> update add www.ddns.lab. 60 A 192.168.50.15 <br/
-> send <br/
->  <br/
+Запустим команду `semodule -i named_t.pp`, после чего перейдем снова под пользователя vagrant и запустим команду `nsupdate`: <br/>
+[vagrant@ns01 ~]$ nsupdate -k /etc/named.zonetransfer.key  <br/>
+> server 192.168.50.10 <br/>
+> zone ddns.lab  <br/>
+> update add www.ddns.lab. 60 A 192.168.50.15 <br/>
+> send <br/>
+>  <br/>
 Как видим команда отработала без ошибок.
 
 
