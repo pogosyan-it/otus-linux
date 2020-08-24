@@ -59,7 +59,7 @@ semodule -i my-nginx.pp <br/>
 > update add www.ddns.lab. 60 A 192.168.50.15 <br/>
 > send<br/>
 update failed: SERVFAIL <br/>
-Того как появилась ошибка, с помощью утилиты audit2why полуим слудеющую подсказку:
+Того как появилась ошибка, с помощью утилиты audit2why получим слудеющую подсказку: <br/>
 
 type=AVC msg=audit(1598216680.578:2040): avc:  denied  { unlink } for  pid=5464 comm="isc-worker0000" name="named.ddns.lab" dev="dm-0" ino=278807 scontext=system_u:system_r:named_t:s0 tcontext=system_u:object_r:etc_t:s0 tclass=file <br/>
 
