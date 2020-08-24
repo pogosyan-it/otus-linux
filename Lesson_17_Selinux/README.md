@@ -50,6 +50,54 @@ systemctl status nginx <br/>
 To make this policy package active, execute: <br/>
 
 semodule -i my-nginx.pp <br/>
-После установки модуля `my-nginx.pp` nginx запустится на порту нашем нестандартном порту.
+После установки модуля `my-nginx.pp` nginx запустится на нестандартном порту.
+
+2. После того как развернут стэнд, заходим на `ns01` запускаем:
+[vagrant@client ~]$ nsupdate -k /etc/named.zonetransfer.key <br/>
+> server 192.168.50.10 <br/>
+> zone ddns.lab <br/>
+> update add www.ddns.lab. 60 A 192.168.50.15 <br/>
+> send<br/>
+update failed: SERVFAIL <br/>
+Того как появилась ошибка, с помощью утилиты audit2why полуим слудеющую подсказку:
+
+type=AVC msg=audit(1598216680.578:2040): avc:  denied  { unlink } for  pid=5464 comm="isc-worker0000" name="named.ddns.lab" dev="dm-0" ino=278807 scontext=system_u:system_r:named_t:s0 tcontext=system_u:object_r:etc_t:s0 tclass=file <br/>
+
+        Was caused by: <br/>
+                Missing type enforcement (TE) allow rule. <br/>
+
+                **You can use audit2allow to generate a loadable module to allow this access.**<br/>
+
+Таким образом можно использовать утилиту audit2allow, которая подскажет какой именно модуль необходимо загрузить, чтобы user vagrant могу бы обновить зону:<br/>
+`man audit2allow`<br/>
+OPTIONS<br/>
+       -a | --all<br/>
+              Read input from audit and message log<br/>
+
+audit2allow -a <br/>
+
+
+#============= named_t ==============
+
+#!!!! WARNING: 'etc_t' is a base type.<br/>
+allow named_t etc_t:file { create rename unlink write };<br/>
+allow named_t sysctl_net_t:dir search;<br/>
+
+Откуда понятно, что за обновление DNS зон отвечает контекст named_t.  Снова воспользуемся `man` и найдем ключ, который отвечает за определение названия модуля - это ключ -M:
+[root@ns01 ~]# audit2allow -a -M named_t <br/>
+******************** IMPORTANT *********************** <br/>
+To make this policy package active, execute: <br/>
+
+semodule -i named_t.pp <br/>
+
+Запустим команду `semodule -i named_t.pp`, после чего перейдем снова под пользователя vagrant и запустим команду `nsupdate`:
+[vagrant@ns01 ~]$ nsupdate -k /etc/named.zonetransfer.key  <br/
+> server 192.168.50.10  <br/
+> zone ddns.lab  <br/
+> update add www.ddns.lab. 60 A 192.168.50.15 <br/
+> send <br/
+>  <br/
+Как видим команда отработала без ошибок.
+
 
 
