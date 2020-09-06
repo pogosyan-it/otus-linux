@@ -99,10 +99,10 @@ semodule -i named_t.pp <br/>
 >  <br/>
 Как видим команда отработала без ошибок.
 
-   Если более внимательно изучить проблему, то можно сделать вывод, что динамические файлы зон должны лежать в `/var/named/dynamic` и тогда никакого влияния Selinux на корректную работу сервиса не окажет. Чтобы наш стенд поднялся и сервис named запустился бы необходимо:
+   Если более внимательно изучить проблему, то можно сделать вывод, что динамические файлы зон должны лежать в `/var/named/dynamic` и тогда никакого влияния Selinux на корректную работу сервиса не окажет. Чтобы наш стенд поднялся и сервис named запустился необходимо:
    1) Поправить файл named.conf: `/etc/named/dynamic --> /var/named/dynamic`
    2) Поправить файл playbook.yml: `/etc/named/dynamic --> /var/named/dynamic`
    Верные файлы:  <br/>
    https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_17_Selinux/named.conf  <br/>
    https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_17_Selinux/playbook.yml
-   
+   После чего, обновление зон пройдет успешно.
