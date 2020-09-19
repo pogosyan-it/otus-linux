@@ -1,0 +1,24 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.synced_folder ".", "/vagrant", id: "vagrant", automount: true
+  config.vm.define "backup-server" do |server|
+    server.vm.box = "centos/7"
+    server.vm.hostname = "backup-server"
+    server.vm.network :private_network, ip: "192.168.11.160"
+    server.vm.provider "virtualbox" do |vb|
+       vb.memory = "1024"
+       second_disk = './second_hdd.vdi'
+       vb.customize ['createhd', '--filename', second_disk, '--format', 'VDI', '--size', 2 * 1024]
+       vb.customize ['storageattach', :id, '--storagectl', 'IDE', '--port', 0, '--device', 1, '--type', 'hdd', '--medium', second_disk]
+     end
+  end
+
+  config.vm.define "client" do |client|
+    client.vm.box = "centos/7"
+    client.vm.hostname = "client"
+    client.vm.network :private_network, ip: "192.168.11.161"
+  end
+      config.vm.provision "shell", path: "script.sh"
+end
