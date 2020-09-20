@@ -1,4 +1,4 @@
-#/bin/bash 
+#!/bin/bash 
 
 Host="192.168.11.160"
 backup_dir="/etc"
