@@ -9,7 +9,14 @@
  $template RemoteLogs,"/var/log/%fromhost-ip%/%PROGRAMNAME%.log" <br/>
  *.* ?RemoteLogs <br/>
  & ~ <br/>
-   
+ Чтобы убедлится что помимо логов изменения в конфигурации, пишутся и access логи, достаточно выполнить:
+ curl http://192.168.11.170/ <br/>
+ Сразу получим лог: <br/>
+Sep 28 23:33:01 web nginx: nginx: the configuration file /etc/nginx/nginx.conf syntax is ok <br/>
+Sep 28 23:33:01 web nginx: nginx: configuration file /etc/nginx/nginx.conf test is successful <br/>
+Sep 28 23:33:27 192.168.11.170 nginx: 192.168.11.1 - - [28/Sep/2020:23:33:27 +0300] "GET / HTTP/1.1" 200 4833 "-" "curl/7.58.0"<br/>
+
+Системные логи пишутся абсолютно все, если пытаюсь какие-то исключить то перестают писатся и access логи. Не нашел причину и не смог исправить эту проблему.
 
 
 
