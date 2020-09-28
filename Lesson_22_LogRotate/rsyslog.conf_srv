@@ -43,7 +43,8 @@ $OmitLocalLogging on
 $IMJournalStateFile imjournal.state
 
 $template RemoteLogs,"/var/log/%fromhost-ip%/%PROGRAMNAME%.log"
-auth,authpriv,kern,syslog,daemon.* ?RemoteLogs
+*.* ?RemoteLogs
+#auth,authpriv,kern,syslog,daemon.* ?RemoteLogs
 & ~
 
 
