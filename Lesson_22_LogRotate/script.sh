@@ -32,8 +32,8 @@ if [[ $ip -eq 170 ]]; then
 else
      SET_TO_ALL
      mv /vagrant/rsyslog.conf_srv /etc/rsyslog.conf
-     sed -i -e 's/\#\#tcp_listen_port =.*/tcp_listen_port = 60/g' /etc/audit/auditd.conf
-     chown root:root /etc/rsyslog.conf
+     mv /vagrant/auditd_srv.conf /etc/audit/auditd.conf
+     chown root:root /etc/rsyslog.conf /etc/audit/auditd.conf
      systemctl restart rsyslog
      service auditd  restart 
 fi
