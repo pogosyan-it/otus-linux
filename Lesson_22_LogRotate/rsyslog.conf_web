@@ -90,4 +90,4 @@ local7.*                                                /var/log/boot.log
 #*.* @@remote-host:514
 # ### end of the forwarding rule ###
 
-*.notice @@192.168.11.171:514
+*.crit @@192.168.11.171:514

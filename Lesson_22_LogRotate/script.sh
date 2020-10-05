@@ -21,11 +21,12 @@ if [[ $ip -eq 170 ]]; then
    systemctl enable nginx
    mv /vagrant/nginx.conf /etc/nginx/nginx.conf
    mv /vagrant/rsyslog.conf_web /etc/rsyslog.conf
-   mv /vagrant/audisp-remote_web.conf /etc/audisp/audisp-remote.conf
+   mv /vagrant/audisp-remote_web.conf /1etc/audisp/audisp-remote.conf
    chown root:root /etc/rsyslog.conf /etc/nginx/nginx.conf /etc/audisp/audisp-remote.conf
    sed -i -e 's/^active =.*/active = yes/g' /etc/audisp/plugins.d/au-remote.conf
    echo "-w /etc/nginx/nginx.conf -p wa" > /etc/audit/rules.d/audit.rules
    echo "-w /etc/nginx -p r" >> /etc/audit/rules.d/audit.rules
+   mkdir -p /var/log/192.168.11.170/
    systemctl start nginx
    systemctl restart rsyslog
    service auditd restart
