@@ -79,7 +79,7 @@ Office2----/
 
 Практическая часть:
 Чтобы разрулить правильно маршрутизацию сперва начертим схему сети <br/>
-https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_25_Network/Network_Office.jpg <br/>
+https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_25_Network/Office_network.jpg <br/>
 Необходимо сделать так чтобы все компьютеры и сервера в обоих офисах имели бы доступ к ресурасм в центральном офисе и через центральный роутер выходили бы в инет.
 Для этого внешние интерфейсам роутеров в центральном офисе, в 2-х доп. офисах и внутренний интерфейс на IRouter-e должны быть в отдельных подсетях (чтобы можно было понять какой трафик из какой сети идет и, при необходимости, управлять ими):
 Пусть подсеть, объединяющая <br/>
@@ -96,20 +96,20 @@ https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_25_Network/Network_
 - office2Server {'192.168.1.2/25'}
 Чтобы у сетей (и всех хостов в них) был бы доступ в инет необходимо на роутере office1Router прописать шлюз по умолчанию:
 `echo "GATEWAY=192.168.254.1" >> /etc/sysconfig/network-scripts/ifcfg-eth1`, аналогично на роутере office2Router.
-На centralRouter можно вместо того, чтобы на отдельных сетевых интерфейсах настаивать сети  192.168.254.0/30, 192.168.255.0/30, 192.168.253.0/30 можглна одном интерфейсе поднять сразу 3 подсети:
-`nmcli connection modify "System eth1" +ipv4.addresses "192.168.254.1/30"`
-`nmcli connection modify "System eth1" +ipv4.addresses "192.168.253.1/30"`
+На centralRouter можно вместо того, чтобы на отдельных сетевых интерфейсах настаивать сети  192.168.254.0/30, 192.168.255.0/30, 192.168.253.0/30 можглна одном интерфейсе поднять сразу 3 подсети:<br/>
+`nmcli connection modify "System eth1" +ipv4.addresses "192.168.254.1/30"` <br/>
+`nmcli connection modify "System eth1" +ipv4.addresses "192.168.253.1/30"` <br/>
 и прописать шлюз по умолчанию 
 `echo "GATEWAY=192.168.255.1" >> /etc/sysconfig/network-scripts/ifcfg-eth1`
-Далее весь трайфик который пришел с office1Router пустим через 192.168.254.2, и весь тафик с office2Router через 192.168.253.2:
-echo "192.168.2.0/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1
-echo "192.168.2.128/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1
-echo "192.168.2.192/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1
-echo "192.168.2.64/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1
+Далее весь трайфик который пришел с office1Router пустим через 192.168.254.2, и весь тафик с office2Router через 192.168.253.2: <br/>
+echo "192.168.2.0/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/>
+echo "192.168.2.128/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/> 
+echo "192.168.2.192/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/>
+echo "192.168.2.64/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/>
 
-echo "192.168.1.0/25 via 192.168.253.2 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1
-echo "192.168.1.128/26 via 192.168.253.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1
-echo "192.168.1.192/26 via 192.168.253.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1
+echo "192.168.1.0/25 via 192.168.253.2 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1<br/>
+echo "192.168.1.128/26 via 192.168.253.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/>
+echo "192.168.1.192/26 via 192.168.253.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1<br/>
 Больше никаких изменений в предоставленный шаблон Vagrantfile-а вносить вроде бы и не надо.
 
 
