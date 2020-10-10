@@ -94,10 +94,9 @@ https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_25_Network/Network_
 - office1Server {'192.168.2.2/26'}
 - office2Router {'192.168.253.2/30', '192.168.1.1/25', '192.168.1.129/26', '192.168.1.193/26'}
 - office2Server {'192.168.1.2/25'}
-Чтобы у сетей (и всех хостов в них) был бы доступ в инет необходимо на роутере office1Router (office2Router ) прописать маршрут для всех сетей:
-`echo "192.168.2.0/26 via 192.168.254.1 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1`
-`echo "192.168.2.64/26 via 192.168.254.1 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1`
-`echo "192.168.2.128/26 via 192.168.254.1 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1`
-`echo "192.168.2.192/26 via 192.168.254.1 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1`
+Чтобы у сетей (и всех хостов в них) был бы доступ в инет необходимо на роутере office1Router (office2Router ) прописать шлюз по умолчанию:
+
+
+
 
 
