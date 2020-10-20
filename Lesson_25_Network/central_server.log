@@ -1,0 +1,49 @@
+root@home-laptop:/media/data/otus-git/otus-linux/Lesson_25_Network# vagrant ssh centralServer
+[vagrant@centralServer ~]$ ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=59 time=17.5 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=59 time=18.2 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=59 time=18.3 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=59 time=18.2 ms
+64 bytes from 8.8.8.8: icmp_seq=5 ttl=59 time=18.3 ms
+64 bytes from 8.8.8.8: icmp_seq=6 ttl=59 time=18.1 ms
+64 bytes from 8.8.8.8: icmp_seq=7 ttl=59 time=18.1 ms
+64 bytes from 8.8.8.8: icmp_seq=8 ttl=59 time=18.3 ms
+^C
+--- 8.8.8.8 ping statistics ---
+8 packets transmitted, 8 received, 0% packet loss, time 7040ms
+rtt min/avg/max/mdev = 17.574/18.174/18.398/0.239 ms
+[vagrant@centralServer ~]$ ip r
+default via 192.168.0.1 dev eth1 proto static metric 100
+10.0.2.0/24 dev eth0 proto kernel scope link src 10.0.2.15 metric 101
+192.168.0.0/28 dev eth1 proto kernel scope link src 192.168.0.2 metric 100
+[vagrant@centralServer ~]$ ping 192.168.0.1
+PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.
+64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.998 ms
+64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.834 ms
+64 bytes from 192.168.0.1: icmp_seq=3 ttl=64 time=0.890 ms
+^C
+--- 192.168.0.1 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2002ms
+rtt min/avg/max/mdev = 0.834/0.907/0.998/0.072 ms
+[vagrant@centralServer ~]$ ping 192.168.255.1
+PING 192.168.255.1 (192.168.255.1) 56(84) bytes of data.
+64 bytes from 192.168.255.1: icmp_seq=1 ttl=63 time=2.13 ms
+64 bytes from 192.168.255.1: icmp_seq=2 ttl=63 time=1.74 ms
+64 bytes from 192.168.255.1: icmp_seq=3 ttl=63 time=1.74 ms
+64 bytes from 192.168.255.1: icmp_seq=4 ttl=63 time=1.75 ms
+64 bytes from 192.168.255.1: icmp_seq=5 ttl=63 time=1.74 ms
+^C
+--- 192.168.255.1 ping statistics ---
+5 packets transmitted, 5 received, 0% packet loss, time 4037ms
+rtt min/avg/max/mdev = 1.741/1.825/2.136/0.155 ms
+[vagrant@centralServer ~]$ ping 192.168.255.2
+PING 192.168.255.2 (192.168.255.2) 56(84) bytes of data.
+64 bytes from 192.168.255.2: icmp_seq=1 ttl=64 time=0.997 ms
+64 bytes from 192.168.255.2: icmp_seq=2 ttl=64 time=0.753 ms
+64 bytes from 192.168.255.2: icmp_seq=3 ttl=64 time=0.854 ms
+^C
+--- 192.168.255.2 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2006ms
+rtt min/avg/max/mdev = 0.753/0.868/0.997/0.100 ms
+[vagrant@centralServer ~]$
