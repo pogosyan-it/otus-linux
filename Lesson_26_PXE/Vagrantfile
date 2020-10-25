@@ -4,17 +4,17 @@
 # vim: set ft=ruby :
 
 MACHINES = {
-:"dhcp-server" => {
+:"web-client" => {
         :box_name => "centos/7",
         #:public => {:ip => '10.10.10.1', :adapter => 1},
         :net => [
-                   {ip: '192.168.77.1', adapter: 2, netmask: "255.255.255.0", virtualbox__intnet: "net"},
+                   {ip: '192.168.111.2', adapter: 2, netmask: "255.255.255.0", virtualbox__intnet: "net2"},
                 ]
   },
-  :"web-client" => {
+  :"dhcp-server" => {
         :box_name => "centos/7",
         :net => [
-                   {ip: '192.168.77.2', adapter: 2, netmask: "255.255.255.0", virtualbox__intnet: "net"},
+                   {ip: '192.168.111.1', adapter: 2, netmask: "255.255.255.0", virtualbox__intnet: "net2"},
                 ]
   }
 }
@@ -41,21 +41,51 @@ Vagrant.configure("2") do |config|
                 cp ~vagrant/.ssh/auth* ~root/.ssh
         SHELL
         
-        case boxname.to_s
-        when "dhcp-server"
-          box.vm.provision "shell", run: "always", inline: <<-SHELL
-            sudo yum install epel-release -y
-            sudo yum install nano net-tools xinetd tftp-server dhcp -y
-            sudo systemctl start dhcpd
-            systemctl enable dhcpd
-          SHELL
+     case boxname.to_s
         when "web-client"
           box.vm.provision "shell", run: "always", inline: <<-SHELL
             sudo yum install epel-release -y
-            sudo yum install nano httpd net-tools, wget -y
+            sudo yum install wget nano httpd net-tools, wget -y
             sudo systemctl start httpd
             sudo systemctl enable httpd
-             SHELL
+            #wget https://mirror.yandex.ru/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-dvd1.iso
+            #wget ftp.lysator.liu.se/pub/CentOS/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-boot.iso
+            wget https://mirror.yandex.ru/centos/8.2.2004/isos/x86_64/CentOS-8.2.2004-x86_64-minimal.iso
+            mkdir /mnt/centos8-install/
+            mount -o loop,ro -t iso9660 CentOS-8.2.2004-x86_64-minimal.iso /mnt/centos8-install/
+            cp -r /mnt/centos8-install/ /var/www/html/
+            cp /vagrant/ks.cfg /var/www/html/centos8-install/
+            systemctl restart httpd.service
+            chmod -R 755 /var/www/html/centos8-install/
+
+          SHELL
+          when "dhcp-server"
+            box.vm.provision "shell", run: "always", inline: <<-SHELL
+            sudo yum install epel-release -y
+            sudo yum install wget nano net-tools xinetd dracut-network tftp-server dhcp -y
+            sudo cp /vagrant/tftp /etc/xinetd.d/
+            sudo cp /vagrant/dhcpd.conf /etc/dhcp/
+            sudo mkdir -p /etc/dhcp/rsv.d
+            sudo mkdir -p /etc/dhcp/subnet.d
+            sudo cp /vagrant/deploy-hosts.rsv /etc/dhcp/rsv.d/           
+            sudo cp /vagrant/subnet.conf /etc/dhcp/subnet.d/
+            sudo mkdir -p /var/lib/tftpboot/pxelinux.cfg
+            sudo chmod 755 /var/lib/tftpboot/pxelinux.cfg
+            wget http://192.168.111.2/centos8-install/BaseOS/Packages/syslinux-tftpboot-6.04-4.el8.noarch.rpm
+            #sudo cp /vagrant/syslinux-tftpboot-6.04-4.el8.noarch.rpm /tmp
+            sudo rpm2cpio /home/vagrant/syslinux-tftpboot-6.04-4.el8.noarch.rpm | cpio -dimv
+            sudo cp /home/vagrant/tftpboot/ldlinux.c32 /home/vagrant/tftpboot/libutil.c32 /home/vagrant/tftpboot/menu.c32 /home/vagrant/tftpboot/pxelinux.0 /var/lib/tftpboot/
+            sudo wget http://192.168.111.2/centos8-install/images/pxeboot/initrd.img
+            sudo wget http://192.168.111.2/centos8-install/images/pxeboot/vmlinuz
+            sudo cp /home/vagrant/initrd.img /home/vagrant/vmlinuz /var/lib/tftpboot/
+            sudo cp /vagrant/default /var/lib/tftpboot/pxelinux.cfg/ 
+            sudo systemctl start dhcpd
+            sudo systemctl enable dhcpd
+            sudo systemctl start tftp
+            sudo systemctl enable tftp
+            sudo systemctl start xinetd
+            sudo systemctl enable xinetd
+           SHELL
         end
 
     end

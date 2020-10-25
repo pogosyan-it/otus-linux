@@ -1,0 +1,1 @@
+host server-centos-8 { filename "pxelinux.0" ; hardware ethernet 08:00:27:56:6D:C9 ; fixed-address 192.168.111.23; }
