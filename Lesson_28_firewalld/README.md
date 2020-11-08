@@ -1,116 +1,71 @@
-# otus-linux
-Vagrantfile - для стенда урока 9 - Network
+ДЗ №28 Фильтрация трафика - firewalld, iptables
+Домашнее задание
 
-# Дано
-Vagrantfile с начальным  построением сети
-inetRouter
-centralRouter
-centralServer
+Сценарии iptables
+Цель: Студент получил навыки работы с centralServer, inetRouter.
+1) реализовать knocking port
+- centralRouter может попасть на ssh inetrRouter через knock скрипт
+пример в материалах
+2) добавить inetRouter2, который виден(маршрутизируется (host-only тип сети для виртуалки)) с хоста или форвардится порт через локалхост
+3) запустить nginx на centralServer
+4) пробросить 80й порт на inetRouter2 8080
+5) дефолт в инет оставить через inetRouter
 
-тестировалось на virtualbox
+* реализовать проход на 80й порт без маскарадинга
+Критерии оценки: 5 - все сделано 
 
-# Планируемая архитектура
-построить следующую архитектуру
+Практическая часть
 
-Сеть office1
-- 192.168.2.0/26      - dev
-- 192.168.2.64/26    - test servers
-- 192.168.2.128/26  - managers
-- 192.168.2.192/26  - office hardware
+ОБРАТИТЕ ВНИМАНИЕ! До того как выполнять настройки iptables, строго рекомендую всегда скачивать пакет - iptables-services, чтобы не возникало проблем с запуском автозагрузки и сохранения конфигов iptables(yum install -y iptables-services).
+1) Реализовать knocking port - centralRouter может попасть на ssh inetRouter через knock скрипт
 
-Сеть office2
-- 192.168.1.0/25      - dev
-- 192.168.1.128/26  - test servers
-- 192.168.1.192/26  - office hardware
+-- Использование таких программ как knock
 
+Прописаны след. правила в iptables(Vagrantfile).
 
-Сеть central
-- 192.168.0.0/28    - directors
-- 192.168.0.32/28  - office hardware
-- 192.168.0.64/26  - wifi
+sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT; sudo iptables -A INPUT -p tcp --dport 22 -j REJECT; service iptables save iptables
 
-```
-Office1 ---\
-      -----> Central --IRouter --> internet
-Office2----/
-```
-Итого должны получится следующие сервера
-- inetRouter
-- centralRouter
-- office1Router
-- office2Router
-- centralServer
-- office1Server
-- office2Server
+Затем привести файлы конфигурации к следующему виду:
 
-# Теоретическая часть
-- Найти свободные подсети
-- Посчитать сколько узлов в каждой подсети, включая свободные
-- Указать broadcast адрес для каждой подсети
-- проверить нет ли ошибок при разбиении
+/etc/knockd.conf
+[options]
+	UseSyslog
 
-# Практическая часть
-- Соединить офисы в сеть согласно схеме и настроить роутинг
-- Все сервера и роутеры должны ходить в инет черз inetRouter
-- Все сервера должны видеть друг друга
-- у всех новых серверов отключить дефолт на нат (eth0), который вагрант поднимает для связи
-- при нехватке сетевых интервейсов добавить по несколько адресов на интерфейс
+[opencloseSSH]
+	sequence      = 2222:tcp,3333:tcp,4444:tcp
+        seq_timeout   = 14
+        tcpflags      = syn
+        start_command = /sbin/iptables -I INPUT 1 -s %IP% -p tcp --dport 22 -j ACCEPT
+        cmd_timeout   = 30
+        stop_command  = /sbin/iptables -D INPUT -s %IP% -p tcp --dport ssh -j ACCEPT
 
+/etc/sysconfig/knockd
+OPTIONS="-i eth1"
 
-#Решение (Теория) 
-Рассмотрим сеть офиса 1 --> 192.168.2.0/26 Маска пгодсети - 26, то есть кол-во узлов можно расчитать по формуле: `2^{32-n}`, где разрядность IPv4 n-маска.
-Таким образом в нашей подсети 64 адреса (0-ой и 64 это адреса самой сети и широковещательный адрес).  Первый адрес в сети - 192.168.2.0, последний - 192.168.2.63.
-- 192.168.2.64/26    - test servers      от 64 до 127       192.168.2.127 <- broadcast 
-- 192.168.2.128/26  - managers           от  128 до 191     192.168.2.191 <- broadcast 
-- 192.168.2.192/26  - office hardware    от 192 до 255      192.168.2.255 <- broadcast 
-Таким образом свободных подсетей в офисе 1 больше нет.
-Аналогично:
-Сеть office2
-- 192.168.1.0/25      - dev                    2^{32-25}=128 => от 0 до 127      192.168.1.127 <- broadcast 
-- 192.168.1.128/26  - test servers             от 128 до 191                     192.168.2.191 <- broadcast 
-- 192.168.1.192/26  - office hardware          от 192 до 255                     192.168.2.255 <- broadcast
-В офисе 2 так-же отсутствуют свободные подсети.
-Сеть central
-- 192.168.0.0/28    - directors                 2^{32-28}=16  => от 0 до 15     192.168.0.15 <- broadcast
-- 192.168.0.32/28  - office hardware            от 32 до 47                     192.168.0.47 <- broadcast
-- 192.168.0.64/26  - wifi                       от 64 до 127                    192.168.0.127 <- broadcast
-Тут есть свободные подсети: `192.168.0.16/28, 192.168.0.48/28, 192.168.0.128/25`
-Ошибок при разбиении сети нет.
+Также необходимо добавить на 23 строку файла /etc/init.d/knock директиву sleep 30 и перезагрузить systemd(systemctl daemon-reload).
 
-Практическая часть:
-Чтобы разрулить правильно маршрутизацию сперва начертим схему сети <br/>
-https://github.com/pogosyan-it/otus-linux/blob/master/Lesson_25_Network/Office_network.jpg <br/>
-Необходимо сделать так чтобы все компьютеры и сервера в обоих офисах имели бы доступ к ресурасм в центральном офисе и через центральный роутер выходили бы в инет.
-Для этого внешние интерфейсам роутеров в центральном офисе, в 2-х доп. офисах и внутренний интерфейс на IRouter-e должны быть в отдельных подсетях (чтобы можно было понять какой трафик из какой сети идет и, при необходимости, управлять ими):
-Пусть подсеть, объединяющая <br/>
-центральный офис и офис1 --> 192.168.254.0/30 <br/>
-центральный офис и офис2 --> 192.168.253.0/30 <br/>
-центральный офис и IRouter --> 192.168.255.0/30 <br/>
-Так как это показано на рисунке. 
-Ясно, что на всех роутерах необходимо включить форвардинг трафика: <br/>
-`echo "net.ipv4.conf.all.forwarding=1" >> /etc/sysctl.conf`
-В шаблоне Vagrantfile-а было 3 VM - для пострения искомой сети нужно добавить еще 4 VM: <br/>
-- office1Router {'192.168.254.2/30', '192.168.2.1/26', '192.168.2.65/26', '192.168.2.129/26','192.168.2.193/26'}
-- office1Server {'192.168.2.2/26'}
-- office2Router {'192.168.253.2/30', '192.168.1.1/25', '192.168.1.129/26', '192.168.1.193/26'}
-- office2Server {'192.168.1.2/25'}
-Чтобы у сетей (и всех хостов в них) был бы доступ в инет необходимо на роутере office1Router прописать шлюз по умолчанию:
-`echo "GATEWAY=192.168.254.1" >> /etc/sysconfig/network-scripts/ifcfg-eth1`, аналогично на роутере office2Router.
-На centralRouter можно вместо того, чтобы на отдельных сетевых интерфейсах настаивать сети  192.168.254.0/30, 192.168.255.0/30, 192.168.253.0/30 можглна одном интерфейсе поднять сразу 3 подсети:<br/>
-`nmcli connection modify "System eth1" +ipv4.addresses "192.168.254.1/30"` <br/>
-`nmcli connection modify "System eth1" +ipv4.addresses "192.168.253.1/30"` <br/>
-и прописать шлюз по умолчанию 
-`echo "GATEWAY=192.168.255.1" >> /etc/sysconfig/network-scripts/ifcfg-eth1`
-Далее весь трайфик который пришел с office1Router пустим через 192.168.254.2, и весь тафик с office2Router через 192.168.253.2: <br/>
-echo "192.168.2.0/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/>
-echo "192.168.2.128/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/> 
-echo "192.168.2.192/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/>
-echo "192.168.2.64/26 via 192.168.254.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/>
+Теперь можно проверить настройку knocking port. Необходимо зайти на centralRouter командой vagrant ssh centralRouter и выполнить:
 
-echo "192.168.1.0/25 via 192.168.253.2 dev eth1" >> /etc/sysconfig/network-scripts/route-eth1<br/>
-echo "192.168.1.128/26 via 192.168.253.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1 <br/>
-echo "192.168.1.192/26 via 192.168.253.2 dev eth1 >> /etc/sysconfig/network-scripts/route-eth1<br/>
-Больше никаких изменений в предоставленный шаблон Vagrantfile-а вносить вроде бы и не надо.
+ for x in 2222 3333 4444; do sudo nmap -Pn --host_timeout 100 --max-retries 0 -p $x 192.168.255.1; done
 
+Здесь программа nmap перебирает в цикле порты по определенной последовательности (в продакшен среде не рекомендуется использовать такие простые номера портов и их должно быть больше)
 
+В сучае чего на centalRouter можно установить программу knock и далее выполнить команду knock 192.168.4.24 2222 3333 4444 -d 500, где d это delay - 500мс между портами.
+2) Добавить inetRouter2, который виден(маршрутизируется (host-only тип сети для виртуалки)) с хоста или форвардится порт через локалхост
+
+Добавлен в Vagrantfile директивой box.vm.network "forwarded_port", guest: 8080, host: 1234, host_ip: "127.0.0.1", id: "nginx"
+3) Запустить nginx на centralServer
+
+Добавлено в Vagrantfile директивами - sudo yum install -y epel-release; sudo yum install -y nginx; sudo systemctl enable nginx; sudo systemctl start nginx
+4) Пробросить 80й порт на inetRouter2 8080
+
+inetRouter2 Правила iptables
+
+sudo iptables -t nat -A PREROUTING -i eth0 -p tcp -m tcp --dport 8080 -j DNAT --to-destination 192.168.0.2:80
+sudo iptables -t nat -A POSTROUTING --destination 192.168.0.2/32 -j SNAT --to-source 192.168.255.2
+
+5) Все машины по умолчанию выходят в Глобальную сеть через 192.168.255.1 (inetRouter)
+
+echo "DEFROUTE=no" >> /etc/sysconfig/network-scripts/ifcfg-eth0 
+echo "GATEWAY=192.168.0.1" >> /etc/sysconfig/network-scripts/ifcfg-eth1
 
