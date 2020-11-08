@@ -26,7 +26,7 @@ sudo iptables -A INPUT -p tcp --dport 22 -j REJECT #Отрубаем возмо�
 service iptables save iptables
 После установки knockd и настройки iptables, копируем конфиг:
 mv /vagrant/config/inetRouter_knock.conf /etc/knockd.conf
-[options]
+[options] <br/>
         UseSyslog
         logfile = /var/log/knockd.log
         interface = eth1
