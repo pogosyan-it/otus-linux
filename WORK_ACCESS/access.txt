@@ -1,0 +1,278 @@
+﻿https://hnas3080.tc.rgs.ru
+admin
+nasadmin
+Storage Management
+File System---> Create
+File Service
+NFS-EXPort
+EVS Management ---> 10.99.16.62:/psql_adm
+
+
+https://m1-gw-prod-db-mm.rgs.ru
+admin
+x,509SSL
+
+root
+x.509SSL,
+
+Создание виртуальной машины
+http://deploy-vm.rgs.ru/admin-form.php
+
+
+1. Система Интранет https://intranet.rgs.ru/.
+Логин: ERPogosyan - AD
+Пароль: 2Me32jvppn
+
+2. Система регистрации обращений JIRA http://jira-rgs.rgs.ru:8080
+Логин: ERPogosyan - AD
+Пароль: 2Me32jvppn
+
+3. Система регистрации обращений HP ServiceDesk http://sd.rgs.ru/ovportal/
+Логин: epogosyan
+Пароль: 123456
+
+4. Система учета оборудования GLPI http://glpi.rgs.ru (Старая).
+Логин: ERPogosyan - AD
+Пароль: 2Me32jvppn
+
+5. Система учета оборудования iTOP http://itop.rgs.ru (Новая).
+pogosyan_er
+123456Qw
+
+6. Виртуализация VMware https://vcenter.rgs.ru/vsphere-client/?csp
+Логин: rgs.ru\ERPogosyan - AD
+Пароль: 2Me32jvppn
+sasapp.rgs.ru
+STANDALONE VM CONVERTER^
+vcenter.rgs.ru
+administrator@vsphere.local
+x.50...
+Порты необходимые для работы конвертора:
+22, 443, 9089, 902 с хоста на vcenter и с прокси на vcenter
+также необходисмо орткрыть 902 порт на сам esx для конвертора 6,11 проверено.
+ 
+ Настройки UEFI ля ESXi
+ https://datacentersupport.lenovo.com/us/en/solutions/HT115952
+  ssh root@ESXHostnameOrIPAddress vm-support -s > vm-support-Hostname.tgz     | vm-support
+
+7. Ресурс для дистрибутивов http://store.rgs.ru/store/
+
+8. Доступ к домену ERC.rgs.ru
+Логин: ERC\ERPogosyan
+Пароль: 2Me32jvppn
+
+NAVISION Login: Administrator
+         password: x.509..
+9. https://spacewalk.rgs.ru
+
+ login: erpogosyan
+ pass:  2Me32jvppn
+
+10.  
+IP Address Management
+http://ipam.rgs.ru
+Авторизация доменная.
+
+Для добавления новых VLAN в vcenter.
+-----------------------------------------------------
+1. Добавить новую сеть в store.rgs.ru:\store\EMC\VMWare\EsxNetworktList.csv
+2. Запустить скрипт:
+[root@deploy-vm ~]# /VMware-Scripts/addNetToESX/addnetwork.ps1
+
+yum install open-vm-tools | Установка vm-tools на Linux
+
+Переименовать сервер, но без доменного имени
+
+hostnamectl set-hostname newname
+systemctl restart systemd-hostnamed
+
+Запустить скрипт для добавления в AD /store/Linux/misc/Scripts/ad_join.sh
+
+Проверить свой аккаунт в AD
+realm join -U ERPogosyan rgs.ru
+id svsuprunov
+
+Запустить команду для добавления в spacewalk
+
+rhnreg_ks --activationkey=1-centos7-x86_64 --serverUrl=https://spacewalk.rgs.ru/XMLRPC --sslCACert=/usr/share/rhn/RHN-ORG-TRUSTED-SSL-CERT --force
+rhnreg_ks --activationkey=1-oracle7-x86_64 --serverUrl=https://spacewalk.rgs.ru/XMLRPC --sslCACert=/usr/share/rhn/RHN-ORG-TRUSTED-SSL-CERT --force
+rhnreg_ks --activationkey=1-rhel7-x86_64 --serverUrl=https://spacewalk.rgs.ru/XMLRPC --sslCACert=/usr/share/rhn/RHN-ORG-TRUSTED-SSL-CERT --force
+
+username@domain.local ALL = /bin/mount
+username@domain.local ALL = NOPASSWD: /bin/mount /bin/umount
+
+
+rhncfg-client get
+
+systemctl restart sssd
+
+sss_cache -E
+
+
+
+if the service realmd couldn't start
+
+sudo systemctl restart dbus
+
+
+yum error – Public key for *.rpm is not installed
+the dirty way aroung this is doing:
+yum install {package-name} --nogpgcheck
+
+
+WMWARE z58Qmrd21$
+
+rsync -aAXv / --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/boot/*","/home/*"} /mnt
+rsync -avzh /root/rpmpkgs /tmp/backups/
+
+tar -cpv --exclude /mnt --exclude /dev --exclude /sys --exclude /proc --exclude /tmp --exclude /run --exclude /boot --exclude /tmp --exclude /oracle --exclude /media / | tar -x -C /mnt/
+
+rsync -aAXv / --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","/boot/*","/home/*","/nfs/*"} /nfs
+rsync --archive --verbose --progress /path/source/ user@remotehost:/path/dest
+
+dconf-editor
+
+Cоздать ISO образ из папки.
+mkisofs -J -l -R -V "Label CD" -iso-level 4 -o output.iso input_directory
+или
+ 
+genisoimage -o /directory/example.iso /path/to/file/or/folder   | Создать из папки iso образ
+
+guestmount -a /media/cc-stage-tst2.rgs.ru-flat.vmdk -m /dev/VolGroup00/LogVol00 --rw /mnt/
+
+MEGACLI
+./MegaCli64 -PDList -aALL
+./MegaCli64 -PdLocate -start -PhysDrv [29:8] -aN | Подсветка диска, 
+      где N  номер  адаптера:
+      /MegaCli64 -AdpAllinfo -aAll | grep Adapter 
+Adapter #0
+                Supported Adapter Operations
+./MegaCli64 -PDOnline -PhysDrv [252:3] -a0
+
+./MegaCli64 -PDRbld -Showprog -PhysDrv [10:4] -aN
+29 - Enclosure Device ID                                                 q
+8-slot number
+
+megacli -PDMakeJBOD -PhysDrv[64:4]
+
+./ibm_utl_dsa_dsytd1o-9.50_portable_rhel6_x86-64.bin -d /dir/dump_name
+/store/IBM/DSA/
+
+
+https://hnas3080.tc.rgs.ru
+
+   systemctl list-unit-files --type=service | Список сервисов в стартапе
+
+storage -list drives
+storage -config drv -mkgood -target disk[4-0]  | unconfigured good
+storage -config vol -add -R 1 -D disk[4-0]:disk[4-1] -N VD_R1_SSD -w 0 -r 0 -i 0 -a 0 -d 2 -f 1 -P 1M -target ctrl[4]  | SSD RAID 1
+storage -config vol -add -R 1 -D disk[7-0]:disk[7-1] -N VD_HDD_R1 -w 2 -r 1 -i 0 -a 0 -d 2 -f 0 -P 128K -target ctrl[7] | HDD RAID 1
+storage -config vol -add R 1 -D disk[7-0]:disk[7-1] -N VD_HDD_R1 -w 2 -r 2 -i 1 -a 0 -d 2 -f 1 -P 128K -target ctrl[7]
+storage -config vol -add -R 1 -D disk[4-0]:disk[4-1] -N VD_R1_SSD -w 0 -r 0 -i 0 -a 0 -d 2 -f 1 -P 1M -target ctrl[4] 
+storage -config vol -add -R 5 -D disk[4-0]:disk[4-1]:disk[4-2]:disk[4-3] -N VD_R5_SSD -w 0 -r 0 -i 0 -a 0 -d 2 -f 1 -P 512K -target ctrl[4]
+storage -config drv -addhsp -dedicated pool[1-2] -target disk[1-18]
+
+swapoff -v /dev/VolGroup/lv_swap
+
+Источник: https://liberatum.ru/exclusive/swap-lvm2
+
+https://www.xelent.ru/blog/perenos-servera-linux-na-virtualnuyu-mashinu-vmware/
+sudo apt-get install qemu
+
+
+
+sudo yum install qemu
+
+Команда конвертирования выглядит так:
+
+qemu-img convert -o compat6 /mnt/share/sda.img -O vmdk /mnt/share/vmware.vmdk
+
+
+Нахождение Серийника мат платы ESXi
+cd /sbin
+smbiosDump
+
+Get-WmiObject Win32_BIOS SerialNumber | Серийни сервера Windows
+
+В случае недоступности хоста esx, при доступности ВМ на нем обычно проблема в management интерфейсе:
+/etc/init.d/hostd restart
+/etc/init.d/vpxa restart
+To restart all ESXi management agents on the host, run the command:
+services.sh restart
+ERROR:
+System Management  Software 1 SEL Fullness
+ssh to esxi host
+
+    localcli hardware ipmi sel clear
+    /etc/init.d/sfcbd-watchdog restart
+    services.sh restart
+
+Активация WIN через KMS Srv
+slmgr.vbs /skms rgs-kms-03.rgs.ru:1688
+Slmgr.vbs /ato
+
+sfdisk -d | /dev/sda | sfdisk /dev/sdb | копирование раздела с  sda на sdb
+
+
+
+Удаление N записей истории:
+for h in $(seq 1501 1513); do history -d 1501; done
+touch -mat 201908141215.25 sklad_mto.php
+VS6.7-ICM/16122019 
+
+STAT — текущее состояние процесса. Могут принимать значения:
+R — выполнимый процесс;
+S — спящий;
+D — в состоянии подкачки на диске;
+T — остановлен;
+Z — зомби.
+W — не имеет резидентных страниц;
+< — высоко-приоритетный;
+N — низко-приоритетный;
+L — имеет страницы, заблокированные в памяти.
+
+
+
+zpool import 
+  211  df -h
+  212  zpool import acrmzpool acrm
+  213  df -h
+  214  zfs destroy acrm/datazfs
+  
+      zpool create -f acrm2 raidz /dev/nvme0n1p1 /dev/nvme1n1p1 /dev/nvme2n1p1 /dev/nvme3n1p1 /dev/nvme4n1p1 /dev/nvme5n1p1 /dev/nvme6n1p1 /dev/nvme7n1p1 /dev/nvme8n1p1 spare /dev/nvme9n1p1
+      
+      zfs set mountpoint=none acrm
+  217  zpool list
+  218  zfs get compress acrm
+  219  zfs set atime=off acrm
+  220  zfs set compress=lz4 acrm
+  221  zfs get all acrm
+  222  zfs get all acrm | grep reserv
+
+  239  zfs create -o mountpoint=/home acrm/home
+       zfs set mountpoint=/home acrm2/home
+       zfs mount acrm2/home
+       zfs set quota=123G acrm2/home
+       
+zpool export acrm.2
+zpool import acrm.2 acrm.1:
+
+systemctl status chronyd
+
+
+LANG=C; /usr/sbin/adcli join --verbose --domain rgs.ru --domain-realm RGS.RU --domain-controller rgs-rootdc-01.rgs.ru --computer-ou OU="Linux Servers,DC=rgs,DC=ru" --login-type user --login-user ERPogosyan
+
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDSUP5Flj5CQDTmzxDIwfNnyaFMwLozQDU0VV7B5zrPyw0S2j3UQ1vN+PfprXKY2TmrADOrFNkxL70J64wJogh4NVwIlfF/HqJbI5/nw+2RaI/4dMHMluK63jwsprrTYIuk+NiGMy4oddGaecsGfJ5ATsSgOXzQeeOqmdOK
+
+
+d:\>xcopy d:\STOP_list c:\Stop_list /O /X /E /H /K /I | (Windows )Копирование всех подкоталогов с правами атрибутами скрытыми папками и файлами. 
+ 
+ ls -l /root/ >ls-error.log 2>&1  | ПЕренаправление stderr and stdout into file 
+
+
+
+
+
+
+
