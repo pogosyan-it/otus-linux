@@ -1,0 +1,11 @@
+[Unit]
+Description=Log test with timer
+
+[Service]
+#Type=simple
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash /etc/zpool-up.sh
+
+[Install]
+WantedBy=multi-user.target

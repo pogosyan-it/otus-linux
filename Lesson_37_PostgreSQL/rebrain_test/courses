@@ -1,0 +1,8 @@
+Insert into users(coursename, tasks_count, price) values ('Kubernetes','70','35000');
+Insert into users(coursename, tasks_count, price) values ('Highload','130','75000');
+Insert into users(coursename, tasks_count, price) values ('Bash','15','6900');
+Insert into users(coursename, tasks_count, price) values ('Golang','117','55000');
+Insert into users(coursename, tasks_count, price) values ('Linux','102','65000');
+Insert into users(coursename, tasks_count, price) values ('Devops','212','75000');
+Insert into users(coursename, tasks_count, price) values ('Docker','45','30000');
+Insert into users(coursename, tasks_count, price) values ('Logs','14','7900');

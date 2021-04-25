@@ -1,0 +1,10 @@
+Insert into users(user_id, course_id) values ('1','1');
+Insert into users(user_id, course_id) values ('1','4');
+Insert into users(user_id, course_id) values ('3','2');
+Insert into users(user_id, course_id) values ('3','4');
+Insert into users(user_id, course_id) values ('2','6');
+Insert into users(user_id, course_id) values ('2','1');
+Insert into users(user_id, course_id) values ('2','2');
+Insert into users(user_id, course_id) values ('2','4');
+Insert into users(user_id, course_id) values ('5','6');
+Insert into users(user_id, course_id) values ('6','6');
