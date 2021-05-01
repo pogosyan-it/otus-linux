@@ -15,11 +15,19 @@
  Чтобы дать разрешение на подключение с удаленных хостов к бд, необходимо:
  1) прописать в файл postgresql.conf  
     `listen_addresses = '*'`, если нужно конкретную подсеть указать, вместо * пишем 192.168.0.0/24 
- 2) В файл hba.conf прописать:  
+ 2) В файл pg_hba.conf прописать:  
     `host     mybd     postgres     192.168.0.0/24     md5`  
     Запись разрешает подключение к БД mybd пользователю postgres с подсети 192.168.0.0/24, используя пароль.
 Узнать расположение файлов конфигурации PostgreSQL: postgresql.conf, pg_hba.conf:  
 `ps aux | grep postgres | grep -- -D`  
 Для получения информация о текущем подключении:  
 `postgres-# \conninfo`  
-You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".
+You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".  
+# Создание пользователя  
+`CREATE USER user WITH PASSWORD 'mypassword';`
+Чтобы подключится к базе под этим пользователем в системе должен быть создан рользователь с таким именем и в файл pg_hba.conf прописано разрешение (см выше)  
+Создание пользователя с правами суперпользователя:  
+`create user user_name with superuser password 'mypass';`  
+Выдать все права для пользователя `user_name` на БД `myDB`:  
+`GRANT ALL PRIVILEGES on DATABASE "myDB" to user`;
+
