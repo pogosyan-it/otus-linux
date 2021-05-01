@@ -32,3 +32,12 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `GRANT ALL PRIVILEGES on DATABASE "myDB" to my_user`;
 Создать базу данных:  
 `Create database myDB;`
+Изменение пароля пользователя:  
+`ALTER USER MyUser WITH PASSWORD 'NEW_PASS';`
+# Метакоманды
+`\c new_db` сменить базу данных  
+`\dt` список таблиц    
+`\l` список баз 
+`\u` список пользователей  
+`\f` список функций  
+`\?` - СПРАВКА
