@@ -36,8 +36,8 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `ALTER USER MyUser WITH PASSWORD 'NEW_PASS';`
 # Метакоманды
 `\c new_db` сменить базу данных  
-`\dt` список таблиц    
-`\l` список баз 
+`\dt` список таблиц  
+`\l` список баз  
 `\u` список пользователей  
 `\f` список функций  
 `\?` - СПРАВКА
