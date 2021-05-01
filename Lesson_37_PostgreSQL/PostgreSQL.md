@@ -27,7 +27,8 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `CREATE USER user WITH PASSWORD 'mypassword';`
 Чтобы подключится к базе под этим пользователем в системе должен быть создан рользователь с таким именем и в файл pg_hba.conf прописано разрешение (см выше)  
 Создание пользователя с правами суперпользователя:  
-`create user user_name with superuser password 'mypass';`  
+`create user my_user with superuser password 'mypass';`  
 Выдать все права для пользователя `user_name` на БД `myDB`:  
-`GRANT ALL PRIVILEGES on DATABASE "myDB" to user`;
-
+`GRANT ALL PRIVILEGES on DATABASE "myDB" to my_user`;
+Создать базу данных:  
+`Create database myDB;`
