@@ -20,3 +20,6 @@
     Запись разрешает подключение к БД mybd пользователю postgres с подсети 192.168.0.0/24, используя пароль.
 Узнать расположение файлов конфигурации PostgreSQL: postgresql.conf, pg_hba.conf:  
 `ps aux | grep postgres | grep -- -D`
+Для получения информация о текущем подключении:  
+`postgres-# \conninfo`  
+You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".
