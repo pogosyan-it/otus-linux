@@ -41,3 +41,4 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `\u` список пользователей  
 `\f` список функций  
 `\?` - СПРАВКА
+`ALTER DEFAULT PRIVILEGES for role "backup" in schema "public" GRANT Select ON TABLES TO PUBLIC;`
