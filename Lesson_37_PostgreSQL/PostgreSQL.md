@@ -44,3 +44,4 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `GRANT USAGE on SCHEMA "public" to rebrain_admin;`  
 `ALTER DEFAULT PRIVILEGES for role "backup" in schema "public" GRANT Select ON TABLES TO PUBLIC;`  
 `GRANT SELECT ON ALL TABLES IN SCHEMA public  TO "rebrain_group_select_access";`
+`ALTER DEFAULT PRIVILEGES for role "backup" in schema "public" GRANT Select ON TABLES TO rebrain_admin;`
