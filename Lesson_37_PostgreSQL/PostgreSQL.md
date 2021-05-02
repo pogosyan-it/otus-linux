@@ -40,5 +40,6 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `\l` список баз  
 `\u` список пользователей  
 `\f` список функций  
-`\?` - СПРАВКА
+`\?` - СПРАВКА  
+`GRANT USAGE on SCHEMA "public" to rebrain_admin;`  
 `ALTER DEFAULT PRIVILEGES for role "backup" in schema "public" GRANT Select ON TABLES TO PUBLIC;`
