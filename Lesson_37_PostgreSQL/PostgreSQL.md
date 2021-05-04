@@ -80,4 +80,4 @@ Cоздать схему, владельцем которой будет дру�
 `ALTER DEFAULT PRIVILEGES FOR USER user IN SCHEMA public GRANT SELECT ON TABLES TO myrole;`  
 Выдайте права для user только на SELECT из всех таблиц в схеме public  
 `GRANT SELECT ON ALL TABLES IN SCHEMA public  TO user;`
-
+<https://lk.rebrainme.com/postgresql/task/597>
