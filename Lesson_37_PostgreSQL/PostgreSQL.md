@@ -34,6 +34,9 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `Create database myDB;`
 Изменение пароля пользователя:  
 `ALTER USER MyUser WITH PASSWORD 'NEW_PASS';`
+Выдать права роли myrole на вход в БД  
+`ALTER ROLE myrole WITH LOGIN;`  
+
 # Мета команды
 `\c new_db` сменить базу данных  
 `\dt` список таблиц  
