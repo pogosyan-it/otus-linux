@@ -34,13 +34,15 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `Create database myDB;`
 Изменение пароля пользователя:  
 `ALTER USER MyUser WITH PASSWORD 'NEW_PASS';`
-# Метакоманды
+# Мета команды
 `\c new_db` сменить базу данных  
 `\dt` список таблиц  
 `\l` список баз  
 `\u` список пользователей  
 `\f` список функций  
-`\?` - СПРАВКА  
+`\?` - СПРАВКА
+# Схемы  
+Кластер баз данных — это набор баз данных, которыми управляет один экземпляр сервера. Понятие кластеров баз данных было введено разработчиками OS Ubuntu для упрощения работы с PostgreSQL, для этого был собран специальный пакет postgres-common
 `GRANT USAGE on SCHEMA "public" to rebrain_admin;`  
 `ALTER DEFAULT PRIVILEGES for role "backup" in schema "public" GRANT Select ON TABLES TO PUBLIC;`  
 `GRANT SELECT ON ALL TABLES IN SCHEMA public  TO "rebrain_group_select_access";`
