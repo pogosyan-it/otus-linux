@@ -62,11 +62,9 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
  );`  
  создать схему, владельцем которой будет другой пользователь:  
  `CREATE SCHEMA schema_name AUTHORIZATION user_name;`
-
-
-   Список всех схем в бд, схемы которые начинаются с `pg_` - это служебные схемы бд
-   `select * from information_schema.schemata;`
- Важно отметить, что в postgres, для того, чтобы не писать полное имя таблицы `my_schema.my_table` по умолчанию используется путь поиска:
+Список всех схем в бд, схемы которые начинаются с `pg_` - это служебные схемы бд  
+   `select * from information_schema.schemata;`  
+Важно отметить, что в postgres, для того, чтобы не писать полное имя таблицы `my_schema.my_table` по умолчанию используется путь поиска:
  `SHOW search_path;`
  -----------------
  "$user", public
