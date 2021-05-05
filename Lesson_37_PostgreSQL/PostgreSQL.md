@@ -106,11 +106,12 @@ Cоздать схему, владельцем которой будет дру�
 `Select course_id, coursename, tasks_count,  sum(price) OVER () FROM courses;`  
 Запрос выведет дополнительный столбец в каждой строке которого будет сумма всех значений столбца `price`  
 Если добавить в предыдущий запрос `OVER (ORDER BY price)`, то будет в каждой ячейке стобца будет вписана сумма предыдущих значений поля `price`:  
-Select course_id, coursename, tasks_count,  price, sum(price) OVER (ORDER BY price) FROM courses;
- course_id | coursename | tasks_count | price |  sum
------------+------------+-------------+-------+--------
-         3 | Bash       |          15 |  6900 |   6900
-         8 | Logs       |          14 |  7900 |  14800
-         9 | Postgresql |          14 | 10000 |  24800
+`Select course_id, coursename, tasks_count,  price, sum(price) OVER (ORDER BY price) FROM courses;`  
+` course_id | coursename | tasks_count | price |  sum`  
+`-----------+------------+-------------+-------+--------` 
+`         3 | Bash       |          15 |  6900 |   6900`  
+`         8 | Logs       |          14 |  7900 |  14800` 
+`         9 | Postgresql |          14 | 10000 |  24800`  
+
 
 
