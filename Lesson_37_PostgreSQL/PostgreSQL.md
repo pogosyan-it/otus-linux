@@ -113,6 +113,17 @@ Cоздать схему, владельцем которой будет дру�
 `         8 | Logs       |          14 |  7900 |  14800`   
 `         9 | Postgresql |          14 | 10000 |  24800`  
 
+**Пользовательские функции** бывают 4 типов:  
+  Функции на языке запросов (функции, написанные на SQL) - <https://postgrespro.ru/docs/postgresql/13/xfunc-sql>
+  Функции на процедурных языках (функции, написанные, например, на PL/pgSQL или PL/Tcl) - <https://postgrespro.ru/docs/postgresql/13/xfunc-pl>
+  Внутренние функции - <https://postgrespro.ru/docs/postgresql/13/xfunc-internal>
+  Функции на языке C - <https://postgrespro.ru/docs/postgresql/13/xfunc-c>  
+  Пример функции написаной на языке SQL:  
+  CREATE FUNCTION add(integer, integer) RETURNS integer
+    AS 'select $1 + $2;'
+    LANGUAGE SQL
+    IMMUTABLE
+    RETURNS NULL ON NULL INPUT;
 
 
 
