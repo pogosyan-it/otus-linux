@@ -150,14 +150,14 @@ Cоздать схему, владельцем которой будет дру�
 #Сперва  создадим таблицу auditloв в БД:  <a name="table_create"></a>
  
 `  CREATE TABLE auditlog(`  
-*`      id  SERIAL PRIMARY KEY NOT NULL,                 -- Primary Key`  
-`      user_id INT NOT NULL,                            -- Foreign Key to table users`  
-`      creation_time timestamp NOT NULL DEFAULT now(),  -- Дата создания`  
-`      ctreator varchar(50) NOT NULL,                   --Имя пользователя`  
-`      username varchar(50) NOT NULL,                  --Имя созданного в таблице users пользователя`  
-`      CONSTRAINT fk_users_id`  
-`          FOREIGN KEY (user_id) `  
-`              REFERENCES users(user_id)`  
-`              );`  
+#`      id  SERIAL PRIMARY KEY NOT NULL,                 -- Primary Key`  
+#`      user_id INT NOT NULL,                            -- Foreign Key to table users`  
+#`      creation_time timestamp NOT NULL DEFAULT now(),  -- Дата создания`  
+#`      ctreator varchar(50) NOT NULL,                   --Имя пользователя`  
+#`      username varchar(50) NOT NULL,                  --Имя созданного в таблице users пользователя`  
+#`      CONSTRAINT fk_users_id`  
+#`          FOREIGN KEY (user_id) `  
+#`              REFERENCES users(user_id)`  
+#`              );`  
 `CONSTRAINT fk_users_id` - обеспечивает проверку вводимых данных на корректность, Например, пользователь базы данных не сможет удалить карточку клиента, если у этого клиента имеются заказы. <https://postgrespro.ru/docs/postgresql/9.5/ddl-constraints>.  
 
