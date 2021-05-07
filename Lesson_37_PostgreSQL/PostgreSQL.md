@@ -163,3 +163,24 @@ Cоздать схему, владельцем которой будет дру�
  ```
 `CONSTRAINT fk_users_id` - обеспечивает проверку вводимых данных на корректность, Например, пользователь базы данных не сможет удалить карточку клиента, если у этого клиента имеются заказы. <https://postgrespro.ru/docs/postgresql/9.5/ddl-constraints>.  
 
+```
+  Create or replace function fnc_auditlog_users_insert RETURNS TRIGGER AS $$
+DECLARE
+    mstr varchar(30);
+    astr varchar(100);
+    retstr varchar(254);
+    userid int;
+BEGIN
+   IF  TG_OP = 'INSERT' THEN
+    astr = NEW.username;
+    mstr := 'Add new user ';
+    retstr := mstr || astr;
+    userid = NEW.user_id;
+    INSERT INTO auditlog(user_id, creation_time, creator) values (userid, NOW(), user);
+   RETURN NEW;
+  END IF;
+END;
+$$ LANGUAGE plpgsql
+
+```
+
