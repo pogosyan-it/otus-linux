@@ -150,7 +150,7 @@ Cоздать схему, владельцем которой будет дру�
 #Сперва  создадим таблицу auditloв в БД:  <a name="table_create"></a>
  
 `  CREATE TABLE auditlog(`  
-#`      id  SERIAL PRIMARY KEY NOT NULL,                 -- Primary Key`  
+  `      id  SERIAL PRIMARY KEY NOT NULL,                 -- Primary Key`  
 #`      user_id INT NOT NULL,                            -- Foreign Key to table users`  
 #`      creation_time timestamp NOT NULL DEFAULT now(),  -- Дата создания`  
 #`      ctreator varchar(50) NOT NULL,                   --Имя пользователя`  
