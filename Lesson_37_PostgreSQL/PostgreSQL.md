@@ -1,11 +1,12 @@
 # PostgreSQL
 1. [Установка](#install)
 2. [Подключение в БД postgres](#connect)
-3. [Создание пользователя](#user_create)
-4. [Мета команды](#meta_commands)
-5. [Схемы](#schmas)
-6. [Права](#rights)
-7. [Представления, Функции и Триггеры.](#perfom_func_trig)
+3. [Импорт и экспорт дампа БД](#psql)
+4. [Создание пользователей](#user_create)
+5. [Мета команды](#meta_commands)
+6. [Схемы](#schmas)
+7. [Права](#rights)
+8. [Представления, Функции и Триггеры.](#perfom_func_trig)
     1. [Оконные функции](#window_func)
     2. [Пользовательские функции](#user_func)
     3. [Пример создания Функции и триггера на на PL/pgSQL](#func_trig_example)
@@ -36,7 +37,14 @@
 Для получения информация о текущем подключении:  
 `postgres-# \conninfo`  
 You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".  
-# Создание пользователя <a name="user_create"></a> 
+# Импорт и экспорт дампа БД  
+Импорт:
+`psql -U User -d db_name -f /path/to/dump/mydb.bqp`
+Экспорт:  
+`pg_dump -U User db_name > /path/to/dump/mydb.bqp`
+
+
+# Создание пользователей <a name="user_create"></a> 
 `CREATE USER user WITH PASSWORD 'mypassword';`
 Чтобы подключится к базе под этим пользователем в системе должен быть создан рользователь с таким именем и в файл pg_hba.conf прописано разрешение (см выше)  
 Создание пользователя с правами суперпользователя:  
