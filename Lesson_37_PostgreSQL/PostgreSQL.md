@@ -39,8 +39,8 @@
 You are connected to database "postgres" as user "postgres" via socket in "/var/run/postgresql" at port "5432".  
 # Импорт и экспорт дампа БД  <a name="dump"></a>  
 Импорт:
-`psql -U User -d db_name -f /path/to/dump/mydb.bqp`
-Экспорт:  
+`psql -U User -d db_name -f /path/to/dump/mydb.bqp`  
+Экспорт:
 `pg_dump -U User db_name > /path/to/dump/mydb.bqp`
 
 
