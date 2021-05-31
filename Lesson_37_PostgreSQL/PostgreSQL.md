@@ -13,6 +13,7 @@
         1. [Создание таблицы содержащей первичные и внешние ключи](#table_create)
         2. [Функция auditlog_users_insert](#auditlog_users_insert)
         3. [Триггер](#trigger)
+9. [Репликация](#replic)      
 ## Установка <a name="install"></a>
 Установка PostgreSQL из пакетов, а также сборка из исходного кода, должны выполнятся в соответствии с офф. документацией:
 Полезные ссылки:  
@@ -206,4 +207,4 @@ $$ LANGUAGE plpgsql
 Create trigger insert_into_users_trigger AFTER INSERT on users FOR EACH ROW
 EXECUTE PROCEDURE auditlog_users_insert ();
 ```  
-
+# Репликация: <a name="replic"></a>
