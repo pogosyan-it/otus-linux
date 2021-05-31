@@ -13,7 +13,7 @@
         1. [Создание таблицы содержащей первичные и внешние ключи](#table_create)
         2. [Функция auditlog_users_insert](#auditlog_users_insert)
         3. [Триггер](#trigger)
-9. [Репликация](#replication)
+9. [Репликация](#replic)
     1. [Журнал транзакций](#journal)
         
 ## Установка <a name="install"></a>
