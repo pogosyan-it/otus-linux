@@ -108,7 +108,7 @@ systemctl restart sssd
 
 sss_cache -E
 
-
+parted /dev/sda resizepart 3 100%
 
 if the service realmd couldn't start
 
