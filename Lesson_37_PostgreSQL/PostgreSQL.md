@@ -66,8 +66,9 @@ You are connected to database "postgres" as user "postgres" via socket in "/var/
 `\c new_db` сменить базу данных  
 `\dt` список таблиц  
 `\l` список баз  
-`\u` список пользователей  
+`\du` список пользователей  
 `\f` список функций  
+`\dn` список функций
 `\?` - СПРАВКА  
 `\dt public.*` - список таблиц в схеме.  
 
