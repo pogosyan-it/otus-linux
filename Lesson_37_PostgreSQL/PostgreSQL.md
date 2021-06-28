@@ -248,7 +248,7 @@ EXECUTE PROCEDURE auditlog_users_insert ();
 2. В файле `/var/lib/pgsql/13/data/pg_hba.conf` добавляем следующие строки:   
    `host    replication   user_name    IP_Master/32      trust`    
    `host    replication   user_name    IP_Slave/32      trust` 
-   `wal_level = replica`
+   `wal_level = replica`   
    (`CREATE USER user_name REPLICATION;`)
 3. В файле `/var/lib/pgsql/13/data/postgresql.conf` и на слэйве и на мастере внесем следующие изменения:   
    `listen_addresses='*'`   
@@ -273,11 +273,20 @@ EXECUTE PROCEDURE auditlog_users_insert ();
 
 Логическая репликация работает на уровне отдельных таблиц или наборов таблиц. Можно также настроить ее для всех таблиц в базе данных, и тогда она автоматически распространяется на новые таблицы. Однако логическая репликация не затрагивает других объектов схемы, например последовательности, индексы и представления.   
 Рассмотрим подробно процесс настройки (на publisher и на subscribe установлен Centos 7 + Postgresql13 ):   
-На publisher:   
+На обоих серверах:   
 1. В файле pg_hba.conf   
    `host    all             all             ::1/128                 trust`   
    `host    all            replic_user       0.0.0.0/0               trust`
 2. В файле `/var/lib/pgsql/13/data/postgresql.conf` на publisher и на subscribe внесем следующие изменения:   
    `listen_addresses='*'` 
-   `wal_level = logical`   
-3. 
+3.  На паблишере: max_replication_slots больше или равно количеству подписчиков, которые могут подключиться к серверу-издателю.
+    `max_wal_senders >= max_replication_slots`
+    `wal_level = logical`   
+4. На обоих серверах создаем роль:   
+   `CREATE USER replic_user;`   
+   `ALTER User replic_user REPLICATION`
+5. Развернем бд db_test на publisher -е и опубликуем все его таблицы:   
+   `CREATE PUBLICATION db_test FOR ALL TABLES;`
+6. Создадим на сервере-подписчике базу db_test.   
+7. Создаем подписку - специальный объект, описывающий подключение к существующей публикации издателя:   
+   `db_test=# CREATE SUBSCRIPTION db_test CONNECTION 'dbname=db_test host=IP_Publisher user=replic_user' PUBLICATION db_test;`
