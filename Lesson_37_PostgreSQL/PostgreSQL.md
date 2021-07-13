@@ -324,4 +324,4 @@ pg_dump dbname | gzip > filename.gz
 Через psql такой бэкап не восстановить, но для этого есть утилита — pg_restore   
 `pg_restore -d dbname filename`   
 
-``
+##Бэкап уровня файловой системы
