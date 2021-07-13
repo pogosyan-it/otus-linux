@@ -308,4 +308,20 @@ EXECUTE PROCEDURE auditlog_users_insert ();
 6. Создадим на сервере-подписчике базу db_test.   
 7. Создаем подписку - специальный объект, описывающий подключение к существующей публикации издателя:   
    `db_test=# CREATE SUBSCRIPTION db_test CONNECTION 'dbname=db_test host=IP_Publisher user=replic_user' PUBLICATION db_test;`
-# Бэкап баз данных. <a name="backup"></a>
+# Бэкап баз данных. <a name="backup"></a>   
+SQL-бэкап  - идея состоит в создании текстового файла с командами SQL. Такой файл можно передать обратно на сервер и воссоздать базу данных в том же состоянии, в котором она была во время бэкапа. У PostgreSQL для этого есть специальная утилита — `pg_dump`.  Годится для очень маленькиз бд. 
+`pg_dump dbname > outfile`   
+Для восстановления такого бэкапа достаточно выполнить:   
+`psql dbname < infile`   
+Можно так-же развернуть сразу на другом хосте:   
+`pg_dump -h host1 dbname | psql -h host2 dbname`   
+Для бэкапа всего кластера используется утилита `pg_dumpall`   
+Бэкап баз побольше так-же можно делать с помощью утилиты pg_dump с использованием сжатия:   
+pg_dump dbname | gzip > filename.gz   
+Восстановление:    
+`gunzip -c filename.gz | psql dbname`   
+Так-же можно воспользоваться библиотекой zlib:   
+Через psql такой бэкап не восстановить, но для этого есть утилита — pg_restore   
+`pg_restore -d dbname filename`   
+
+``
