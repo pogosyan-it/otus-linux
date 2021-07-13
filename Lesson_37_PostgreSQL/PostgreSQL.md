@@ -17,7 +17,7 @@
     1. [Журнал транзакций](#journal)
     2. [Физическая репликация](#phycical_replic)
     3. [Логическая репликация](#logical_replic)
-        
+10. [Бэкап баз дынных](#backup)       
 ## Установка <a name="install"></a>
 Установка PostgreSQL из пакетов, а также сборка из исходного кода, должны выполнятся в соответствии с офф. документацией:
 Полезные ссылки:  
@@ -308,3 +308,4 @@ EXECUTE PROCEDURE auditlog_users_insert ();
 6. Создадим на сервере-подписчике базу db_test.   
 7. Создаем подписку - специальный объект, описывающий подключение к существующей публикации издателя:   
    `db_test=# CREATE SUBSCRIPTION db_test CONNECTION 'dbname=db_test host=IP_Publisher user=replic_user' PUBLICATION db_test;`
+# Бэкап баз данных. <a name="backup"></a>
